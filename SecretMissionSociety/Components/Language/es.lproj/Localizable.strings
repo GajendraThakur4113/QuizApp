@@ -1,0 +1,58 @@
+
+"Home"                                  = "Hogar";
+"Please Enter Your Email"               = "Por favor introduzca su correo electrónico";
+"Please Enter Password"                 = "Por favor, ingrese contraseña";
+"Please Enter Valid Email"              = "Por favor introduzca un correo electrónico válido";
+"Please Enter Mobile Number"            = "Por favor, introduzca el número de móvil";
+"Login"                                 = "Acceso";
+"Sign up"                               = "Inscribirse";
+"Forgot password"                       = "Has olvidado tu contraseña";
+"Are you sure you want to log out?"     = "¿Está seguro de que desea cerrar la sesión?";
+"Yes"                                   = "Sí";
+"No"                                    = "No";
+"Please enter first name"               = "Por favor ingrese el nombre";
+"Please enter last name"                = "Por favor, introduzca el apellido";
+"Please select date"                    = "Seleccione la fecha";
+"Please select start time"              = "Seleccione la hora de inicio";
+"Please select end time"                = "Seleccione la hora de finalización";
+"Language"                              = "Idioma";
+"Logout"                                = "Cerrar sesión";
+"Ok"                                    = "De acuerdo";
+"Male"                                  = "Hombres";
+"Female"                                = "Mujeres";
+"Both"                                  = "Ambas";
+"online"                                = "activo ahora";
+"offline"                               = "activo recientemente";
+"kms away"                              = "kilómetros de distancia";
+"Privacy Policy"                        = "politica de privacidad";
+"Term of Use"                           = "Términos y condiciones";
+"TMFull"                                = "Continúe si acepta nuestra Política de privacidad y Términos y condiciones";
+"About Us"                              = "Sobre nosotros";
+"Already have an account? Login"        = "¿Ya tienes una cuenta? Acceso";
+"Don't have an account yet? Register"   = "¿Aún no tienes una cuenta? Registro";
+"Register"                              = "Registro";
+"Add Like"                              = "Me gusta";
+"I Like"                                = "Me gusta";
+"Profile Updated Successfully"          = "Perfil modificado correctamente";
+"Group : Participants"                  = "Participantes";
+
+"Please purchase 3 months plan cost"    = "Por favor compre el costo del plan de 3 meses";
+"for uploading restaurant"              = "para subir restaurante";
+"for uploading Accommodation"           = "para subir Alojamiento";
+"Are you sure you want to delete account?"     = "¿Estás seguro de que quieres eliminar la cuenta?";
+"Are you sure you want to reset this filter?" = "¿Está seguro de que quieres restablecer este filtro?";
+
+"REJECTED (REAPPLY)"                    = "REJECTED (REAPPLY)";
+"ALREADY IN PROGRESS..."                = "ALREADY IN PROGRESS...";
+"Approved"                              = "Approved";
+"HomeMessage"                           = "Usuario no encontrado, actualice la configuración del filtro, por favor...";
+
+"InAppR"                                = "Con esta suscripción de";
+"InAppA"                                = "Con esta suscripción de";
+"InAppR2"                               = "promocionaras tu restaurante durante 3 meses dentro de nuestra app dando a conocer tu local entre toda nuestra comunidad de usuarios. Recuerda que la suscripción se renueva automáticamente después de los 3 meses. ";
+"InAppA2"                               = "promocionaras tu alojamiento durante 3 meses dentro de nuestra app dando a conocer tu local entre toda nuestra comunidad de usuarios. Recuerda que la suscripción se renueva automáticamente después de los 3 meses.";
+
+"Add Event"                                  = "Añadir evento";
+"Add Restaurent"                             = "Añadir restaurante";
+"Add Accommodation"                          = "Añadir alojamiento";
+"Enter Details"                              = "Características del evento";

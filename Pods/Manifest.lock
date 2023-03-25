@@ -1,0 +1,50 @@
+PODS:
+  - Alamofire (4.8.2)
+  - DropDown (2.3.13)
+  - IQKeyboardManagerSwift (6.5.10)
+  - libwebp (1.2.3):
+    - libwebp/demux (= 1.2.3)
+    - libwebp/mux (= 1.2.3)
+    - libwebp/webp (= 1.2.3)
+  - libwebp/demux (1.2.3):
+    - libwebp/webp
+  - libwebp/mux (1.2.3):
+    - libwebp/demux
+  - libwebp/webp (1.2.3)
+  - SDWebImage/Core (4.4.8)
+  - SDWebImage/WebP (4.4.8):
+    - libwebp (< 2.0, >= 0.5)
+    - SDWebImage/Core
+  - SVProgressHUD (2.2.5)
+  - SwiftyJSON (5.0.1)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.8.0)
+  - DropDown
+  - IQKeyboardManagerSwift
+  - SDWebImage/WebP
+  - SVProgressHUD
+  - SwiftyJSON
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - DropDown
+    - IQKeyboardManagerSwift
+    - libwebp
+    - SDWebImage
+    - SVProgressHUD
+    - SwiftyJSON
+
+SPEC CHECKSUMS:
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
+  IQKeyboardManagerSwift: 52962c76ab33532f15ad9f3ff4e5715eda5335bb
+  libwebp: 60305b2e989864154bd9be3d772730f08fc6a59c
+  SDWebImage: 783af2c3fa36291a250030c4752ee370a9a51d13
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
+
+PODFILE CHECKSUM: 81ade56ca4b55b14ed04679610ae8fdb77cdc6ac
+
+COCOAPODS: 1.11.3

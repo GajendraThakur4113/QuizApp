@@ -1,0 +1,62 @@
+
+"Home"                                  = "Home";
+"Please Enter Your Email"               = "Please Enter Your Email";
+"Please Enter Password"                 = "Please Enter Password";
+"Please Enter Valid Email"              = "Please Enter Valid Email";
+"Please Enter Mobile Number"            = "Please Enter Mobile Number";
+"Login"                                 = "Login";
+"Sign up"                               = "Sign up";
+"Forgot password"                       = "Forgot password";
+"Are you sure you want to log out?"     = "Are you sure you want to log out?";
+"Yes"                                   = "Yes";
+"No"                                    = "No";
+"Please enter first name"               = "Please enter first name";
+"Please enter last name"                = "Please enter last name";
+"Please select date"                    = "Please select date";
+"Please select start time"              = "Please select start time";
+"Please select end time"                = "Please select end time";
+"Language"                              = "Language";
+"Logout"                                = "Logout";
+"Ok"                                    = "Ok";
+"Male"                                  = "Male";
+"Female"                                = "Female";
+"Both"                                  = "Both";
+"online"                                = "online";
+"offline"                               = "offline";
+"kms away"                              = "kms away";
+"Privacy Policy"                        = "Privacy Policy";
+"Term of Use"                           = "Terms & Conditions";
+"TMFull"                                = "Continue if you agree to our  Privacy Policy and Terms & Conditions";
+"About Us"                              = "About Us";
+"Already have an account? Login"        = "Already have an account? Login";
+"Don't have an account yet? Register"   = "Don't have an account yet? Register";
+"Register"                              = "Register";
+"Add Like"                              = "Add Like";
+"I Like"                                = "I Like";
+"Profile Updated Successfully"          = "Profile Updated Successfully";
+"Group : Participants"                  = "Group : Participants";
+
+"Please purchase 3 months plan cost"    = "Please purchase 3 months plan cost";
+"for uploading restaurant"              = "for uploading restaurant";
+"for uploading Accommodation"           = "for uploading Accommodation";
+"Are you sure you want to delete account?" = "Are you sure you want to delete account?";
+"Are you sure you want to reset this filter?" = "Are you sure you want to reset this filter?";
+
+"REJECTED (REAPPLY)"                    = "REJECTED (REAPPLY)";
+"ALREADY IN PROGRESS..."                = "ALREADY IN PROGRESS...";
+"Approved"                              = "Approved";
+"HomeMessage"                           = "User Not found update filter setting please...";
+
+"InAppR"                                = "With this";
+"InAppA"                                = "With this subscription of";
+
+"InAppR2"                               = "subscription, you will promote your restaurant for 3 months within our app, making your restaurant known among our community of users. Remember that the subscription is automatically renewed after 3 months.";
+"InAppA2"                               = "you will promote your accommodation for 3 months in our app, making your place known among our community of users. Remember that the subscription is automatically renewed after 3 months.";
+
+"Add Event"                                  = "Add Event";
+"Add Restaurent"                             = "Add Restaurent";
+"Add Accommodation"                          = "Add Accommodation";
+"Enter Details"                              = "Enter Details";
+
+
+
