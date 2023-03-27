@@ -110,10 +110,10 @@ class LoginUsreVC: UIViewController {
                 let swiftyJsonVar = JSON(responseData)
                 print(swiftyJsonVar)
                 if(swiftyJsonVar["message"] == "successfull") {
-//                    USER_DEFAULT.set(swiftyJsonVar["result"]["id"].stringValue, forKey: USERID)
-//                    Switcher.updateRootVC()
-                    let objVC = kStoryboardMain.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
-                    self.navigationController?.pushViewController(objVC, animated: true)
+                    USER_DEFAULT.set(swiftyJsonVar["result"]["id"].stringValue, forKey: USERID)
+                    Switcher.updateRootVC()
+//                    let objVC = kStoryboardMain.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
+//                    self.navigationController?.pushViewController(objVC, animated: true)
 
                 } else {
                     let message = swiftyJsonVar["message"].string

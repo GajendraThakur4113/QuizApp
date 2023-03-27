@@ -27,7 +27,7 @@ let LIGHT_GREY                              = "CFCFCF"
 let YELLOW_COLOR                            = "FFFE03"
 let WHITE_COLOR                             =   "#FFFFFF"
 let BLACK_COLOR                             =   "#000000"
-let NAAV_BG_COLOR                             =   "#EE6604"
+let NAAV_BG_COLOR                             =   "#000000"
 let GEEEN_COLOR                              =   "#4BAE4F"
 
 

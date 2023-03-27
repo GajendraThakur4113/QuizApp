@@ -79,6 +79,11 @@
 		04BF602D29CEFCA900002970 /* LanguageHalper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF602829CEFCA800002970 /* LanguageHalper.swift */; };
 		04BF602E29CEFCA900002970 /* Languages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF602929CEFCA800002970 /* Languages.swift */; };
 		04BF603029CEFCF900002970 /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF602F29CEFCF900002970 /* Singleton.swift */; };
+		04F3C3B429D1947E009AF02F /* TabbarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C3B329D1947E009AF02F /* TabbarVC.swift */; };
+		04F3C3B629D19D66009AF02F /* EventVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C3B529D19D66009AF02F /* EventVC.swift */; };
+		04F3C3B829D1A014009AF02F /* MaplocationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C3B729D1A014009AF02F /* MaplocationVC.swift */; };
+		04F3C3BA29D1A035009AF02F /* JoinedEventVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C3B929D1A035009AF02F /* JoinedEventVC.swift */; };
+		04F3C3BC29D1A05A009AF02F /* AccountlistVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C3BB29D1A05A009AF02F /* AccountlistVC.swift */; };
 		0B8B6E4ACD9A776D99485CF2 /* Pods_SecretMissionSociety.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96E1EC4738E96CECD3CEF358 /* Pods_SecretMissionSociety.framework */; };
 /* End PBXBuildFile section */
 
@@ -161,6 +166,11 @@
 		04BF602829CEFCA800002970 /* LanguageHalper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageHalper.swift; sourceTree = "<group>"; };
 		04BF602929CEFCA800002970 /* Languages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Languages.swift; sourceTree = "<group>"; };
 		04BF602F29CEFCF900002970 /* Singleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
+		04F3C3B329D1947E009AF02F /* TabbarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarVC.swift; sourceTree = "<group>"; };
+		04F3C3B529D19D66009AF02F /* EventVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventVC.swift; sourceTree = "<group>"; };
+		04F3C3B729D1A014009AF02F /* MaplocationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaplocationVC.swift; sourceTree = "<group>"; };
+		04F3C3B929D1A035009AF02F /* JoinedEventVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinedEventVC.swift; sourceTree = "<group>"; };
+		04F3C3BB29D1A05A009AF02F /* AccountlistVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountlistVC.swift; sourceTree = "<group>"; };
 		3F57533B31FF1E268E8CB019 /* Pods-SecretMissionSociety.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SecretMissionSociety.release.xcconfig"; path = "Target Support Files/Pods-SecretMissionSociety/Pods-SecretMissionSociety.release.xcconfig"; sourceTree = "<group>"; };
 		4539E65D957C873AC8A46220 /* Pods-SecretMissionSociety.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SecretMissionSociety.debug.xcconfig"; path = "Target Support Files/Pods-SecretMissionSociety/Pods-SecretMissionSociety.debug.xcconfig"; sourceTree = "<group>"; };
 		96E1EC4738E96CECD3CEF358 /* Pods_SecretMissionSociety.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SecretMissionSociety.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -181,7 +191,12 @@
 		049F602629CF12B400E0D073 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				04F3C3B329D1947E009AF02F /* TabbarVC.swift */,
 				049F602729CF12CA00E0D073 /* HomeVC.swift */,
+				04F3C3B529D19D66009AF02F /* EventVC.swift */,
+				04F3C3B729D1A014009AF02F /* MaplocationVC.swift */,
+				04F3C3B929D1A035009AF02F /* JoinedEventVC.swift */,
+				04F3C3BB29D1A05A009AF02F /* AccountlistVC.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -559,6 +574,7 @@
 			files = (
 				04BF600829CEE4B000002970 /* CameraHandler.swift in Sources */,
 				04BF602D29CEFCA900002970 /* LanguageHalper.swift in Sources */,
+				04F3C3BA29D1A035009AF02F /* JoinedEventVC.swift in Sources */,
 				04BF600A29CEE4B000002970 /* Utility.swift in Sources */,
 				04BF601C29CEE8B600002970 /* LoginUsreVC.swift in Sources */,
 				04BF5FE129CEE4B000002970 /* TagListView.swift in Sources */,
@@ -574,6 +590,7 @@
 				04BF600729CEE4B000002970 /* CommunicationManager.swift in Sources */,
 				04BF5FE529CEE4B000002970 /* CountryCell.swift in Sources */,
 				04BF5FDC29CEE4B000002970 /* GlobalConstant.swift in Sources */,
+				04F3C3B629D19D66009AF02F /* EventVC.swift in Sources */,
 				04BF602C29CEFCA900002970 /* Localizer.swift in Sources */,
 				04BF600F29CEE83E00002970 /* AppDelegate.swift in Sources */,
 				04BF5FA929CEE4B000002970 /* Extensions.swift in Sources */,
@@ -582,7 +599,9 @@
 				04BF601F29CEED4000002970 /* ChangeLangugeVC.swift in Sources */,
 				04BF5FDF29CEE4B000002970 /* CloseButton.swift in Sources */,
 				04BF600629CEE4B000002970 /* Switcher.swift in Sources */,
+				04F3C3BC29D1A05A009AF02F /* AccountlistVC.swift in Sources */,
 				04BF600D29CEE4B000002970 /* LocationReachability.swift in Sources */,
+				04F3C3B829D1A014009AF02F /* MaplocationVC.swift in Sources */,
 				04BF600B29CEE4B000002970 /* LocationManager.swift in Sources */,
 				04BF602129CEFC5800002970 /* PrivacyPolicyVC.swift in Sources */,
 				04BF601B29CEE8B600002970 /* SignupVC.swift in Sources */,
@@ -592,6 +611,7 @@
 				04BF5FDD29CEE4B000002970 /* CustomPointAnnotation.swift in Sources */,
 				04BF5FE429CEE4B000002970 /* Country.swift in Sources */,
 				04BF5FA829CEE4B000002970 /* ViewControllerExt.swift in Sources */,
+				04F3C3B429D1947E009AF02F /* TabbarVC.swift in Sources */,
 				04BF5FE329CEE4B000002970 /* CountryList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -753,12 +773,19 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SecretMissionSociety/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "App want use Camera for uplaod profile picture.";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "App want use your location for add new add post as your suitable address. User can find according to address of post location.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "App want use your location for add new add post as your suitable address. User can find according to address of post location.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "App want use microphone permission is needed to to receive voice commands.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "App want use Gallery for uplaod profile picture.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -784,12 +811,19 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SecretMissionSociety/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "App want use Camera for uplaod profile picture.";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "App want use your location for add new add post as your suitable address. User can find according to address of post location.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "App want use your location for add new add post as your suitable address. User can find according to address of post location.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "App want use microphone permission is needed to to receive voice commands.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "App want use Gallery for uplaod profile picture.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

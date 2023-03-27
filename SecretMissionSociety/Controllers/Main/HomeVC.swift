@@ -31,9 +31,15 @@ class HomeVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = true
+    //    setNavigationBarItem(LeftTitle: "", LeftImage: "back", CenterTitle: "Login", CenterImage: "", RightTitle: "", RightImage: "", BackgroundColor: NAAV_BG_COLOR, BackgroundImage: "", TextColor: WHITE_COLOR, TintColor: WHITE_COLOR, Menu: "")
+        WebGetEvent()
+        let statusBar = UIView(frame: (UIApplication.shared.keyWindow?.windowScene?.statusBarManager?.statusBarFrame)!)
+        statusBar.backgroundColor = .black
+        UIApplication.shared.keyWindow?.addSubview(statusBar)
 
     }
-    
+
     //Mark:- Functions
     func pageControlCall(){
         self.pageControl.currentPageIndicatorTintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
@@ -78,6 +84,7 @@ class HomeVC: UIViewController {
                 if(swiftyJsonVar["status"].stringValue == "1") {
                     self.bannerResult = swiftyJsonVar["result"].arrayValue
                     self.bannerCollecView.reloadData()
+                    self.pageControl.numberOfPages = self.bannerResult.count
                 }
                 self.hideProgressBar()
             }
@@ -88,7 +95,30 @@ class HomeVC: UIViewController {
         })
     }
 
-    
+    func WebGetEvent() {
+        showProgressBar()
+        var paramsDict:[String:AnyObject] = [:]
+        paramsDict["lang"]     =   Singleton.shared.language as AnyObject
+
+        print(paramsDict)
+        CommunicationManeger.callPostService(apiUrl: Router.get_event.url(), parameters: paramsDict, parentViewController: self, successBlock: { (responseData, message) in
+            
+            DispatchQueue.main.async { [self] in
+                let swiftyJsonVar = JSON(responseData)
+                print(swiftyJsonVar)
+                if(swiftyJsonVar["status"].stringValue == "1") {
+                    self.nearMeEvents = swiftyJsonVar["result"].arrayValue
+                    self.nearestCollecView.reloadData()
+                }
+                self.hideProgressBar()
+            }
+
+        },failureBlock: { (error : Error) in
+            self.hideProgressBar()
+            GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: (error.localizedDescription), on: self)
+        })
+    }
+
   
 }
 
@@ -109,16 +139,14 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollecti
             let cell = bannerCollecView.dequeueReusableCell(withReuseIdentifier: "BannerCollectionCell", for: indexPath) as! BannerCollectionCell
             let data = self.bannerResult[indexPath.row]
             cell.imgView.sd_setShowActivityIndicatorView(true)
-            cell.imgView.sd_setIndicatorStyle(.gray)
             cell.imgView.sd_setImage(with: URL(string: data["image"].stringValue), placeholderImage: UIImage(named: "NoImageAvailable"), options: .refreshCached, completed: nil)
             return cell
         } else {
             print("Nearestsddsd")
             let cell = nearestCollecView.dequeueReusableCell(withReuseIdentifier: "NearestCollectionCell", for: indexPath) as! NearestCollectionCell
             let data = nearMeEvents[indexPath.row]
-//            cell.img.sd_setImage(with: URL(string: data.image ?? ""), placeholderImage: UIImage(named: "NoImageAvailable"), options: .refreshCached, completed: nil)
-//            cell.lblTitle.text = decode("\(data.restaurant_name ?? "")")
-//            cell.lblTime.text = "\(data.address ?? "")"
+            cell.img.sd_setImage(with: URL(string: data["image"].stringValue), placeholderImage: UIImage(named: "NoImageAvailable"), options: .refreshCached, completed: nil)
+            cell.lblTime.text = data["event_name"].stringValue
 
             return cell
         }
@@ -141,7 +169,7 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollecti
         if collectionView == bannerCollecView{
             return CGSize(width: self.bannerCollecView.frame.width, height: self.bannerCollecView.frame.height)
         } else if collectionView == nearestCollecView {
-            return CGSize(width: self.nearestCollecView.frame.width/2.3, height: self.nearestCollecView.frame.height)
+            return CGSize(width: self.nearestCollecView.frame.width/2 - 5, height: self.nearestCollecView.frame.height/2)
         }  else{
             return CGSize()
         }

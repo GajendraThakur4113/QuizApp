@@ -21,6 +21,12 @@ class Switcher {
 //            navigation.isNavigationBarHidden = true
 //            APP_DELEGATE.window?.rootViewController = slideMenuController
 //            APP_DELEGATE.window?.makeKeyAndVisible()
+            let rightViewController1 = Mainboard.instantiateViewController(withIdentifier: "TabbarVC") as! TabbarVC
+            let navigation = UINavigationController.init(rootViewController: rightViewController1)
+            navigation.isNavigationBarHidden = true
+            APP_DELEGATE.window?.rootViewController = navigation
+            APP_DELEGATE.window?.makeKeyAndVisible()
+
         } else {
             let rightViewController1 = Mainboard.instantiateViewController(withIdentifier: "ChangeLangugeVC") as! ChangeLangugeVC
             let navigation = UINavigationController.init(rootViewController: rightViewController1)
