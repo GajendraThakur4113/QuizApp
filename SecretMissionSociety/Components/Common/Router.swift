@@ -22,6 +22,9 @@ enum Router: String {
     case get_banner
     case get_event
     case event_apply_code
+    case change_password
+    case add_contact_us
+    case event_start_time
 
 
     public func url() -> String {
@@ -44,6 +47,12 @@ enum Router: String {
             return Router.oAuthRoute(path: "get_event")
         case .event_apply_code:
             return Router.oAuthRoute(path: "event_apply_code")
+        case .change_password:
+            return Router.oAuthRoute(path: "change_password")
+        case .add_contact_us:
+            return Router.oAuthRoute(path: "add_contact_us")
+        case .event_start_time:
+            return Router.oAuthRoute(path: "event_start_time")
 
         }
     }

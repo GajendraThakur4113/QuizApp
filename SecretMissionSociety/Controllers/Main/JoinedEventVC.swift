@@ -38,6 +38,9 @@ class JoinedEventVC: UIViewController {
         self.navigationController?.navigationBar.isHidden = true
         WebGetEvent()
         trans_View.isHidden = true
+     //   tableList.estimatedRowHeight = 200
+     //   tableList.rowHeight = UITableView.automaticDimension
+        
     }
 
     
@@ -87,9 +90,9 @@ class JoinedEventVC: UIViewController {
                 let swiftyJsonVar = JSON(responseData)
                 print(swiftyJsonVar)
                 if(swiftyJsonVar["status"].stringValue == "1") {
-
+                    WebGetEvent()
                 } else {
-                    GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: "Invalid Code", on: self)
+                    GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: swiftyJsonVar["result"].stringValue, on: self)
 
                 }
                 self.hideProgressBar()
@@ -109,8 +112,8 @@ extension JoinedEventVC: UITableViewDelegate,UITableViewDataSource{
         return nearMeEvents.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+     
         let cell = tableList.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! JoinedEventCell
-       
         let data = nearMeEvents[indexPath.row]
         cell.img_Event.sd_setImage(with: URL(string: data["image"].stringValue), placeholderImage: UIImage(named: "NoImageAvailable"), options: .refreshCached, completed: nil)
         cell.lbl_EventName.text = data["event_name"].stringValue
@@ -121,6 +124,8 @@ extension JoinedEventVC: UITableViewDelegate,UITableViewDataSource{
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        kappDelegate.dicCurrentEvent = nearMeEvents[indexPath.row]
+        self.tabBarController?.selectedIndex = 2
 
     }
 

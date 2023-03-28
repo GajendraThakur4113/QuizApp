@@ -24,16 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var isValidLocation:Bool = true
     var coordinate1 = CLLocation(latitude: 0.0, longitude: 0.0)
     var coordinate2 = CLLocation(latitude: 0.0, longitude: 0.0)
-    var arr_allWorkout:[JSON]? = []
-    var strCatID:String! = ""
-    var paramsDictForPOst:[String:String] = [:]
-    var paramsDictForFilter:[String:Any] = [:]
 
-    var arr_AllCity:[JSON] = []
-    var arr_AllCategory:[JSON] = []
-    var arr_AllSubCate:[JSON] = []
     var strPostTitle:String! = ""
-    var arr_AllCat:[JSON] = []
+    var dicCurrentEvent:JSON!
 
 
     

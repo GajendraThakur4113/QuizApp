@@ -33,6 +33,10 @@ class PrivacyPolicyVC: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = true
+    }
 
     //Mark:- Functions
     func getAboutUsAPI(strAPI:String){
@@ -65,7 +69,6 @@ class PrivacyPolicyVC: UIViewController {
         //Mark:- Button Actions
     @IBAction func backBtnClick(_ sender: UIButton){
         self.navigationController?.popViewController(animated: true)
-        self.dismiss(animated: true)
 
     }
 

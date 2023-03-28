@@ -157,10 +157,7 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollecti
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
        
         if collectionView == nearestCollecView{
-//            let nVC = self.storyboard?.instantiateViewController(withIdentifier: "EventDetailsVC") as! EventDetailsVC
-//            nVC.nearestRest = self.nearestRest[indexPath.row]
-//            nVC.screenType = "Rest"
-//            self.navigationController?.pushViewController(nVC, animated: true)
+            self.tabBarController?.selectedIndex = 2
         }
         
     }
