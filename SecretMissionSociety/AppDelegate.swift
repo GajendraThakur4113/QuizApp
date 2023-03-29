@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var coordinate1 = CLLocation(latitude: 0.0, longitude: 0.0)
     var coordinate2 = CLLocation(latitude: 0.0, longitude: 0.0)
 
-    var strPostTitle:String! = ""
+    var strEventCode:String! = ""
     var dicCurrentEvent:JSON!
 
 
@@ -41,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
        
         USER_DEFAULT.set("IOS123", forKey: IOS_TOKEN)
         UIApplication.shared.applicationIconBadgeNumber = 0
-
+        Singleton.shared.language = "en"
     
         Switcher.updateRootVC()
         

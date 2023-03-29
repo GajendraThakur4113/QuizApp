@@ -7,6 +7,7 @@
 
 import UIKit
 import MapKit
+import SwiftyJSON
 
 class MaplocationVC: UIViewController {
 
@@ -25,17 +26,13 @@ class MaplocationVC: UIViewController {
         
     }
     override func viewWillAppear(_ animated: Bool) {
-        
+      
+        self.navigationController?.navigationBar.isHidden = true
+
         if kappDelegate.dicCurrentEvent != nil {
-            img_Event.sd_setImage(with: URL(string: kappDelegate.dicCurrentEvent["image"].stringValue), placeholderImage: UIImage(named: "NoImageAvailable"), options: .refreshCached, completed: nil)
-            lbl_Event.text = kappDelegate.dicCurrentEvent["event_name"].stringValue
-            lbl_date.text = kappDelegate.dicCurrentEvent["event_date"].stringValue
-            lbl_quant.text = kappDelegate.dicCurrentEvent["amount"].stringValue
-            lbl_address.text = kappDelegate.dicCurrentEvent["address"].stringValue
-            view_Pop.isHidden = false
+            WebGetCode()
         } else {
             view_Pop.isHidden = true
-
         }
         setCurrentLocation()
 
@@ -46,7 +43,9 @@ class MaplocationVC: UIViewController {
     @IBAction func startNow(_ sender: Any) {
         let objVC = self.storyboard?.instantiateViewController(withIdentifier: "CreateTeamVC") as! CreateTeamVC
         objVC.completion = {
-            print("sdsdd")
+            let nVC = self.storyboard?.instantiateViewController(withIdentifier: "InstructionVC") as! InstructionVC
+            nVC.strDetail = kappDelegate.dicCurrentEvent["event_instructions"].stringValue
+            self.navigationController?.pushViewController(nVC, animated: true)
         }
         objVC.modalPresentationStyle = .overCurrentContext
         objVC.modalTransitionStyle = .crossDissolve
@@ -86,33 +85,41 @@ class MaplocationVC: UIViewController {
     }
 
     
-//    func WebApplyCode() {
-//        showProgressBar()
-//        var paramsDict:[String:AnyObject] = [:]
-//        paramsDict["user_id"]     =   USER_DEFAULT.value(forKey: USERID) as AnyObject
-//        paramsDict["event_id"]     =   kappDelegate.dicCurrentEvent["id"].stringValue as AnyObject
-//        paramsDict["event_id"]     =   kappDelegate.dicCurrentEvent["id"].stringValue as AnyObject
-//
-//        print(paramsDict)
-//        CommunicationManeger.callPostService(apiUrl: Router.event_start_time.url(), parameters: paramsDict, parentViewController: self, successBlock: { (responseData, message) in
-//            
-//            DispatchQueue.main.async { [self] in
-//                let swiftyJsonVar = JSON(responseData)
-//                print(swiftyJsonVar)
-//                if(swiftyJsonVar["status"].stringValue == "1") {
-//
-//                } else {
-//                    GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: swiftyJsonVar["result"].stringValue, on: self)
-//
-//                }
-//                self.hideProgressBar()
-//            }
-//
-//        },failureBlock: { (error : Error) in
-//            self.hideProgressBar()
-//            GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: (error.localizedDescription), on: self)
-//        })
-//    }
+    func WebGetCode() {
+        showProgressBar()
+        var paramsDict:[String:AnyObject] = [:]
+        paramsDict["user_id"]     =   USER_DEFAULT.value(forKey: USERID) as AnyObject
+        paramsDict["event_id"]     =   kappDelegate.dicCurrentEvent["id"].stringValue as AnyObject
+        paramsDict["event_code"]     =   kappDelegate.dicCurrentEvent["event_code"].stringValue as AnyObject
+        paramsDict["lang"]     =   Singleton.shared.language as AnyObject
+
+        print(paramsDict)
+        CommunicationManeger.callPostService(apiUrl: Router.get_event_details.url(), parameters: paramsDict, parentViewController: self, successBlock: { (responseData, message) in
+            
+            DispatchQueue.main.async { [self] in
+                let swiftyJsonVar = JSON(responseData)
+                print(swiftyJsonVar)
+                if(swiftyJsonVar["status"].stringValue == "1") {
+                    kappDelegate.dicCurrentEvent = swiftyJsonVar["result"]
+                    img_Event.sd_setImage(with: URL(string: kappDelegate.dicCurrentEvent["image"].stringValue), placeholderImage: UIImage(named: "NoImageAvailable"), options: .refreshCached, completed: nil)
+                    lbl_Event.text = kappDelegate.dicCurrentEvent["event_name"].stringValue
+                    lbl_date.text = kappDelegate.dicCurrentEvent["event_date"].stringValue
+                    lbl_quant.text = kappDelegate.dicCurrentEvent["amount"].stringValue
+                    lbl_address.text = kappDelegate.dicCurrentEvent["address"].stringValue
+                    view_Pop.isHidden = false
+
+                } else {
+                    GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: swiftyJsonVar["result"].stringValue, on: self)
+
+                }
+                self.hideProgressBar()
+            }
+
+        },failureBlock: { (error : Error) in
+            self.hideProgressBar()
+            GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: (error.localizedDescription), on: self)
+        })
+    }
 
 }
 extension MaplocationVC: MKMapViewDelegate {

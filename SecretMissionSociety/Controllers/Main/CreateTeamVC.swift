@@ -8,6 +8,7 @@
 import UIKit
 import SwiftyJSON
 import SDWebImage
+import MapKit
 
 class CreateTeamVC: UIViewController {
     
@@ -27,9 +28,14 @@ class CreateTeamVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
-     //   tableList.estimatedRowHeight = 200
-     //   tableList.rowHeight = UITableView.automaticDimension
-        
+
+        if kappDelegate.dicCurrentEvent["event_status"].stringValue == "true" {
+            text_name.text = kappDelegate.dicCurrentEvent["team_name"].stringValue
+            text_name.isEnabled = false
+        } else {
+            text_name.isEnabled = true
+
+        }
     }
 
     
@@ -57,6 +63,7 @@ class CreateTeamVC: UIViewController {
                 if(swiftyJsonVar["status"].stringValue == "1") {
                     if let completion = completion {
                       completion()
+                        kappDelegate.strEventCode = text_Code.text!
                     }
                     self.dismiss(animated: false, completion: nil)
                 } else {

@@ -50,17 +50,16 @@ class JoinedEventVC: UIViewController {
     }
     @IBAction func useAcode(_ sender: Any) {
         trans_View.isHidden = false
-
- 
     }
     
     func WebGetEvent() {
         showProgressBar()
         var paramsDict:[String:AnyObject] = [:]
         paramsDict["lang"]     =   Singleton.shared.language as AnyObject
+        paramsDict["user_id"]     =   USER_DEFAULT.value(forKey: USERID) as AnyObject
 
         print(paramsDict)
-        CommunicationManeger.callPostService(apiUrl: Router.get_event.url(), parameters: paramsDict, parentViewController: self, successBlock: { (responseData, message) in
+        CommunicationManeger.callPostService(apiUrl: Router.get_my_event.url(), parameters: paramsDict, parentViewController: self, successBlock: { (responseData, message) in
             
             DispatchQueue.main.async { [self] in
                 let swiftyJsonVar = JSON(responseData)
@@ -77,7 +76,9 @@ class JoinedEventVC: UIViewController {
             GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: (error.localizedDescription), on: self)
         })
     }
+    
     func WebApplyCode() {
+    
         showProgressBar()
         var paramsDict:[String:AnyObject] = [:]
         paramsDict["user_id"]     =   USER_DEFAULT.value(forKey: USERID) as AnyObject
