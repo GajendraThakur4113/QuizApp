@@ -8,10 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		040E436829D4495300E1AAC8 /* FlgMaViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040E436729D4495300E1AAC8 /* FlgMaViewVC.swift */; };
+		041B477829D5A50900FC8062 /* AnswerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041B477729D5A50800FC8062 /* AnswerVC.swift */; };
 		047A347829D41FED00DA43E3 /* InstructionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047A347729D41FED00DA43E3 /* InstructionVC.swift */; };
 		047A347A29D4201C00DA43E3 /* VideoPlayerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047A347929D4201C00DA43E3 /* VideoPlayerVC.swift */; };
 		047A347C29D4298800DA43E3 /* MainInstructionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047A347B29D4298800DA43E3 /* MainInstructionVC.swift */; };
 		049F602829CF12CA00E0D073 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049F602729CF12CA00E0D073 /* HomeVC.swift */; };
+		04A27D8429D5CF6800B190A5 /* HIntAnswerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A27D8329D5CF6800B190A5 /* HIntAnswerVC.swift */; };
 		04A490AE29D2BEEC002E8D58 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A490AD29D2BEEC002E8D58 /* ProfileVC.swift */; };
 		04A490B029D2BF03002E8D58 /* ChangePassVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A490AF29D2BF03002E8D58 /* ChangePassVC.swift */; };
 		04A490B229D2BF1A002E8D58 /* ContactVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A490B129D2BF1A002E8D58 /* ContactVC.swift */; };
@@ -97,10 +99,12 @@
 
 /* Begin PBXFileReference section */
 		040E436729D4495300E1AAC8 /* FlgMaViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlgMaViewVC.swift; sourceTree = "<group>"; };
+		041B477729D5A50800FC8062 /* AnswerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerVC.swift; sourceTree = "<group>"; };
 		047A347729D41FED00DA43E3 /* InstructionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionVC.swift; sourceTree = "<group>"; };
 		047A347929D4201C00DA43E3 /* VideoPlayerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerVC.swift; sourceTree = "<group>"; };
 		047A347B29D4298800DA43E3 /* MainInstructionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInstructionVC.swift; sourceTree = "<group>"; };
 		049F602729CF12CA00E0D073 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		04A27D8329D5CF6800B190A5 /* HIntAnswerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HIntAnswerVC.swift; sourceTree = "<group>"; };
 		04A490AD29D2BEEC002E8D58 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		04A490AF29D2BF03002E8D58 /* ChangePassVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePassVC.swift; sourceTree = "<group>"; };
 		04A490B129D2BF1A002E8D58 /* ContactVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactVC.swift; sourceTree = "<group>"; };
@@ -217,6 +221,8 @@
 				047A347929D4201C00DA43E3 /* VideoPlayerVC.swift */,
 				047A347B29D4298800DA43E3 /* MainInstructionVC.swift */,
 				040E436729D4495300E1AAC8 /* FlgMaViewVC.swift */,
+				041B477729D5A50800FC8062 /* AnswerVC.swift */,
+				04A27D8329D5CF6800B190A5 /* HIntAnswerVC.swift */,
 				04A490AC29D2BED4002E8D58 /* Account */,
 			);
 			path = Main;
@@ -626,6 +632,7 @@
 				04A490B429D2FBE9002E8D58 /* CreateTeamVC.swift in Sources */,
 				04BF5FDC29CEE4B000002970 /* GlobalConstant.swift in Sources */,
 				04F3C3B629D19D66009AF02F /* EventVC.swift in Sources */,
+				041B477829D5A50900FC8062 /* AnswerVC.swift in Sources */,
 				04BF602C29CEFCA900002970 /* Localizer.swift in Sources */,
 				04BF600F29CEE83E00002970 /* AppDelegate.swift in Sources */,
 				04BF5FA929CEE4B000002970 /* Extensions.swift in Sources */,
@@ -652,6 +659,7 @@
 				04BF5FE429CEE4B000002970 /* Country.swift in Sources */,
 				04BF5FA829CEE4B000002970 /* ViewControllerExt.swift in Sources */,
 				04F3C3B429D1947E009AF02F /* TabbarVC.swift in Sources */,
+				04A27D8429D5CF6800B190A5 /* HIntAnswerVC.swift in Sources */,
 				04BF5FE329CEE4B000002970 /* CountryList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

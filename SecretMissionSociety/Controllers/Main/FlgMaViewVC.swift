@@ -90,6 +90,18 @@ class FlgMaViewVC: UIViewController {
 }
 extension FlgMaViewVC: MKMapViewDelegate {
     
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView){
+          
+            let strId = view.annotation?.title ?? ""
+            print("didSelectAnnotationTapped \(view.annotation?.title ?? "")")
+            let arr = arrlist.filter({$0["id"].stringValue == strId})
+            print("didSelectAnnotationTapped \(arr)")
+            let nVC = self.storyboard?.instantiateViewController(withIdentifier: "AnswerVC") as! AnswerVC
+            nVC.dicCurrentQuestion = arr[0]
+            self.navigationController?.pushViewController(nVC, animated: true)
+
+        }
+
     func showAnnotaionOnMap(arrAll:[JSON]) {
         mapView.removeAnnotations(mapView.annotations)
         var arrAllAnn:[MKPointAnnotation] =  []
@@ -102,17 +114,18 @@ extension FlgMaViewVC: MKMapViewDelegate {
             let sourceAnnotation = CustomPointAnnotation()
 
             if pdiLat != "" &&  pdiLot != "" && dic["final_puzzle_status"].stringValue == "No" {
-                pickupCoordinat = CLLocationCoordinate2DMake(Double(pdiLat)!, Double(pdiLot)!)
+                pickupCoordinat = CLLocationCoordinate2DMake(Double(pdiLat) ?? 0.0, Double(pdiLot) ?? 0.0)
                 let sourcePlacemark = MKPlacemark(coordinate: pickupCoordinat ?? CLLocationCoordinate2DMake(0.0, 0.0), addressDictionary: nil)
                 sourceAnnotation.coordinate = sourcePlacemark.coordinate
                 sourceAnnotation.imageName = "flag_red"
-               // sourceAnnotation.title = dic["user_name"].stringValue
+                sourceAnnotation.title = dic["id"].stringValue
             } else if pdiLat != "" &&  pdiLot != "" && dic["final_puzzle_status"].stringValue == "Yes" {
-                pickupCoordinat = CLLocationCoordinate2DMake(Double(pdiLat)!, Double(pdiLot)!)
+                pickupCoordinat = CLLocationCoordinate2DMake(Double(pdiLat) ?? 0.0, Double(pdiLot) ?? 0.0)
                 let sourcePlacemark = MKPlacemark(coordinate: pickupCoordinat ?? CLLocationCoordinate2DMake(0.0, 0.0), addressDictionary: nil)
                 sourceAnnotation.coordinate = sourcePlacemark.coordinate
                 sourceAnnotation.imageName = "flag_green"
-              //  sourceAnnotation.title = dic["user_name"].stringValue
+                sourceAnnotation.title = dic["id"].stringValue
+
             }
             arrAllAnn.append(sourceAnnotation)
         }
