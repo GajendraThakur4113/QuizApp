@@ -10,6 +10,7 @@ import UIKit
 
 class TransactionTableCell: UITableViewCell {
     @IBOutlet weak var img_Tr: UIImageView!
+    @IBOutlet weak var lbl_Detail: UILabel!
     @IBOutlet weak var lbl_lang: UILabel!
 }
 class ChangeLangugeVC: UIViewController {

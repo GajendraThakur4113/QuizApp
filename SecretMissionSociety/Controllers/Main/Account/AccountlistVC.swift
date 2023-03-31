@@ -26,7 +26,21 @@ class AccountlistVC: UIViewController {
 
     @IBAction func langua(_ sender: UIButton) {
       
-
+        logout()
+    }
+    func logout() {
+        let alertController = UIAlertController(title: APP_NAME, message: "Are you sure you want to log out?", preferredStyle: .alert)
+        let yesAction: UIAlertAction = UIAlertAction(title: "Yes", style: .default) { action -> Void in
+            UserDefaults.standard.removeObject(forKey: USERID)
+            UserDefaults.standard.synchronize()
+            Switcher.updateRootVC()
+        }
+        let noAction: UIAlertAction = UIAlertAction(title: "No", style: .cancel) { action -> Void in
+            //Just dismiss the action sheet
+        }
+        alertController.addAction(yesAction)
+        alertController.addAction(noAction)
+        present(alertController, animated: true, completion: nil)
     }
 
 }
@@ -67,7 +81,7 @@ extension AccountlistVC: UITableViewDelegate,UITableViewDataSource {
             let nVC = self.storyboard?.instantiateViewController(withIdentifier: "ChangeLangugeVC") as! ChangeLangugeVC
             nVC.strFrom = 0
             self.navigationController?.pushViewController(nVC, animated: true)
-        }
+        } 
     }
 
 }

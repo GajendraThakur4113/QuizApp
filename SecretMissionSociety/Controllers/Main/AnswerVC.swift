@@ -12,6 +12,9 @@ import SDWebImage
 
 class AnswerVC: UIViewController {
     
+    @IBOutlet weak var img_Answer: UIImageView!
+    @IBOutlet weak var view_QuizSolved: UIView!
+    @IBOutlet weak var view_Question: UIView!
     @IBOutlet weak var transView: UIView!
     @IBOutlet weak var img_user: UIImageView!
     @IBOutlet weak var text_Detail: UITextView!
@@ -20,6 +23,8 @@ class AnswerVC: UIViewController {
     var dicCurrentQuestion:JSON!
     var arroption:[String] = []
     var isIndex:Int! = -1
+    var arroptionAdnswer:[String] = ["A","B","C","D"]
+    var isAnswer:String! = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,19 +52,98 @@ class AnswerVC: UIViewController {
     @IBAction func cross(_ sender: Any) {
         transView.isHidden = true
     }
-    override func rightClick() {
-
+    @IBAction func gotoMap(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
-    
     @IBAction func submitAnswer(_ sender: Any) {
-        transView.isHidden = true
+        
+        if isIndex != -1 {
+            WebAddAnswer()
+        } else {
+            GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: "Choose option", on: self)
 
+        }
     }
     @IBAction func hintt(_ sender: Any) {
+        let objVC = self.storyboard?.instantiateViewController(withIdentifier: "HIntAnswerVC") as! HIntAnswerVC
+        objVC.completion = {
+        }
+        objVC.dicCurrentQuestion =  dicCurrentQuestion
+        objVC.modalPresentationStyle = .overCurrentContext
+        objVC.modalTransitionStyle = .crossDissolve
+        self.present(objVC, animated: false, completion: nil)
+
     }
     @IBAction func answer(_ sender: Any) {
         transView.isHidden = false
+        view_QuizSolved.isHidden = true
+        view_Question.isHidden = false
 
+    }
+    
+    //MARK:API
+    func WebAddAnswer() {
+        showProgressBar()
+        var paramsDict:[String:AnyObject] = [:]
+        paramsDict["user_id"]     =   USER_DEFAULT.value(forKey: USERID) as AnyObject
+        paramsDict["event_id"]     =   dicCurrentQuestion["event_id"].stringValue as AnyObject
+        paramsDict["event_game_id"]     =   dicCurrentQuestion["id"].stringValue as AnyObject
+        paramsDict["event_code"]     =    kappDelegate.strEventCode as AnyObject
+        paramsDict["ans"]     =   isAnswer as AnyObject
+
+        print(paramsDict)
+        CommunicationManeger.callPostService(apiUrl: Router.event_instructions_game_ans.url(), parameters: paramsDict, parentViewController: self, successBlock: { (responseData, message) in
+            
+            DispatchQueue.main.async { [self] in
+                let swiftyJsonVar = JSON(responseData)
+                print(swiftyJsonVar)
+                if(swiftyJsonVar["status"].stringValue == "1") {
+                    transView.isHidden = false
+                    view_QuizSolved.isHidden = false
+                    view_Question.isHidden = true
+                    img_Answer.sd_setImage(with: URL(string: dicCurrentQuestion["final_puzzle_image"].stringValue), placeholderImage: UIImage(named: "NoImageAvailable"), options: .refreshCached, completed: nil)
+
+                } else {
+                    GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: "Wrong Answer 2 Min Time Penalty Added", on: self)
+                    WebAddPenality()
+                }
+                self.hideProgressBar()
+            }
+
+        },failureBlock: { (error : Error) in
+            self.hideProgressBar()
+            GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: (error.localizedDescription), on: self)
+        })
+    }
+    func WebAddPenality() {
+
+        var paramsDict:[String:AnyObject] = [:]
+        paramsDict["user_id"]     =   USER_DEFAULT.value(forKey: USERID) as AnyObject
+        paramsDict["event_id"]     =   dicCurrentQuestion["event_id"].stringValue as AnyObject
+        paramsDict["event_instructions_id"]     =   dicCurrentQuestion["id"].stringValue as AnyObject
+        paramsDict["event_code"]     =    kappDelegate.strEventCode as AnyObject
+        paramsDict["ans"]     =   isAnswer as AnyObject
+        paramsDict["time"]     =   "2" as AnyObject
+        paramsDict["hint_type"]     =   "1" as AnyObject
+
+        print(paramsDict)
+        CommunicationManeger.callPostService(apiUrl: Router.add_hint.url(), parameters: paramsDict, parentViewController: self, successBlock: { (responseData, message) in
+            
+            DispatchQueue.main.async { [self] in
+                let swiftyJsonVar = JSON(responseData)
+                print(swiftyJsonVar)
+                if(swiftyJsonVar["status"].stringValue == "1") {
+                    
+                } else {
+
+                }
+                self.hideProgressBar()
+            }
+
+        },failureBlock: { (error : Error) in
+            self.hideProgressBar()
+            GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: (error.localizedDescription), on: self)
+        })
     }
 }
 extension AnswerVC: UITableViewDelegate,UITableViewDataSource{
@@ -80,6 +164,7 @@ extension AnswerVC: UITableViewDelegate,UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         isIndex = indexPath.row
+        isAnswer = arroptionAdnswer[indexPath.row]
         table_Answer.reloadData()
     }
 

@@ -12,6 +12,8 @@
 		047A347829D41FED00DA43E3 /* InstructionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047A347729D41FED00DA43E3 /* InstructionVC.swift */; };
 		047A347A29D4201C00DA43E3 /* VideoPlayerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047A347929D4201C00DA43E3 /* VideoPlayerVC.swift */; };
 		047A347C29D4298800DA43E3 /* MainInstructionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047A347B29D4298800DA43E3 /* MainInstructionVC.swift */; };
+		0484CF0129D71C9C00BDF003 /* InventorylistVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0484CF0029D71C9C00BDF003 /* InventorylistVC.swift */; };
+		0484CF0329D71D0E00BDF003 /* FinalPuzzleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0484CF0229D71D0E00BDF003 /* FinalPuzzleVC.swift */; };
 		049F602829CF12CA00E0D073 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049F602729CF12CA00E0D073 /* HomeVC.swift */; };
 		04A27D8429D5CF6800B190A5 /* HIntAnswerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A27D8329D5CF6800B190A5 /* HIntAnswerVC.swift */; };
 		04A490AE29D2BEEC002E8D58 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A490AD29D2BEEC002E8D58 /* ProfileVC.swift */; };
@@ -103,6 +105,8 @@
 		047A347729D41FED00DA43E3 /* InstructionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionVC.swift; sourceTree = "<group>"; };
 		047A347929D4201C00DA43E3 /* VideoPlayerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerVC.swift; sourceTree = "<group>"; };
 		047A347B29D4298800DA43E3 /* MainInstructionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInstructionVC.swift; sourceTree = "<group>"; };
+		0484CF0029D71C9C00BDF003 /* InventorylistVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventorylistVC.swift; sourceTree = "<group>"; };
+		0484CF0229D71D0E00BDF003 /* FinalPuzzleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalPuzzleVC.swift; sourceTree = "<group>"; };
 		049F602729CF12CA00E0D073 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		04A27D8329D5CF6800B190A5 /* HIntAnswerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HIntAnswerVC.swift; sourceTree = "<group>"; };
 		04A490AD29D2BEEC002E8D58 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
@@ -208,6 +212,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0484CF0429D71D1500BDF003 /* Game1and4 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Game1and4;
+			sourceTree = "<group>";
+		};
 		049F602629CF12B400E0D073 /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -216,6 +227,7 @@
 				04F3C3B529D19D66009AF02F /* EventVC.swift */,
 				04F3C3B929D1A035009AF02F /* JoinedEventVC.swift */,
 				04F3C3B729D1A014009AF02F /* MaplocationVC.swift */,
+				0484CF0429D71D1500BDF003 /* Game1and4 */,
 				04A490B329D2FBE9002E8D58 /* CreateTeamVC.swift */,
 				047A347729D41FED00DA43E3 /* InstructionVC.swift */,
 				047A347929D4201C00DA43E3 /* VideoPlayerVC.swift */,
@@ -223,6 +235,8 @@
 				040E436729D4495300E1AAC8 /* FlgMaViewVC.swift */,
 				041B477729D5A50800FC8062 /* AnswerVC.swift */,
 				04A27D8329D5CF6800B190A5 /* HIntAnswerVC.swift */,
+				0484CF0029D71C9C00BDF003 /* InventorylistVC.swift */,
+				0484CF0229D71D0E00BDF003 /* FinalPuzzleVC.swift */,
 				04A490AC29D2BED4002E8D58 /* Account */,
 			);
 			path = Main;
@@ -625,6 +639,7 @@
 				04BF5FDB29CEE4B000002970 /* Messages.swift in Sources */,
 				04BF600929CEE4B000002970 /* InternetUtilClass.swift in Sources */,
 				04BF5FE029CEE4B000002970 /* TagView.swift in Sources */,
+				0484CF0129D71C9C00BDF003 /* InventorylistVC.swift in Sources */,
 				04BF5FA729CEE4B000002970 /* View.swift in Sources */,
 				04BF5FAB29CEE4B000002970 /* Reachability.m in Sources */,
 				04BF600729CEE4B000002970 /* CommunicationManager.swift in Sources */,
@@ -641,6 +656,7 @@
 				049F602829CF12CA00E0D073 /* HomeVC.swift in Sources */,
 				04BF601F29CEED4000002970 /* ChangeLangugeVC.swift in Sources */,
 				04BF5FDF29CEE4B000002970 /* CloseButton.swift in Sources */,
+				0484CF0329D71D0E00BDF003 /* FinalPuzzleVC.swift in Sources */,
 				04BF600629CEE4B000002970 /* Switcher.swift in Sources */,
 				04F3C3BC29D1A05A009AF02F /* AccountlistVC.swift in Sources */,
 				040E436829D4495300E1AAC8 /* FlgMaViewVC.swift in Sources */,

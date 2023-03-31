@@ -14,13 +14,7 @@ class Switcher {
     static func updateRootVC() {
         
         if USER_DEFAULT.value(forKey: USERID) != nil {
-//            let vc = Mainboard.instantiateViewController(withIdentifier: "TabVC") as! TabVC
-//            let rightViewController1 = Mainboard.instantiateViewController(withIdentifier: "LeftSlideMenuVC") as! LeftSlideMenuVC
-//            let navigation = UINavigationController.init(rootViewController: vc)
-//            let slideMenuController = SlideMenuController.init(mainViewController: navigation, leftMenuViewController: rightViewController1)
-//            navigation.isNavigationBarHidden = true
-//            APP_DELEGATE.window?.rootViewController = slideMenuController
-//            APP_DELEGATE.window?.makeKeyAndVisible()
+
             let rightViewController1 = Mainboard.instantiateViewController(withIdentifier: "TabbarVC") as! TabbarVC
             let navigation = UINavigationController.init(rootViewController: rightViewController1)
             navigation.isNavigationBarHidden = true
