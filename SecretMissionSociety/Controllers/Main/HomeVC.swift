@@ -182,6 +182,7 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollecti
 
 //Mark:- Collection Cell Class
 class BannerCollectionCell: UICollectionViewCell{
+    @IBOutlet weak var img_Checked: UIImageView!
     @IBOutlet weak var imgView: UIImageView!
 }
 

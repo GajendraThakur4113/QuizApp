@@ -6,24 +6,123 @@
 //
 
 import UIKit
+import SwiftyJSON
+import SDWebImage
 
 class FinalPuzzleVC: UIViewController {
 
+    @IBOutlet weak var collection_object: UICollectionView!
+    @IBOutlet weak var collection_People: UICollectionView!
+    @IBOutlet weak var collection_place: UICollectionView!
+ 
+    var arrayList:[JSON] = []
+   
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = false
+       setNavigationBarItem(LeftTitle: "", LeftImage: "back", CenterTitle: "Final Puzzle", CenterImage: "", RightTitle: "", RightImage: "", BackgroundColor: NAAV_BG_COLOR, BackgroundImage: "", TextColor: WHITE_COLOR, TintColor: WHITE_COLOR, Menu: "")
+        WebGetAllInvent()
     }
-    */
+
+
+    @IBAction func finish(_ sender: Any) {
+    }
+    
+    func WebGetAllInvent() {
+        showProgressBar()
+        var paramsDict:[String:AnyObject] = [:]
+        paramsDict["user_id"]     =   USER_DEFAULT.value(forKey: USERID) as AnyObject
+        paramsDict["event_id"]     =   kappDelegate.dicCurrentEvent["id"].stringValue as AnyObject
+        paramsDict["event_code"]     =    kappDelegate.strEventCode as AnyObject
+        paramsDict["lang"]     =   Singleton.shared.language as AnyObject
+
+        print(paramsDict)
+        CommunicationManeger.callPostService(apiUrl: Router.get_all_inventory_event.url(), parameters: paramsDict, parentViewController: self, successBlock: { (responseData, message) in
+            
+            DispatchQueue.main.async { [self] in
+                let swiftyJsonVar = JSON(responseData)
+                print(swiftyJsonVar)
+                if(swiftyJsonVar["status"].stringValue == "1") {
+                    arrayList = swiftyJsonVar["result"].arrayValue
+                    collection_place.reloadData()
+                    collection_People.reloadData()
+                    collection_object.reloadData()
+
+                } else {
+
+                }
+                self.hideProgressBar()
+            }
+
+        },failureBlock: { (error : Error) in
+            self.hideProgressBar()
+            GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: (error.localizedDescription), on: self)
+        })
+    }
 
 }
+extension FinalPuzzleVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+       
+        if collectionView == collection_place {
+            return arrayList.filter({$0["type"].stringValue == "Places"}).count
+        } else if collectionView == collection_object {
+            return arrayList.filter({$0["type"].stringValue == "People"}).count
+        } else {
+            return arrayList.filter({$0["type"].stringValue == "Objects"}).count
+        } 
+        
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+
+        if collectionView == collection_place {
+           
+            let cell = collection_place.dequeueReusableCell(withReuseIdentifier: "BannerCollectionCell", for: indexPath) as! BannerCollectionCell
+            
+            let data = arrayList.filter({$0["type"].stringValue == "Places"})[indexPath.row]
+            cell.imgView.sd_setShowActivityIndicatorView(true)
+            cell.imgView.sd_setImage(with: URL(string: data["image"].stringValue), placeholderImage: UIImage(named: "NoImageAvailable"), options: .refreshCached, completed: nil)
+            
+            return cell
+            
+        } else if collectionView == collection_object {
+
+            let cell = collection_place.dequeueReusableCell(withReuseIdentifier: "BannerCollectionCell", for: indexPath) as! BannerCollectionCell
+            
+            let data = arrayList.filter({$0["type"].stringValue == "Places"})[indexPath.row]
+            cell.imgView.sd_setShowActivityIndicatorView(true)
+            cell.imgView.sd_setImage(with: URL(string: data["image"].stringValue), placeholderImage: UIImage(named: "NoImageAvailable"), options: .refreshCached, completed: nil)
+            
+            return cell
+            
+        } else  {
+            
+            let cell = collection_People.dequeueReusableCell(withReuseIdentifier: "BannerCollectionCell", for: indexPath) as! BannerCollectionCell
+            
+            let data = arrayList.filter({$0["type"].stringValue == "Places"})[indexPath.row]
+            cell.imgView.sd_setShowActivityIndicatorView(true)
+            cell.imgView.sd_setImage(with: URL(string: data["image"].stringValue), placeholderImage: UIImage(named: "NoImageAvailable"), options: .refreshCached, completed: nil)
+            
+            return cell
+        }
+        
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+       
+    
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+      
+        return CGSize(width: 138, height: self.collection_place.frame.height)
+    }
+    
+}
+

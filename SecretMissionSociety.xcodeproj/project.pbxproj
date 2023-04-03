@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		040E436829D4495300E1AAC8 /* FlgMaViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040E436729D4495300E1AAC8 /* FlgMaViewVC.swift */; };
 		041B477829D5A50900FC8062 /* AnswerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041B477729D5A50800FC8062 /* AnswerVC.swift */; };
+		044DAFC029DB20E4005AADB6 /* InventaryDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044DAFBF29DB20E4005AADB6 /* InventaryDetailVC.swift */; };
 		047A347829D41FED00DA43E3 /* InstructionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047A347729D41FED00DA43E3 /* InstructionVC.swift */; };
 		047A347A29D4201C00DA43E3 /* VideoPlayerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047A347929D4201C00DA43E3 /* VideoPlayerVC.swift */; };
 		047A347C29D4298800DA43E3 /* MainInstructionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047A347B29D4298800DA43E3 /* MainInstructionVC.swift */; };
@@ -102,6 +103,7 @@
 /* Begin PBXFileReference section */
 		040E436729D4495300E1AAC8 /* FlgMaViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlgMaViewVC.swift; sourceTree = "<group>"; };
 		041B477729D5A50800FC8062 /* AnswerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerVC.swift; sourceTree = "<group>"; };
+		044DAFBF29DB20E4005AADB6 /* InventaryDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventaryDetailVC.swift; sourceTree = "<group>"; };
 		047A347729D41FED00DA43E3 /* InstructionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionVC.swift; sourceTree = "<group>"; };
 		047A347929D4201C00DA43E3 /* VideoPlayerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerVC.swift; sourceTree = "<group>"; };
 		047A347B29D4298800DA43E3 /* MainInstructionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInstructionVC.swift; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 				04A27D8329D5CF6800B190A5 /* HIntAnswerVC.swift */,
 				0484CF0029D71C9C00BDF003 /* InventorylistVC.swift */,
 				0484CF0229D71D0E00BDF003 /* FinalPuzzleVC.swift */,
+				044DAFBF29DB20E4005AADB6 /* InventaryDetailVC.swift */,
 				04A490AC29D2BED4002E8D58 /* Account */,
 			);
 			path = Main;
@@ -666,6 +669,7 @@
 				04A490AE29D2BEEC002E8D58 /* ProfileVC.swift in Sources */,
 				04BF600B29CEE4B000002970 /* LocationManager.swift in Sources */,
 				04BF602129CEFC5800002970 /* PrivacyPolicyVC.swift in Sources */,
+				044DAFC029DB20E4005AADB6 /* InventaryDetailVC.swift in Sources */,
 				04BF601B29CEE8B600002970 /* SignupVC.swift in Sources */,
 				04A490B229D2BF1A002E8D58 /* ContactVC.swift in Sources */,
 				04BF600C29CEE4B000002970 /* DatePickerDialog.swift in Sources */,

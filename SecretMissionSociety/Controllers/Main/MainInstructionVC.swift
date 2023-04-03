@@ -47,9 +47,13 @@ class MainInstructionVC: UIViewController {
 
     }
     @IBAction func inventery(_ sender: Any) {
-        
+        let nVC = self.storyboard?.instantiateViewController(withIdentifier: "InventorylistVC") as! InventorylistVC
+        self.navigationController?.pushViewController(nVC, animated: true)
+
     }
     @IBAction func finalPuzzle(_ sender: Any) {
-        
+        let nVC = self.storyboard?.instantiateViewController(withIdentifier: "FinalPuzzleVC") as! FinalPuzzleVC
+        self.navigationController?.pushViewController(nVC, animated: true)
+
     }
 }
