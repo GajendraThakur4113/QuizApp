@@ -11,12 +11,22 @@ import SDWebImage
 
 class FinalPuzzleVC: UIViewController {
 
+    @IBOutlet weak var lbl_Titile: UILabel!
+ 
     @IBOutlet weak var collection_object: UICollectionView!
     @IBOutlet weak var collection_People: UICollectionView!
     @IBOutlet weak var collection_place: UICollectionView!
  
     var arrayList:[JSON] = []
-   
+
+    var strObject:String! = ""
+    var strPeople:String! = ""
+    var strPlace:String! = ""
+
+    var isObject:Int! = -1
+    var isPeople:Int! = -1
+    var isPlace:Int! = -1
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,13 +34,34 @@ class FinalPuzzleVC: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+     
         self.navigationController?.navigationBar.isHidden = false
-       setNavigationBarItem(LeftTitle: "", LeftImage: "back", CenterTitle: "Final Puzzle", CenterImage: "", RightTitle: "", RightImage: "", BackgroundColor: NAAV_BG_COLOR, BackgroundImage: "", TextColor: WHITE_COLOR, TintColor: WHITE_COLOR, Menu: "")
+     
+        setNavigationBarItem(LeftTitle: "", LeftImage: "back", CenterTitle: "Final Puzzle", CenterImage: "", RightTitle: "", RightImage: "", BackgroundColor: NAAV_BG_COLOR, BackgroundImage: "", TextColor: WHITE_COLOR, TintColor: WHITE_COLOR, Menu: "")
+
+        lbl_Titile.attributedText = Languages.FinalPuzzle.htmlToAttributedString
+
         WebGetAllInvent()
     }
 
 
     @IBAction func finish(_ sender: Any) {
+     
+        if isObject != -1 && isPeople != -1 && isPlace != -1 {
+            
+            if strObject == "Yes" && strPlace == "Yes" && strPeople == "Yes" {
+                WebEndTime()
+            } else {
+                GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: "Wrong image selected penalty Time Added 5 min.", on: self)
+                WebAddPenality()
+            }
+            
+        } else {
+        
+            GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: "Please select a people image", on: self)
+
+        }
+        
     }
     
     func WebGetAllInvent() {
@@ -64,6 +95,61 @@ class FinalPuzzleVC: UIViewController {
             GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: (error.localizedDescription), on: self)
         })
     }
+    func WebEndTime() {
+        showProgressBar()
+        var paramsDict:[String:AnyObject] = [:]
+        paramsDict["user_id"]     =   USER_DEFAULT.value(forKey: USERID) as AnyObject
+        paramsDict["event_id"]     =   kappDelegate.dicCurrentEvent["id"].stringValue as AnyObject
+        paramsDict["event_code"]     =    kappDelegate.strEventCode as AnyObject
+        paramsDict["lang"]     =   Singleton.shared.language as AnyObject
+
+        print(paramsDict)
+        CommunicationManeger.callPostService(apiUrl: Router.event_end_time.url(), parameters: paramsDict, parentViewController: self, successBlock: { (responseData, message) in
+            
+            DispatchQueue.main.async { [self] in
+               
+                let swiftyJsonVar = JSON(responseData)
+                print(swiftyJsonVar)
+
+                if(swiftyJsonVar["status"].stringValue == "1") {
+                   
+                    let nVC = self.storyboard?.instantiateViewController(withIdentifier: "ShowAllTeamAndTimeVC") as! ShowAllTeamAndTimeVC
+                    self.navigationController?.pushViewController(nVC, animated: true)
+
+                } else {
+
+                }
+                self.hideProgressBar()
+            }
+
+        },failureBlock: { (error : Error) in
+            self.hideProgressBar()
+            GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: (error.localizedDescription), on: self)
+        })
+    }
+    func WebAddPenality() {
+
+        var paramsDict:[String:AnyObject] = [:]
+        paramsDict["user_id"]     =   USER_DEFAULT.value(forKey: USERID) as AnyObject
+        paramsDict["event_id"]     =   kappDelegate.dicCurrentEvent["id"].stringValue  as AnyObject
+        paramsDict["event_instructions_id"]     =   "1" as AnyObject
+        paramsDict["event_code"]     =    kappDelegate.strEventCode as AnyObject
+        paramsDict["time"]     =   "5" as AnyObject
+        paramsDict["hint_type"]     =   "5" as AnyObject
+
+        print(paramsDict)
+        CommunicationManeger.callPostService(apiUrl: Router.add_hint.url(), parameters: paramsDict, parentViewController: self, successBlock: { (responseData, message) in
+            
+//            DispatchQueue.main.async {  in
+                let swiftyJsonVar = JSON(responseData)
+                print(swiftyJsonVar)
+//            }
+
+        },failureBlock: { (error : Error) in
+            self.hideProgressBar()
+            GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: (error.localizedDescription), on: self)
+        })
+    }
 
 }
 extension FinalPuzzleVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
@@ -71,11 +157,11 @@ extension FinalPuzzleVC: UICollectionViewDelegate,UICollectionViewDataSource,UIC
        
         if collectionView == collection_place {
             return arrayList.filter({$0["type"].stringValue == "Places"}).count
-        } else if collectionView == collection_object {
+        } else if collectionView == collection_People {
             return arrayList.filter({$0["type"].stringValue == "People"}).count
         } else {
             return arrayList.filter({$0["type"].stringValue == "Objects"}).count
-        } 
+        }
         
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -86,28 +172,46 @@ extension FinalPuzzleVC: UICollectionViewDelegate,UICollectionViewDataSource,UIC
             
             let data = arrayList.filter({$0["type"].stringValue == "Places"})[indexPath.row]
             cell.imgView.sd_setShowActivityIndicatorView(true)
-            cell.imgView.sd_setImage(with: URL(string: data["image"].stringValue), placeholderImage: UIImage(named: "NoImageAvailable"), options: .refreshCached, completed: nil)
+            cell.imgView.sd_setImage(with: URL(string: data["final_puzzle_image"].stringValue), placeholderImage: UIImage(named: "NoImageAvailable"), options: .refreshCached, completed: nil)
+            
+            if isPlace == indexPath.row {
+                cell.img_Checked.image = UIImage.init(named: "ic_checked")
+            } else {
+                cell.img_Checked.image = UIImage.init(named: "")
+            }
             
             return cell
             
-        } else if collectionView == collection_object {
+        } else if collectionView == collection_People {
 
             let cell = collection_place.dequeueReusableCell(withReuseIdentifier: "BannerCollectionCell", for: indexPath) as! BannerCollectionCell
             
-            let data = arrayList.filter({$0["type"].stringValue == "Places"})[indexPath.row]
+            let data = arrayList.filter({$0["type"].stringValue == "People"})[indexPath.row]
             cell.imgView.sd_setShowActivityIndicatorView(true)
-            cell.imgView.sd_setImage(with: URL(string: data["image"].stringValue), placeholderImage: UIImage(named: "NoImageAvailable"), options: .refreshCached, completed: nil)
+            cell.imgView.sd_setImage(with: URL(string: data["final_puzzle_image"].stringValue), placeholderImage: UIImage(named: "NoImageAvailable"), options: .refreshCached, completed: nil)
             
+            if isPeople == indexPath.row {
+                cell.img_Checked.image = UIImage.init(named: "ic_checked")
+            } else {
+                cell.img_Checked.image = UIImage.init(named: "")
+            }
+
             return cell
             
         } else  {
             
             let cell = collection_People.dequeueReusableCell(withReuseIdentifier: "BannerCollectionCell", for: indexPath) as! BannerCollectionCell
             
-            let data = arrayList.filter({$0["type"].stringValue == "Places"})[indexPath.row]
+            let data = arrayList.filter({$0["type"].stringValue == "Objects"})[indexPath.row]
             cell.imgView.sd_setShowActivityIndicatorView(true)
-            cell.imgView.sd_setImage(with: URL(string: data["image"].stringValue), placeholderImage: UIImage(named: "NoImageAvailable"), options: .refreshCached, completed: nil)
+            cell.imgView.sd_setImage(with: URL(string: data["final_puzzle_image"].stringValue), placeholderImage: UIImage(named: "NoImageAvailable"), options: .refreshCached, completed: nil)
             
+            if isObject == indexPath.row {
+                cell.img_Checked.image = UIImage.init(named: "ic_checked")
+            } else {
+                cell.img_Checked.image = UIImage.init(named: "")
+            }
+
             return cell
         }
         
@@ -115,7 +219,29 @@ extension FinalPuzzleVC: UICollectionViewDelegate,UICollectionViewDataSource,UIC
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
        
-    
+        
+        if collectionView == collection_place {
+           
+            let data = arrayList.filter({$0["type"].stringValue == "Places"})[indexPath.row]
+            strPlace = data["final_puzzle_status"].stringValue
+            isPlace = indexPath.row
+            collection_place.reloadData()
+
+        } else if collectionView == collection_People {
+           
+            let data = arrayList.filter({$0["type"].stringValue == "People"})[indexPath.row]
+            strPeople = data["final_puzzle_status"].stringValue
+            isPeople = indexPath.row
+            collection_People.reloadData()
+
+        } else  {
+            
+            let data = arrayList.filter({$0["type"].stringValue == "Objects"})[indexPath.row]
+            strObject = data["final_puzzle_status"].stringValue
+            isObject = indexPath.row
+            collection_object.reloadData()
+        }
+
         
     }
     

@@ -107,21 +107,26 @@ extension FlgMaViewVC: MKMapViewDelegate {
         var arrAllAnn:[MKPointAnnotation] =  []
 
         for dic in arrAll {
-            var pickupCoordinat:CLLocationCoordinate2D?
-            let pdiLat = dic["lat"].stringValue
-            let pdiLot = dic["lon"].stringValue
+            
+            var pickupCoordinat:CLLocationCoordinate2D!
+            let pdiLat = dic["lat"].stringValue.trimmingCharacters(in: .whitespaces)
+            let pdiLot = dic["lon"].stringValue.trimmingCharacters(in: .whitespaces)
+
+            print("All latlong \(pdiLat) \(pdiLot)")
+            print("All latlong \(Double(pdiLat) ?? 0.0) \(Double(pdiLot))")
 
             let sourceAnnotation = CustomPointAnnotation()
 
-            if pdiLat != "" &&  pdiLot != "" && dic["final_puzzle_status"].stringValue == "No" {
-                pickupCoordinat = CLLocationCoordinate2DMake(Double(pdiLat) ?? 0.0, Double(pdiLot) ?? 0.0)
-                let sourcePlacemark = MKPlacemark(coordinate: pickupCoordinat ?? CLLocationCoordinate2DMake(0.0, 0.0), addressDictionary: nil)
+            if pdiLat != "" &&  pdiLot != "" && dic["answer_status"].numberValue == 0 {
+                pickupCoordinat = CLLocationCoordinate2DMake(Double(pdiLat)!, Double(pdiLot)!)
+                let sourcePlacemark = MKPlacemark(coordinate: pickupCoordinat!, addressDictionary: nil)
                 sourceAnnotation.coordinate = sourcePlacemark.coordinate
                 sourceAnnotation.imageName = "flag_red"
                 sourceAnnotation.title = dic["id"].stringValue
-            } else if pdiLat != "" &&  pdiLot != "" && dic["final_puzzle_status"].stringValue == "Yes" {
-                pickupCoordinat = CLLocationCoordinate2DMake(Double(pdiLat) ?? 0.0, Double(pdiLot) ?? 0.0)
-                let sourcePlacemark = MKPlacemark(coordinate: pickupCoordinat ?? CLLocationCoordinate2DMake(0.0, 0.0), addressDictionary: nil)
+            
+            } else if pdiLat != "" &&  pdiLot != "" && dic["answer_status"].numberValue == 1 {
+                pickupCoordinat = CLLocationCoordinate2DMake(Double(pdiLat)!, Double(pdiLot)!)
+                let sourcePlacemark = MKPlacemark(coordinate: pickupCoordinat!, addressDictionary: nil)
                 sourceAnnotation.coordinate = sourcePlacemark.coordinate
                 sourceAnnotation.imageName = "flag_green"
                 sourceAnnotation.title = dic["id"].stringValue

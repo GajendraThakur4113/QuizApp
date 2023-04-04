@@ -53,7 +53,7 @@ class HIntAnswerVC: UIViewController {
         paramsDict["event_instructions_id"]     =   dicCurrentQuestion["id"].stringValue as AnyObject
         paramsDict["event_code"]     =    kappDelegate.strEventCode as AnyObject
         paramsDict["time"]     =   strPenalityTime as AnyObject
-        paramsDict["hint_type"]     =   "1" as AnyObject
+        paramsDict["hint_type"]     =   "\(isIndex!)" as AnyObject
 
         print(paramsDict)
         CommunicationManeger.callPostService(apiUrl: Router.add_hint.url(), parameters: paramsDict, parentViewController: self, successBlock: { (responseData, message) in
@@ -62,10 +62,10 @@ class HIntAnswerVC: UIViewController {
                 let swiftyJsonVar = JSON(responseData)
                 print(swiftyJsonVar)
                 if(swiftyJsonVar["status"].stringValue == "1") {
-                    arrHint[isIndex] = dicCurrentQuestion["instructions_hint\(isIndex!)"].stringValue
+                    arrHint[isIndex - 1] = dicCurrentQuestion["instructions_hint\(isIndex!)"].stringValue
                     table_list.reloadData()
                 } else {
-                    arrHint[isIndex] = dicCurrentQuestion["instructions_hint\(isIndex!)"].stringValue
+                    arrHint[isIndex - 1] = dicCurrentQuestion["instructions_hint\(isIndex!)"].stringValue
                     table_list.reloadData()
                 }
                 self.hideProgressBar()

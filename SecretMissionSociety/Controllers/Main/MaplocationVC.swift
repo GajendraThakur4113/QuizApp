@@ -44,7 +44,7 @@ class MaplocationVC: UIViewController {
         let objVC = self.storyboard?.instantiateViewController(withIdentifier: "CreateTeamVC") as! CreateTeamVC
         objVC.completion = {
             let nVC = self.storyboard?.instantiateViewController(withIdentifier: "InstructionVC") as! InstructionVC
-            nVC.strDetail = kappDelegate.dicCurrentEvent["event_instructions"].stringValue
+            nVC.strDetail = kappDelegate.dicCurrentEvent["disclaimer"].stringValue
             self.navigationController?.pushViewController(nVC, animated: true)
         }
         objVC.modalPresentationStyle = .overCurrentContext

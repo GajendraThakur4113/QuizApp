@@ -31,32 +31,7 @@
 "Already have an account? Login"        = "Already have an account? Login";
 "Don't have an account yet? Register"   = "Don't have an account yet? Register";
 "Register"                              = "Register";
-"Add Like"                              = "Add Like";
-"I Like"                                = "I Like";
-"Profile Updated Successfully"          = "Profile Updated Successfully";
-"Group : Participants"                  = "Group : Participants";
+"Enter Details"                         = "Enter Details";
 
-"Please purchase 3 months plan cost"    = "Please purchase 3 months plan cost";
-"for uploading restaurant"              = "for uploading restaurant";
-"for uploading Accommodation"           = "for uploading Accommodation";
-"Are you sure you want to delete account?" = "Are you sure you want to delete account?";
-"Are you sure you want to reset this filter?" = "Are you sure you want to reset this filter?";
-
-"REJECTED (REAPPLY)"                    = "REJECTED (REAPPLY)";
-"ALREADY IN PROGRESS..."                = "ALREADY IN PROGRESS...";
-"Approved"                              = "Approved";
-"HomeMessage"                           = "User Not found update filter setting please...";
-
-"InAppR"                                = "With this";
-"InAppA"                                = "With this subscription of";
-
-"InAppR2"                               = "subscription, you will promote your restaurant for 3 months within our app, making your restaurant known among our community of users. Remember that the subscription is automatically renewed after 3 months.";
-"InAppA2"                               = "you will promote your accommodation for 3 months in our app, making your place known among our community of users. Remember that the subscription is automatically renewed after 3 months.";
-
-"Add Event"                                  = "Add Event";
-"Add Restaurent"                             = "Add Restaurent";
-"Add Accommodation"                          = "Add Accommodation";
-"Enter Details"                              = "Enter Details";
-
-
-
+"MainIntstruction"                      = "Click on the menu above. \n  Click on Map to see locations.\n  Click on Inventory to see clues found \n * Click on Final Puzzle to finish the challenge";
+"FinalPuzzle"                           = "Here you will accumulate the clues found. To solve the final puzzle, CHOOSE a person, an object and a place that according to the INVENTORY clues will reveal the whereabouts of the AZTEC TREASURE. If you do not answer well, you will be penalized with time.";

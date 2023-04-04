@@ -124,7 +124,7 @@ class AnswerVC: UIViewController {
         paramsDict["event_code"]     =    kappDelegate.strEventCode as AnyObject
         paramsDict["ans"]     =   isAnswer as AnyObject
         paramsDict["time"]     =   "2" as AnyObject
-        paramsDict["hint_type"]     =   "1" as AnyObject
+        paramsDict["hint_type"]     =   "2" as AnyObject
 
         print(paramsDict)
         CommunicationManeger.callPostService(apiUrl: Router.add_hint.url(), parameters: paramsDict, parentViewController: self, successBlock: { (responseData, message) in

@@ -102,6 +102,20 @@ extension InventorylistVC: UITableViewDelegate,UITableViewDataSource{
     }
   
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        var dic:JSON!
+      
+        if indexPath.section == 0 {
+            dic = arrayList.filter({$0["type"].stringValue == "Places"})[indexPath.row]
+        } else if indexPath.section == 1 {
+            dic = arrayList.filter({$0["type"].stringValue == "People"})[indexPath.row]
+        } else if indexPath.section == 2 {
+            dic = arrayList.filter({$0["type"].stringValue == "Objects"})[indexPath.row]
+        }
+
+        let nVC = self.storyboard?.instantiateViewController(withIdentifier: "InventaryDetailVC") as! InventaryDetailVC
+        nVC.dicInfo = dic
+        self.navigationController?.pushViewController(nVC, animated: true)
 
     }
     

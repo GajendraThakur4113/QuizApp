@@ -31,28 +31,7 @@
 "Already have an account? Login"        = "¿Ya tienes una cuenta? Acceso";
 "Don't have an account yet? Register"   = "¿Aún no tienes una cuenta? Registro";
 "Register"                              = "Registro";
-"Add Like"                              = "Me gusta";
-"I Like"                                = "Me gusta";
-"Profile Updated Successfully"          = "Perfil modificado correctamente";
-"Group : Participants"                  = "Participantes";
+"Enter Details"                         = "Características del evento";
 
-"Please purchase 3 months plan cost"    = "Por favor compre el costo del plan de 3 meses";
-"for uploading restaurant"              = "para subir restaurante";
-"for uploading Accommodation"           = "para subir Alojamiento";
-"Are you sure you want to delete account?"     = "¿Estás seguro de que quieres eliminar la cuenta?";
-"Are you sure you want to reset this filter?" = "¿Está seguro de que quieres restablecer este filtro?";
-
-"REJECTED (REAPPLY)"                    = "REJECTED (REAPPLY)";
-"ALREADY IN PROGRESS..."                = "ALREADY IN PROGRESS...";
-"Approved"                              = "Approved";
-"HomeMessage"                           = "Usuario no encontrado, actualice la configuración del filtro, por favor...";
-
-"InAppR"                                = "Con esta suscripción de";
-"InAppA"                                = "Con esta suscripción de";
-"InAppR2"                               = "promocionaras tu restaurante durante 3 meses dentro de nuestra app dando a conocer tu local entre toda nuestra comunidad de usuarios. Recuerda que la suscripción se renueva automáticamente después de los 3 meses. ";
-"InAppA2"                               = "promocionaras tu alojamiento durante 3 meses dentro de nuestra app dando a conocer tu local entre toda nuestra comunidad de usuarios. Recuerda que la suscripción se renueva automáticamente después de los 3 meses.";
-
-"Add Event"                                  = "Añadir evento";
-"Add Restaurent"                             = "Añadir restaurante";
-"Add Accommodation"                          = "Añadir alojamiento";
-"Enter Details"                              = "Características del evento";
+"MainIntstruction"                      = "Haz Click en el menú de arriba. \n  Click en Mapa para ver ubicaciones.\n  Click en Inventario para ver pistas encontradas \n * Click en Rompecabezas final para lograr terminar el reto";
+"FinalPuzzle"                           = "Aquí acumularás las pistas encontradas.  Para resolver el acertijo final, ELIJE una persona, un objeto y un lugar que de acuerdo a las pistas de INVENTARIO te revelarán el paradero del TESORO AZTECA.  Si no respondes bien, se te penalizará con tiempo.";

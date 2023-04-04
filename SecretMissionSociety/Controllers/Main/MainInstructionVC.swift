@@ -26,7 +26,7 @@ class MainInstructionVC: UIViewController {
         self.navigationController?.navigationBar.isHidden = false
        setNavigationBarItem(LeftTitle: "", LeftImage: "back", CenterTitle: "Instructions", CenterImage: "", RightTitle: "", RightImage: "Dotss", BackgroundColor: NAAV_BG_COLOR, BackgroundImage: "", TextColor: WHITE_COLOR, TintColor: WHITE_COLOR, Menu: "")
         transView.isHidden = true
-        text_Detail.attributedText = "Haz Click en el menú de arriba. \n  Click en Mapa para ver ubicaciones.\n  Click en Inventario para ver pistas encontradas \n * Click en Rompecabezas final para lograr terminar el reto".htmlToAttributedString
+        text_Detail.attributedText = Languages.MainIntstruction.htmlToAttributedString
     }
 
     @IBAction func cross(_ sender: Any) {
