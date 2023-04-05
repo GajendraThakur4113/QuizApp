@@ -51,6 +51,8 @@ class ShowAllTeamAndTimeVC: UIViewController {
         btnTeam.setTitleColor(.black, for: .normal)
         btn_Code.setTitleColor(.systemGray3, for: .normal)
         table_Leaderboard.isHidden = true
+        self.tableList.reloadData()
+
     }
     @IBAction func useAcode(_ sender: Any) {
         btn_Code.backgroundColor = UIColor.init(named: "THEMECOLOR")
@@ -58,6 +60,7 @@ class ShowAllTeamAndTimeVC: UIViewController {
         btn_Code.setTitleColor(.black, for: .normal)
         btnTeam.setTitleColor(.systemGray3, for: .normal)
         table_Leaderboard.isHidden = false
+        self.table_Leaderboard.reloadData()
 
     }
     
@@ -164,5 +167,17 @@ extension ShowAllTeamAndTimeVC: UITableViewDelegate,UITableViewDataSource{
 
         
     }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+       
+        if tableView == table_Leaderboard {
+         
+            return 151
 
+        } else {
+
+            return 51
+
+        }
+
+    }
 }

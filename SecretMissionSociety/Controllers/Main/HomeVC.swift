@@ -156,8 +156,25 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollecti
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
        
-        if collectionView == nearestCollecView{
-            self.tabBarController?.selectedIndex = 2
+        if collectionView == nearestCollecView {
+            
+            if indexPath.row == 0 {
+               
+               self.tabBarController?.selectedIndex = 3
+                
+            } else if indexPath.row == 1  {
+                
+                let nVC = self.storyboard?.instantiateViewController(withIdentifier: "VirsuHomeVC") as! VirsuHomeVC
+                self.navigationController?.pushViewController(nVC, animated: true)
+
+            } else if indexPath.row == 2  {
+                
+                
+            }
+            
+            
+        } else {
+
         }
         
     }

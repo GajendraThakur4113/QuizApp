@@ -10,6 +10,7 @@
 		040E436829D4495300E1AAC8 /* FlgMaViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040E436729D4495300E1AAC8 /* FlgMaViewVC.swift */; };
 		041B477829D5A50900FC8062 /* AnswerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041B477729D5A50800FC8062 /* AnswerVC.swift */; };
 		044DAFC029DB20E4005AADB6 /* InventaryDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044DAFBF29DB20E4005AADB6 /* InventaryDetailVC.swift */; };
+		047A0F1A29DD60DF00626825 /* VirsuHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047A0F1929DD60DF00626825 /* VirsuHomeVC.swift */; };
 		047A347829D41FED00DA43E3 /* InstructionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047A347729D41FED00DA43E3 /* InstructionVC.swift */; };
 		047A347A29D4201C00DA43E3 /* VideoPlayerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047A347929D4201C00DA43E3 /* VideoPlayerVC.swift */; };
 		047A347C29D4298800DA43E3 /* MainInstructionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047A347B29D4298800DA43E3 /* MainInstructionVC.swift */; };
@@ -105,6 +106,7 @@
 		040E436729D4495300E1AAC8 /* FlgMaViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlgMaViewVC.swift; sourceTree = "<group>"; };
 		041B477729D5A50800FC8062 /* AnswerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerVC.swift; sourceTree = "<group>"; };
 		044DAFBF29DB20E4005AADB6 /* InventaryDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventaryDetailVC.swift; sourceTree = "<group>"; };
+		047A0F1929DD60DF00626825 /* VirsuHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirsuHomeVC.swift; sourceTree = "<group>"; };
 		047A347729D41FED00DA43E3 /* InstructionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionVC.swift; sourceTree = "<group>"; };
 		047A347929D4201C00DA43E3 /* VideoPlayerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerVC.swift; sourceTree = "<group>"; };
 		047A347B29D4298800DA43E3 /* MainInstructionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInstructionVC.swift; sourceTree = "<group>"; };
@@ -216,9 +218,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		047A0F1829DD606C00626825 /* Game2and3 */ = {
+			isa = PBXGroup;
+			children = (
+				047A0F1929DD60DF00626825 /* VirsuHomeVC.swift */,
+			);
+			path = Game2and3;
+			sourceTree = "<group>";
+		};
 		0484CF0429D71D1500BDF003 /* Game1and4 */ = {
 			isa = PBXGroup;
 			children = (
+				04A490B329D2FBE9002E8D58 /* CreateTeamVC.swift */,
+				047A347729D41FED00DA43E3 /* InstructionVC.swift */,
+				047A347929D4201C00DA43E3 /* VideoPlayerVC.swift */,
+				047A347B29D4298800DA43E3 /* MainInstructionVC.swift */,
+				040E436729D4495300E1AAC8 /* FlgMaViewVC.swift */,
+				041B477729D5A50800FC8062 /* AnswerVC.swift */,
+				04A27D8329D5CF6800B190A5 /* HIntAnswerVC.swift */,
+				0484CF0029D71C9C00BDF003 /* InventorylistVC.swift */,
+				044DAFBF29DB20E4005AADB6 /* InventaryDetailVC.swift */,
+				0484CF0229D71D0E00BDF003 /* FinalPuzzleVC.swift */,
+				04952A6029DC314F00065956 /* ShowAllTeamAndTimeVC.swift */,
 			);
 			path = Game1and4;
 			sourceTree = "<group>";
@@ -231,18 +252,8 @@
 				04F3C3B529D19D66009AF02F /* EventVC.swift */,
 				04F3C3B929D1A035009AF02F /* JoinedEventVC.swift */,
 				04F3C3B729D1A014009AF02F /* MaplocationVC.swift */,
+				047A0F1829DD606C00626825 /* Game2and3 */,
 				0484CF0429D71D1500BDF003 /* Game1and4 */,
-				04A490B329D2FBE9002E8D58 /* CreateTeamVC.swift */,
-				047A347729D41FED00DA43E3 /* InstructionVC.swift */,
-				047A347929D4201C00DA43E3 /* VideoPlayerVC.swift */,
-				047A347B29D4298800DA43E3 /* MainInstructionVC.swift */,
-				040E436729D4495300E1AAC8 /* FlgMaViewVC.swift */,
-				041B477729D5A50800FC8062 /* AnswerVC.swift */,
-				04A27D8329D5CF6800B190A5 /* HIntAnswerVC.swift */,
-				0484CF0029D71C9C00BDF003 /* InventorylistVC.swift */,
-				044DAFBF29DB20E4005AADB6 /* InventaryDetailVC.swift */,
-				0484CF0229D71D0E00BDF003 /* FinalPuzzleVC.swift */,
-				04952A6029DC314F00065956 /* ShowAllTeamAndTimeVC.swift */,
 				04A490AC29D2BED4002E8D58 /* Account */,
 			);
 			path = Main;
@@ -685,6 +696,7 @@
 				04F3C3B429D1947E009AF02F /* TabbarVC.swift in Sources */,
 				04A27D8429D5CF6800B190A5 /* HIntAnswerVC.swift in Sources */,
 				04BF5FE329CEE4B000002970 /* CountryList.swift in Sources */,
+				047A0F1A29DD60DF00626825 /* VirsuHomeVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

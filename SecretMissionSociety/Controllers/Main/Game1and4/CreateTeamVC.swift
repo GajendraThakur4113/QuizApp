@@ -40,7 +40,14 @@ class CreateTeamVC: UIViewController {
 
     
     @IBAction func submit(_ sender: Any) {
-        WebApplyCode()
+        
+        if text_name.text?.count != 0 && text_Code.text?.count != 0 {
+            WebApplyCode()
+        } else {
+            GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: "Please enter Team name and code", on: self)
+
+        }
+   
     }
     @IBAction func useAcode(_ sender: Any) {
         self.dismiss(animated: false, completion: nil)

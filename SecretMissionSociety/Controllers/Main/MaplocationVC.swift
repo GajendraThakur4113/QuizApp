@@ -35,6 +35,7 @@ class MaplocationVC: UIViewController {
             view_Pop.isHidden = true
         }
         setCurrentLocation()
+        self.tabBarController?.tabBar.isHidden = false
 
     }
     

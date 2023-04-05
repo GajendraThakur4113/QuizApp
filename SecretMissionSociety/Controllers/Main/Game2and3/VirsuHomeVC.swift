@@ -1,32 +1,21 @@
 //
-//  JoinedEventVC.swift
+//  VirsuHomeVC.swift
 //  SecretMissionSociety
 //
-//  Created by mac on 27/03/23.
+//  Created by mac on 05/04/23.
 //
 
 import UIKit
 import SwiftyJSON
 import SDWebImage
 
-
-class JoinedEventCell: UITableViewCell {
-    @IBOutlet weak var img_Event: UIImageView!
-    @IBOutlet weak var lbl_EventName: UILabel!
+class VirsuHomeVC: UIViewController {
     
-   
-    @IBOutlet weak var lbl_Quantity: UILabel!
-    @IBOutlet weak var btn_Upcoming: UIButton!
-    @IBOutlet weak var lbl_Addrss: UILabel!
-    @IBOutlet weak var lbl_Date: UILabel!
-}
-class JoinedEventVC: UIViewController {
-   
     var nearMeEvents:[JSON]! = []
 
+    @IBOutlet weak var img_Virus: UIImageView!
     @IBOutlet weak var trans_View: UIView!
     @IBOutlet weak var text_Code: UITextField!
-    @IBOutlet weak var tableList: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,8 +27,6 @@ class JoinedEventVC: UIViewController {
         self.navigationController?.navigationBar.isHidden = true
         WebGetEvent()
         trans_View.isHidden = true
-     //   tableList.estimatedRowHeight = 200
-     //   tableList.rowHeight = UITableView.automaticDimension
         
     }
 
@@ -69,8 +56,7 @@ class JoinedEventVC: UIViewController {
                 let swiftyJsonVar = JSON(responseData)
                 print(swiftyJsonVar)
                 if(swiftyJsonVar["status"].stringValue == "1") {
-                    self.nearMeEvents = swiftyJsonVar["result"].arrayValue.filter({$0["type"].stringValue == "puzzle" && $0["event_status"].stringValue == "END"})
-                    self.tableList.reloadData()
+
                 }
                 self.hideProgressBar()
             }
@@ -109,29 +95,5 @@ class JoinedEventVC: UIViewController {
         })
     }
 
-
-}
-extension JoinedEventVC: UITableViewDelegate,UITableViewDataSource{
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return nearMeEvents.count
-    }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-     
-        let cell = tableList.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! JoinedEventCell
-        let data = nearMeEvents[indexPath.row]
-        cell.img_Event.sd_setImage(with: URL(string: data["image"].stringValue), placeholderImage: UIImage(named: "NoImageAvailable"), options: .refreshCached, completed: nil)
-        cell.lbl_EventName.text = data["event_name"].stringValue
-        cell.lbl_Date.text = data["event_date"].stringValue
-        cell.lbl_Quantity.text = data["amount"].stringValue
-        cell.lbl_Addrss.text = data["address"].stringValue
-
-        return cell
-    }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        kappDelegate.dicCurrentEvent = nearMeEvents[indexPath.row]
-        self.tabBarController?.selectedIndex = 2
-
-    }
 
 }

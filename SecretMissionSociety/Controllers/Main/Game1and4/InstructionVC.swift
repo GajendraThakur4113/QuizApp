@@ -22,7 +22,7 @@ class InstructionVC: UIViewController {
         self.navigationController?.navigationBar.isHidden = false
        setNavigationBarItem(LeftTitle: "", LeftImage: "back", CenterTitle: "Instructions", CenterImage: "", RightTitle: "", RightImage: "", BackgroundColor: NAAV_BG_COLOR, BackgroundImage: "", TextColor: WHITE_COLOR, TintColor: WHITE_COLOR, Menu: "")
         self.text_Detail.attributedText = strDetail.htmlToAttributedString
-
+        self.tabBarController?.tabBar.isHidden = true
     }
 
 
