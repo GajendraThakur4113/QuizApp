@@ -37,6 +37,7 @@ class HomeVC: UIViewController {
         let statusBar = UIView(frame: (UIApplication.shared.keyWindow?.windowScene?.statusBarManager?.statusBarFrame)!)
         statusBar.backgroundColor = .black
         UIApplication.shared.keyWindow?.addSubview(statusBar)
+        self.tabBarController?.tabBar.isHidden = false
 
     }
 
@@ -163,7 +164,7 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollecti
                self.tabBarController?.selectedIndex = 3
                 
             } else if indexPath.row == 1  {
-                
+                kappDelegate.dicCurrentVirus = nearMeEvents[indexPath.row]
                 let nVC = self.storyboard?.instantiateViewController(withIdentifier: "VirsuHomeVC") as! VirsuHomeVC
                 self.navigationController?.pushViewController(nVC, animated: true)
 

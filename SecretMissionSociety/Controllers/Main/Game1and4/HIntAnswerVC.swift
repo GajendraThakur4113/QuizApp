@@ -19,12 +19,13 @@ class HIntAnswerVC: UIViewController {
     
     var completion: (() -> Void)?
     var dicCurrentQuestion:JSON!
-    var arroption:[String] = ["Show Hint1 (2 minutes penalty)","Show Hint2 (5 minutes penalty)","Show Hint3 (10 minutes penalty)"]
+    var arroption:[String] = []
     var arroptionAdnswer:[String] = ["2","5","10"]
     var arrHint:[String] = ["","",""]
     
     var isIndex:Int! = -1
     var strPenalityTime:String! = ""
+    var strFrom:String! = ""
 
     
     override func viewDidLoad() {
@@ -55,8 +56,16 @@ class HIntAnswerVC: UIViewController {
         paramsDict["time"]     =   strPenalityTime as AnyObject
         paramsDict["hint_type"]     =   "\(isIndex!)" as AnyObject
 
+        var strAPI:String! = ""
+
+        if strFrom == "virus" {
+            strAPI = Router.add_virus_hint.url()
+        } else {
+            strAPI = Router.add_hint.url()
+        }
+        
         print(paramsDict)
-        CommunicationManeger.callPostService(apiUrl: Router.add_hint.url(), parameters: paramsDict, parentViewController: self, successBlock: { (responseData, message) in
+        CommunicationManeger.callPostService(apiUrl: strAPI, parameters: paramsDict, parentViewController: self, successBlock: { (responseData, message) in
             
             DispatchQueue.main.async { [self] in
                 let swiftyJsonVar = JSON(responseData)
@@ -95,7 +104,6 @@ extension HIntAnswerVC: UITableViewDelegate,UITableViewDataSource{
         isIndex = 0
         isIndex = indexPath.row + 1
         strPenalityTime = arroptionAdnswer[indexPath.row]
-        print("sdss \(isIndex)")
         WebAddPenality()
     }
 

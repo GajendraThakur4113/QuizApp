@@ -11,7 +11,7 @@ import SDWebImage
 
 class VirsuHomeVC: UIViewController {
     
-    var nearMeEvents:[JSON]! = []
+    var dicEvent:JSON!
 
     @IBOutlet weak var img_Virus: UIImageView!
     @IBOutlet weak var trans_View: UIView!
@@ -24,10 +24,14 @@ class VirsuHomeVC: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.isHidden = true
+        self.navigationController?.navigationBar.isHidden = false
         WebGetEvent()
         trans_View.isHidden = true
-        
+        img_Virus.sd_setImage(with: URL(string: kappDelegate.dicCurrentVirus["image"].stringValue), placeholderImage: UIImage(named: "NoImageAvailable"), options: .refreshCached, completed: nil)
+        self.tabBarController?.tabBar.isHidden = true
+        setNavigationBarItem(LeftTitle: "", LeftImage: "back", CenterTitle: "Welcome to Virus", CenterImage: "", RightTitle: "", RightImage: "", BackgroundColor: NAAV_BG_COLOR, BackgroundImage: "", TextColor: WHITE_COLOR, TintColor: WHITE_COLOR, Menu: "")
+
+
     }
 
     @IBAction func crosss(_ sender: Any) {
@@ -40,7 +44,17 @@ class VirsuHomeVC: UIViewController {
         WebApplyCode()
     }
     @IBAction func useAcode(_ sender: Any) {
-        trans_View.isHidden = false
+        if dicEvent != nil {
+            
+            if dicEvent["status"].stringValue != "Finish" {
+                let nVC = self.storyboard?.instantiateViewController(withIdentifier: "WelcomeVC") as! WelcomeVC
+                self.navigationController?.pushViewController(nVC, animated: true)
+            } else {
+                trans_View.isHidden = false
+            }
+        } else {
+            trans_View.isHidden = false
+        }
     }
     
     func WebGetEvent() {
@@ -48,15 +62,18 @@ class VirsuHomeVC: UIViewController {
         var paramsDict:[String:AnyObject] = [:]
         paramsDict["lang"]     =   Singleton.shared.language as AnyObject
         paramsDict["user_id"]     =   USER_DEFAULT.value(forKey: USERID) as AnyObject
+        paramsDict["event_id"]     =   "4" as AnyObject
 
+        
         print(paramsDict)
-        CommunicationManeger.callPostService(apiUrl: Router.get_my_event.url(), parameters: paramsDict, parentViewController: self, successBlock: { (responseData, message) in
+        CommunicationManeger.callPostService(apiUrl: Router.get_event_code.url(), parameters: paramsDict, parentViewController: self, successBlock: { (responseData, message) in
             
             DispatchQueue.main.async { [self] in
                 let swiftyJsonVar = JSON(responseData)
                 print(swiftyJsonVar)
                 if(swiftyJsonVar["status"].stringValue == "1") {
-
+                    dicEvent = swiftyJsonVar["result"]
+                    kappDelegate.strEventCode = swiftyJsonVar["result"]["event_code"].stringValue
                 }
                 self.hideProgressBar()
             }
@@ -73,16 +90,20 @@ class VirsuHomeVC: UIViewController {
         var paramsDict:[String:AnyObject] = [:]
         paramsDict["user_id"]     =   USER_DEFAULT.value(forKey: USERID) as AnyObject
         paramsDict["event_code"]     =   text_Code.text as AnyObject
+        paramsDict["event_id"]     =   kappDelegate.dicCurrentVirus["id"].stringValue as AnyObject
 
+        
         print(paramsDict)
-        CommunicationManeger.callPostService(apiUrl: Router.event_apply_code.url(), parameters: paramsDict, parentViewController: self, successBlock: { (responseData, message) in
-            
+        CommunicationManeger.callPostService(apiUrl: Router.virus_event_apply_code.url(), parameters: paramsDict, parentViewController: self, successBlock: { (responseData, message) in
+
             DispatchQueue.main.async { [self] in
                 let swiftyJsonVar = JSON(responseData)
                 print(swiftyJsonVar)
                 if(swiftyJsonVar["status"].stringValue == "1") {
                     WebGetEvent()
+                    kappDelegate.strEventCode = text_Code.text!
                 } else {
+                    WebGetEvent()
                     GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: swiftyJsonVar["result"].stringValue, on: self)
 
                 }

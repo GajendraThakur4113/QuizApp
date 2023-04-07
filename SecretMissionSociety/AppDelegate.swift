@@ -27,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var strEventCode:String! = ""
     var dicCurrentEvent:JSON!
+    var dicCurrentVirus:JSON!
 
 
     

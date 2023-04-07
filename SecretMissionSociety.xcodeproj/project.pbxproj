@@ -10,6 +10,9 @@
 		040E436829D4495300E1AAC8 /* FlgMaViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040E436729D4495300E1AAC8 /* FlgMaViewVC.swift */; };
 		041B477829D5A50900FC8062 /* AnswerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041B477729D5A50800FC8062 /* AnswerVC.swift */; };
 		044DAFC029DB20E4005AADB6 /* InventaryDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044DAFBF29DB20E4005AADB6 /* InventaryDetailVC.swift */; };
+		046F4D7529DEB20A0079B8EB /* WelcomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046F4D7429DEB2090079B8EB /* WelcomeVC.swift */; };
+		046F4D7729DEB86D0079B8EB /* VirusInstructionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046F4D7629DEB86D0079B8EB /* VirusInstructionVC.swift */; };
+		046F4D7B29DEBB990079B8EB /* VirusAnswerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046F4D7A29DEBB990079B8EB /* VirusAnswerVC.swift */; };
 		047A0F1A29DD60DF00626825 /* VirsuHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047A0F1929DD60DF00626825 /* VirsuHomeVC.swift */; };
 		047A347829D41FED00DA43E3 /* InstructionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047A347729D41FED00DA43E3 /* InstructionVC.swift */; };
 		047A347A29D4201C00DA43E3 /* VideoPlayerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047A347929D4201C00DA43E3 /* VideoPlayerVC.swift */; };
@@ -106,6 +109,9 @@
 		040E436729D4495300E1AAC8 /* FlgMaViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlgMaViewVC.swift; sourceTree = "<group>"; };
 		041B477729D5A50800FC8062 /* AnswerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerVC.swift; sourceTree = "<group>"; };
 		044DAFBF29DB20E4005AADB6 /* InventaryDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventaryDetailVC.swift; sourceTree = "<group>"; };
+		046F4D7429DEB2090079B8EB /* WelcomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeVC.swift; sourceTree = "<group>"; };
+		046F4D7629DEB86D0079B8EB /* VirusInstructionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirusInstructionVC.swift; sourceTree = "<group>"; };
+		046F4D7A29DEBB990079B8EB /* VirusAnswerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirusAnswerVC.swift; sourceTree = "<group>"; };
 		047A0F1929DD60DF00626825 /* VirsuHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirsuHomeVC.swift; sourceTree = "<group>"; };
 		047A347729D41FED00DA43E3 /* InstructionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionVC.swift; sourceTree = "<group>"; };
 		047A347929D4201C00DA43E3 /* VideoPlayerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerVC.swift; sourceTree = "<group>"; };
@@ -222,6 +228,9 @@
 			isa = PBXGroup;
 			children = (
 				047A0F1929DD60DF00626825 /* VirsuHomeVC.swift */,
+				046F4D7429DEB2090079B8EB /* WelcomeVC.swift */,
+				046F4D7629DEB86D0079B8EB /* VirusInstructionVC.swift */,
+				046F4D7A29DEBB990079B8EB /* VirusAnswerVC.swift */,
 			);
 			path = Game2and3;
 			sourceTree = "<group>";
@@ -643,7 +652,9 @@
 			files = (
 				04BF600829CEE4B000002970 /* CameraHandler.swift in Sources */,
 				04BF602D29CEFCA900002970 /* LanguageHalper.swift in Sources */,
+				046F4D7B29DEBB990079B8EB /* VirusAnswerVC.swift in Sources */,
 				04F3C3BA29D1A035009AF02F /* JoinedEventVC.swift in Sources */,
+				046F4D7729DEB86D0079B8EB /* VirusInstructionVC.swift in Sources */,
 				04BF600A29CEE4B000002970 /* Utility.swift in Sources */,
 				04BF601C29CEE8B600002970 /* LoginUsreVC.swift in Sources */,
 				04BF5FE129CEE4B000002970 /* TagListView.swift in Sources */,
@@ -665,6 +676,7 @@
 				04A490B429D2FBE9002E8D58 /* CreateTeamVC.swift in Sources */,
 				04BF5FDC29CEE4B000002970 /* GlobalConstant.swift in Sources */,
 				04F3C3B629D19D66009AF02F /* EventVC.swift in Sources */,
+				046F4D7529DEB20A0079B8EB /* WelcomeVC.swift in Sources */,
 				041B477829D5A50900FC8062 /* AnswerVC.swift in Sources */,
 				04BF602C29CEFCA900002970 /* Localizer.swift in Sources */,
 				04BF600F29CEE83E00002970 /* AppDelegate.swift in Sources */,

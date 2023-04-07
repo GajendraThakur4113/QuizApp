@@ -34,6 +34,12 @@ enum Router: String {
     case event_end_time
     case get_event_finish_time
     case get_all_event_finish_time
+    case virus_event_apply_code
+    case get_event_code
+    case virus_event_start_time
+    case get_virus_event_answer_new
+    case add_virus_hint
+    case add_virus_event_ans
 
 
     public func url() -> String {
@@ -80,6 +86,18 @@ enum Router: String {
             return Router.oAuthRoute(path: "get_event_finish_time")
         case .get_all_event_finish_time:
             return Router.oAuthRoute(path: "get_all_event_finish_time")
+        case .virus_event_apply_code:
+            return Router.oAuthRoute(path: "virus_event_apply_code")
+        case .get_event_code:
+            return Router.oAuthRoute(path: "get_event_code")
+        case .virus_event_start_time:
+            return Router.oAuthRoute(path: "virus_event_start_time")
+        case .get_virus_event_answer_new:
+            return Router.oAuthRoute(path: "get_virus_event_answer_new")
+        case .add_virus_hint:
+            return Router.oAuthRoute(path: "add_virus_hint")
+        case .add_virus_event_ans:
+            return Router.oAuthRoute(path: "add_virus_event_ans")
 
         }
     }

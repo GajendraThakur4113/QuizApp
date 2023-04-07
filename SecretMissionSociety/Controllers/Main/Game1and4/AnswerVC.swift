@@ -68,6 +68,7 @@ class AnswerVC: UIViewController {
         let objVC = self.storyboard?.instantiateViewController(withIdentifier: "HIntAnswerVC") as! HIntAnswerVC
         objVC.completion = {
         }
+        objVC.arroption = ["Show Hint1 (2 minutes penalty)","Show Hint2 (5 minutes penalty)","Show Hint3 (10 minutes penalty)"]
         objVC.dicCurrentQuestion =  dicCurrentQuestion
         objVC.modalPresentationStyle = .overCurrentContext
         objVC.modalTransitionStyle = .crossDissolve

@@ -12,6 +12,10 @@ class VideoPlayerVC: UIViewController {
     
     
     @IBOutlet weak var view_Video: UIView!
+  
+    var strFrom:String! = ""
+    var strurl:String! = ""
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,20 +26,23 @@ class VideoPlayerVC: UIViewController {
         self.navigationController?.navigationBar.isHidden = false
        setNavigationBarItem(LeftTitle: "", LeftImage: "back", CenterTitle: "", CenterImage: "", RightTitle: "", RightImage: "", BackgroundColor: NAAV_BG_COLOR, BackgroundImage: "", TextColor: WHITE_COLOR, TintColor: WHITE_COLOR, Menu: "")
      
-        print("\(kappDelegate.dicCurrentEvent["video"].stringValue)")
-      
+        if strFrom == "virus" {
+            strurl = kappDelegate.dicCurrentVirus["video"].stringValue
+        } else {
+            strurl = kappDelegate.dicCurrentEvent["video"].stringValue
+        }
 
-        if let url = URL(string: kappDelegate.dicCurrentEvent["video"].stringValue.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+        if let url = URL(string: strurl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
 
-            print("sdsd \(url)")
+                print("sdsd \(url)")
 
-                  let player = AVPlayer(url: url)
-                  let controller = AVPlayerViewController()
-                  controller.player = player
-                  controller.view.frame = self.view_Video.frame
-                  self.view_Video.addSubview(controller.view)
-                  self.addChild(controller)
-                  player.play()
+//                  let player = AVPlayer(url: url)
+//                  let controller = AVPlayerViewController()
+//                  controller.player = player
+//                  controller.view.frame = self.view_Video.frame
+//                  self.view_Video.addSubview(controller.view)
+//                  self.addChild(controller)
+//                  player.play()
             
             
 //            let videoAsset = AVAsset(url: url)
@@ -54,8 +61,18 @@ class VideoPlayerVC: UIViewController {
 
 
     @IBAction func next(_ sender: Any) {
-        let nVC = self.storyboard?.instantiateViewController(withIdentifier: "MainInstructionVC") as! MainInstructionVC
-        self.navigationController?.pushViewController(nVC, animated: true)
+        
+        if strFrom == "virus" {
+           
+            let nVC = self.storyboard?.instantiateViewController(withIdentifier: "VirusInstructionVC") as! VirusInstructionVC
+            self.navigationController?.pushViewController(nVC, animated: true)
+
+        } else {
+            
+            let nVC = self.storyboard?.instantiateViewController(withIdentifier: "MainInstructionVC") as! MainInstructionVC
+            self.navigationController?.pushViewController(nVC, animated: true)
+
+        }
 
     }
  

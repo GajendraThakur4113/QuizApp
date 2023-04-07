@@ -29,6 +29,8 @@ class EventVC: UIViewController {
         self.navigationController?.navigationBar.isHidden = false
         setNavigationBarItem(LeftTitle: "", LeftImage: "", CenterTitle: "Event", CenterImage: "", RightTitle: "", RightImage: "", BackgroundColor: NAAV_BG_COLOR, BackgroundImage: "", TextColor: WHITE_COLOR, TintColor: WHITE_COLOR, Menu: "")
         WebGetEvent()
+        self.tabBarController?.tabBar.isHidden = false
+
     }
 
     func WebGetEvent() {
@@ -81,10 +83,21 @@ extension EventVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollect
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
        
-        if collectionView == nearestCollecView{
-            self.tabBarController?.selectedIndex = 2
+  
+        if indexPath.row == 0 {
+           
+           self.tabBarController?.selectedIndex = 3
+            
+        } else if indexPath.row == 1  {
+            kappDelegate.dicCurrentVirus = nearMeEvents[indexPath.row]
+            let nVC = self.storyboard?.instantiateViewController(withIdentifier: "VirsuHomeVC") as! VirsuHomeVC
+            self.navigationController?.pushViewController(nVC, animated: true)
+
+        } else if indexPath.row == 2  {
+            
+            
         }
-        
+
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
