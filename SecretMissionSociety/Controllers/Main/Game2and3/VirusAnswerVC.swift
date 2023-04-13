@@ -11,6 +11,11 @@ import SDWebImage
 
 class VirusAnswerVC: UIViewController {
     
+    @IBOutlet weak var lbl_Answe: UILabel!
+    @IBOutlet weak var btnGIve: UIButton!
+    @IBOutlet weak var btnHint: UIButton!
+    @IBOutlet weak var view_Text: UIView!
+    @IBOutlet weak var btn_Submit: UIButton!
     @IBOutlet weak var transView: UIView!
     @IBOutlet weak var text_Answer: UITextField!
     @IBOutlet weak var lbl_Timer: UILabel!
@@ -75,7 +80,11 @@ class VirusAnswerVC: UIViewController {
         if text_Answer.text?.count != 0 {
             WebFinalAnswerGame()
         } else {
-            print("Enter Answer")
+            if dicCurrentQuestion["option_Ans"].stringValue == "None" {
+                changeQuestion()
+            } else {
+                print("Yes all")
+            }
         }
     }
     @IBAction func GiveUp(_ sender: Any) {
@@ -94,11 +103,42 @@ class VirusAnswerVC: UIViewController {
     }
 
     func changeQuestion()  {
+       
         isCurrentQuestion += 1
-        dicCurrentQuestion = arrAllQuestion[isCurrentQuestion]
-        img_user.sd_setImage(with: URL(string: dicCurrentQuestion["image"].stringValue), placeholderImage: UIImage(named: "NoImageAvailable"), options: .refreshCached, completed: nil)
-        text_Detail.attributedText = dicCurrentQuestion["instructions\(Singleton.shared.languagePar!)"].stringValue.htmlToAttributedString
-        text_Answer.text = ""
+
+        if arrAllQuestion.count > isCurrentQuestion {
+            
+            dicCurrentQuestion = arrAllQuestion[isCurrentQuestion]
+            
+            if dicCurrentQuestion["option_Ans"].stringValue == "None" {
+             
+                view_Text.isHidden = true
+                btnHint.isHidden = true
+                btnGIve.isHidden = true
+                lbl_Answe.isHidden = true
+                btn_Submit.setTitle("Next", for: .normal)
+
+            } else {
+              
+                view_Text.isHidden = false
+                btnHint.isHidden = false
+                btnGIve.isHidden = false
+                lbl_Answe.isHidden = false
+                btn_Submit.setTitle("Submit", for: .normal)
+
+            }
+            
+            img_user.sd_setImage(with: URL(string: dicCurrentQuestion["image"].stringValue), placeholderImage: UIImage(named: "NoImageAvailable"), options: .refreshCached, completed: nil)
+            text_Detail.attributedText = dicCurrentQuestion["instructions"].stringValue.htmlToAttributedString
+            text_Answer.text = ""
+
+        } else {
+            
+            let nVC = self.storyboard?.instantiateViewController(withIdentifier: "EndGameVC") as! EndGameVC
+            self.navigationController?.pushViewController(nVC, animated: true)
+
+        }
+        
 
     }
     func WebAddPenality() {
@@ -110,6 +150,7 @@ class VirusAnswerVC: UIViewController {
         paramsDict["event_code"]     =    kappDelegate.strEventCode as AnyObject
         paramsDict["time"]     =   "10" as AnyObject
         paramsDict["hint_type"]     =   "3" as AnyObject
+        paramsDict["lang"]     =   Singleton.shared.language as AnyObject
 
         print(paramsDict)
         CommunicationManeger.callPostService(apiUrl: Router.add_virus_hint.url(), parameters: paramsDict, parentViewController: self, successBlock: { (responseData, message) in
@@ -120,7 +161,9 @@ class VirusAnswerVC: UIViewController {
                 if(swiftyJsonVar["status"].stringValue == "1") {
                     text_Answer.text = dicCurrentQuestion["option_Ans"].stringValue
                 } else {
-                    GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: swiftyJsonVar["result"].stringValue, on: self)
+                    text_Answer.text = dicCurrentQuestion["option_Ans"].stringValue
+
+                 //   GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: swiftyJsonVar["result"].stringValue, on: self)
 
                 }
                 self.hideProgressBar()
@@ -139,6 +182,7 @@ class VirusAnswerVC: UIViewController {
         paramsDict["lang"]     =   Singleton.shared.language as AnyObject
         paramsDict["user_id"]     =   USER_DEFAULT.value(forKey: USERID) as AnyObject
         paramsDict["event_id"]     =   "4" as AnyObject
+        paramsDict["lang"]     =   Singleton.shared.language as AnyObject
 
         
         print(paramsDict)
@@ -148,6 +192,7 @@ class VirusAnswerVC: UIViewController {
                 let swiftyJsonVar = JSON(responseData)
                 print(swiftyJsonVar)
                 if(swiftyJsonVar["status"].stringValue == "1") {
+                    
                     arrAllQuestion = swiftyJsonVar["result"].arrayValue
                     dicCurrentQuestion = arrAllQuestion[isCurrentQuestion]
                     img_user.sd_setImage(with: URL(string: dicCurrentQuestion["image"].stringValue), placeholderImage: UIImage(named: "NoImageAvailable"), options: .refreshCached, completed: nil)
@@ -182,7 +227,9 @@ class VirusAnswerVC: UIViewController {
                 if(swiftyJsonVar["status"].stringValue == "1") {
                     changeQuestion()
                 } else {
-                    GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: swiftyJsonVar["result"].stringValue, on: self)
+                    changeQuestion()
+
+                   // GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: swiftyJsonVar["result"].stringValue, on: self)
                 }
                 self.hideProgressBar()
             }

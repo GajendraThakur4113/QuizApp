@@ -5,6 +5,7 @@ struct Languages {
     
     static var MainIntstruction:String {return "MainIntstruction".localized}
     static var FinalPuzzle:String {return "FinalPuzzle".localized}
+    static var EndGame:String {return "EndGame".localized}
 
     static var AddEvent:String {return "Add Event".localized}
     static var AddRestaurent:String {return "Add Restaurent".localized}

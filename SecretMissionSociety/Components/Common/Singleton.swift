@@ -23,7 +23,7 @@ class Singleton
     var userType:String?
     var language:String?
     var timer : Timer?
-    var languagePar:String! = ""
+    var languagePar:String! = "_sp"
 
     private init(){
 //        self.userInfo = getUserData()

@@ -102,6 +102,9 @@ class VirsuHomeVC: UIViewController {
                 if(swiftyJsonVar["status"].stringValue == "1") {
                     WebGetEvent()
                     kappDelegate.strEventCode = text_Code.text!
+                    let nVC = self.storyboard?.instantiateViewController(withIdentifier: "WelcomeVC") as! WelcomeVC
+                    self.navigationController?.pushViewController(nVC, animated: true)
+
                 } else {
                     WebGetEvent()
                     GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: swiftyJsonVar["result"].stringValue, on: self)

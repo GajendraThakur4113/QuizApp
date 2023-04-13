@@ -139,6 +139,7 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollecti
             print("Banner")
             let cell = bannerCollecView.dequeueReusableCell(withReuseIdentifier: "BannerCollectionCell", for: indexPath) as! BannerCollectionCell
             let data = self.bannerResult[indexPath.row]
+//            let data = nearMeEvents[collectionView.tag]["user_product"].arrayValue[indexPath.row]["image"].str
             cell.imgView.sd_setShowActivityIndicatorView(true)
             cell.imgView.sd_setImage(with: URL(string: data["image"].stringValue), placeholderImage: UIImage(named: "NoImageAvailable"), options: .refreshCached, completed: nil)
             return cell

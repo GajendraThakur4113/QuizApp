@@ -42,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
        
         USER_DEFAULT.set("IOS123", forKey: IOS_TOKEN)
         UIApplication.shared.applicationIconBadgeNumber = 0
-        Singleton.shared.language = "en"
+        Singleton.shared.language = "sp"
     
         Switcher.updateRootVC()
         

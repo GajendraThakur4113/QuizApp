@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		040E436829D4495300E1AAC8 /* FlgMaViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040E436729D4495300E1AAC8 /* FlgMaViewVC.swift */; };
 		041B477829D5A50900FC8062 /* AnswerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041B477729D5A50800FC8062 /* AnswerVC.swift */; };
+		0436B70129E83E3E003000FD /* ShowAllVirusTimeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0436B70029E83E3E003000FD /* ShowAllVirusTimeVC.swift */; };
 		044DAFC029DB20E4005AADB6 /* InventaryDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044DAFBF29DB20E4005AADB6 /* InventaryDetailVC.swift */; };
 		046F4D7529DEB20A0079B8EB /* WelcomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046F4D7429DEB2090079B8EB /* WelcomeVC.swift */; };
 		046F4D7729DEB86D0079B8EB /* VirusInstructionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046F4D7629DEB86D0079B8EB /* VirusInstructionVC.swift */; };
@@ -26,6 +27,7 @@
 		04A490B029D2BF03002E8D58 /* ChangePassVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A490AF29D2BF03002E8D58 /* ChangePassVC.swift */; };
 		04A490B229D2BF1A002E8D58 /* ContactVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A490B129D2BF1A002E8D58 /* ContactVC.swift */; };
 		04A490B429D2FBE9002E8D58 /* CreateTeamVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A490B329D2FBE9002E8D58 /* CreateTeamVC.swift */; };
+		04AE696129E58747008F6036 /* EndGameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AE696029E58747008F6036 /* EndGameVC.swift */; };
 		04BF5F1E29CECBF400002970 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04BF5F1C29CECBF400002970 /* Main.storyboard */; };
 		04BF5F2029CECBF800002970 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04BF5F1F29CECBF800002970 /* Assets.xcassets */; };
 		04BF5F2329CECBF800002970 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04BF5F2129CECBF800002970 /* LaunchScreen.storyboard */; };
@@ -108,6 +110,7 @@
 /* Begin PBXFileReference section */
 		040E436729D4495300E1AAC8 /* FlgMaViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlgMaViewVC.swift; sourceTree = "<group>"; };
 		041B477729D5A50800FC8062 /* AnswerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerVC.swift; sourceTree = "<group>"; };
+		0436B70029E83E3E003000FD /* ShowAllVirusTimeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAllVirusTimeVC.swift; sourceTree = "<group>"; };
 		044DAFBF29DB20E4005AADB6 /* InventaryDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventaryDetailVC.swift; sourceTree = "<group>"; };
 		046F4D7429DEB2090079B8EB /* WelcomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeVC.swift; sourceTree = "<group>"; };
 		046F4D7629DEB86D0079B8EB /* VirusInstructionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirusInstructionVC.swift; sourceTree = "<group>"; };
@@ -125,6 +128,7 @@
 		04A490AF29D2BF03002E8D58 /* ChangePassVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePassVC.swift; sourceTree = "<group>"; };
 		04A490B129D2BF1A002E8D58 /* ContactVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactVC.swift; sourceTree = "<group>"; };
 		04A490B329D2FBE9002E8D58 /* CreateTeamVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTeamVC.swift; sourceTree = "<group>"; };
+		04AE696029E58747008F6036 /* EndGameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndGameVC.swift; sourceTree = "<group>"; };
 		04BF5F1329CECBF400002970 /* SecretMissionSociety.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SecretMissionSociety.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04BF5F1D29CECBF400002970 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		04BF5F1F29CECBF800002970 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -231,6 +235,8 @@
 				046F4D7429DEB2090079B8EB /* WelcomeVC.swift */,
 				046F4D7629DEB86D0079B8EB /* VirusInstructionVC.swift */,
 				046F4D7A29DEBB990079B8EB /* VirusAnswerVC.swift */,
+				04AE696029E58747008F6036 /* EndGameVC.swift */,
+				0436B70029E83E3E003000FD /* ShowAllVirusTimeVC.swift */,
 			);
 			path = Game2and3;
 			sourceTree = "<group>";
@@ -686,6 +692,7 @@
 				049F602829CF12CA00E0D073 /* HomeVC.swift in Sources */,
 				04BF601F29CEED4000002970 /* ChangeLangugeVC.swift in Sources */,
 				04BF5FDF29CEE4B000002970 /* CloseButton.swift in Sources */,
+				0436B70129E83E3E003000FD /* ShowAllVirusTimeVC.swift in Sources */,
 				0484CF0329D71D0E00BDF003 /* FinalPuzzleVC.swift in Sources */,
 				04BF600629CEE4B000002970 /* Switcher.swift in Sources */,
 				04F3C3BC29D1A05A009AF02F /* AccountlistVC.swift in Sources */,
@@ -702,6 +709,7 @@
 				04BF600C29CEE4B000002970 /* DatePickerDialog.swift in Sources */,
 				04BF5FE229CEE4B000002970 /* Countries.swift in Sources */,
 				04BF601A29CEE8B600002970 /* ForgotPasswordVC.swift in Sources */,
+				04AE696129E58747008F6036 /* EndGameVC.swift in Sources */,
 				04BF5FDD29CEE4B000002970 /* CustomPointAnnotation.swift in Sources */,
 				04BF5FE429CEE4B000002970 /* Country.swift in Sources */,
 				04BF5FA829CEE4B000002970 /* ViewControllerExt.swift in Sources */,
