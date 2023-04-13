@@ -77,6 +77,7 @@ class VirusAnswerVC: UIViewController {
         WebAddPenality()
     }
     @IBAction func SubmitAnswer(_ sender: Any) {
+        
         if text_Answer.text?.count != 0 {
             WebFinalAnswerGame()
         } else {

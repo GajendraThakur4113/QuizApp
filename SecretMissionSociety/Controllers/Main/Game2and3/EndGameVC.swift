@@ -32,10 +32,10 @@ class EndGameVC: UIViewController {
     }
 
     @IBAction func cross(_ sender: Any) {
-        let nVC = self.storyboard?.instantiateViewController(withIdentifier: "EndGameVC") as! EndGameVC
+       
+        let nVC = self.storyboard?.instantiateViewController(withIdentifier: "ShowAllVirusTimeVC") as! ShowAllVirusTimeVC
         self.navigationController?.pushViewController(nVC, animated: true)
-
-
+        
     }
     
     
