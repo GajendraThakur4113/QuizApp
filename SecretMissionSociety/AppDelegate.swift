@@ -3,6 +3,7 @@ import UIKit
 import IQKeyboardManagerSwift
 import CoreLocation
 import SwiftyJSON
+
 //import GoogleMaps
 //import UserNotifications
 //import GooglePlacePicker
@@ -15,6 +16,7 @@ import SwiftyJSON
 //0527984448
 //Pharma01
 //Play Store
+
 @UIApplicationMain  //,MessagingDelegate
 class AppDelegate: UIResponder, UIApplicationDelegate {
     

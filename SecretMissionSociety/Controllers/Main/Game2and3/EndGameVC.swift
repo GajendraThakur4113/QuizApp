@@ -32,13 +32,42 @@ class EndGameVC: UIViewController {
     }
 
     @IBAction func cross(_ sender: Any) {
-       
-        let nVC = self.storyboard?.instantiateViewController(withIdentifier: "ShowAllVirusTimeVC") as! ShowAllVirusTimeVC
-        self.navigationController?.pushViewController(nVC, animated: true)
-        
+        WebEndTime()
     }
     
-    
+    func WebEndTime() {
+        showProgressBar()
+        var paramsDict:[String:AnyObject] = [:]
+        paramsDict["user_id"]     =   USER_DEFAULT.value(forKey: USERID) as AnyObject
+        paramsDict["event_id"]     =   kappDelegate.dicCurrentVirus["id"].stringValue as AnyObject
+        paramsDict["event_code"]     =    kappDelegate.strEventCode as AnyObject
+        paramsDict["lang"]     =   Singleton.shared.language as AnyObject
+
+        print(paramsDict)
+        CommunicationManeger.callPostService(apiUrl: Router.event_end_time.url(), parameters: paramsDict, parentViewController: self, successBlock: { (responseData, message) in
+            
+            DispatchQueue.main.async { [self] in
+               
+                let swiftyJsonVar = JSON(responseData)
+                print(swiftyJsonVar)
+
+                if(swiftyJsonVar["status"].stringValue == "1") {
+                   
+                    let nVC = self.storyboard?.instantiateViewController(withIdentifier: "ShowAllVirusTimeVC") as! ShowAllVirusTimeVC
+                    self.navigationController?.pushViewController(nVC, animated: true)
+
+                } else {
+
+                }
+                self.hideProgressBar()
+            }
+
+        },failureBlock: { (error : Error) in
+            self.hideProgressBar()
+            GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: (error.localizedDescription), on: self)
+        })
+    }
+
     func WebStartGame() {
     
         showProgressBar()

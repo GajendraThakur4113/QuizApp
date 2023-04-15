@@ -94,9 +94,9 @@ class SignupVC: UIViewController {
             DispatchQueue.main.async { [self] in
                 let swiftyJsonVar = JSON(responseData)
                 print(swiftyJsonVar)
-                if(swiftyJsonVar["message"] == "successfull") {
+                if(swiftyJsonVar["status"] == "1") {
                     self.perform(#selector(gBack), with: nil, afterDelay: 1.0)
-                    GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: swiftyJsonVar["result"].string!, on: self)
+                    GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: swiftyJsonVar["message"].string!, on: self)
                 } else {
                     let message = swiftyJsonVar["message"].string
                     GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: message!, on: self)

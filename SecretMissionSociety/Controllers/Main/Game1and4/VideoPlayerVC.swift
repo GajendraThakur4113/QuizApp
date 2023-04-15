@@ -36,13 +36,13 @@ class VideoPlayerVC: UIViewController {
 
                 print("sdsd \(url)")
 
-//                  let player = AVPlayer(url: url)
-//                  let controller = AVPlayerViewController()
-//                  controller.player = player
-//                  controller.view.frame = self.view_Video.frame
-//                  self.view_Video.addSubview(controller.view)
-//                  self.addChild(controller)
-//                  player.play()
+                  let player = AVPlayer(url: url)
+                  let controller = AVPlayerViewController()
+                  controller.player = player
+                  controller.view.frame = self.view_Video.frame
+                  self.view_Video.addSubview(controller.view)
+                  self.addChild(controller)
+                  player.play()
             
             
 //            let videoAsset = AVAsset(url: url)
