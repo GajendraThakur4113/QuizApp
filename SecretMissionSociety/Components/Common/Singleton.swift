@@ -24,7 +24,21 @@ class Singleton
     var language:String?
     var timer : Timer?
     var languagePar:String! = "_sp"
+    let header = """
+            <head>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+                <style>
+                    body {
+                        font-family: "Avenir";
+                        font-size: 17px;
+                    }
+                </style>
+            </head>
+            <body>
+            """
+    let javascript = "var meta = document.createElement('meta');meta.setAttribute('name', 'viewport');meta.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=10.0, user-scalable=yes');document.getElementsByTagName('head')[0].appendChild(meta);"
 
+    
     private init(){
 //        self.userInfo = getUserData()
     }

@@ -21,8 +21,8 @@ import SwiftyJSON
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow? 
-    var CURRENT_LAT = ""
-    var CURRENT_LON = ""
+    var CURRENT_LAT = "23.51366763042601"
+    var CURRENT_LON = "-102.20122149999999"
     var isValidLocation:Bool = true
     var coordinate1 = CLLocation(latitude: 0.0, longitude: 0.0)
     var coordinate2 = CLLocation(latitude: 0.0, longitude: 0.0)

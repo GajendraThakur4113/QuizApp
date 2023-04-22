@@ -18,7 +18,8 @@ class FlgMaViewVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+       // WebGetCode()
+
     }
     
     override func viewWillAppear(_ animated: Bool) {

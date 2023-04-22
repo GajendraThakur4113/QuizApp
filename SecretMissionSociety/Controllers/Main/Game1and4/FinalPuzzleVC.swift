@@ -39,8 +39,7 @@ class FinalPuzzleVC: UIViewController {
      
         setNavigationBarItem(LeftTitle: "", LeftImage: "back", CenterTitle: "Final Puzzle", CenterImage: "", RightTitle: "", RightImage: "", BackgroundColor: NAAV_BG_COLOR, BackgroundImage: "", TextColor: WHITE_COLOR, TintColor: WHITE_COLOR, Menu: "")
 
-        lbl_Titile.attributedText = Languages.FinalPuzzle.htmlToAttributedString
-
+        lbl_Titile.text = Languages.FinalPuzzle
         WebGetAllInvent()
     }
 

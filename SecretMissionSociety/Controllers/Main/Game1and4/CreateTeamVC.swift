@@ -60,7 +60,10 @@ class CreateTeamVC: UIViewController {
         paramsDict["event_id"]     =   kappDelegate.dicCurrentEvent["id"].stringValue as AnyObject
         paramsDict["event_code"]     =   text_Code.text! as AnyObject
         paramsDict["team_name"]     =   text_name.text! as AnyObject
+        paramsDict["lat"]     =   kappDelegate.CURRENT_LAT as AnyObject
+        paramsDict["lon"]     =   kappDelegate.CURRENT_LON as AnyObject
 
+     //   lon=79.00105708465577&team_name=dcc&lat=21.997414921678143
         print(paramsDict)
         CommunicationManeger.callPostService(apiUrl: Router.event_start_time.url(), parameters: paramsDict, parentViewController: self, successBlock: { (responseData, message) in
             
