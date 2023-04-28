@@ -115,7 +115,7 @@ class AnswerVC: UIViewController,UIWebViewDelegate,WKNavigationDelegate {
             DispatchQueue.main.async { [self] in
                 let swiftyJsonVar = JSON(responseData)
                 print(swiftyJsonVar)
-                if(swiftyJsonVar["status"].stringValue == "1") {
+                if(swiftyJsonVar["status"].stringValue == "1" || swiftyJsonVar["status"].stringValue == "2") {
                     transView.isHidden = false
                     view_QuizSolved.isHidden = false
                     view_Question.isHidden = true

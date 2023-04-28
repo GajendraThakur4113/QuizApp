@@ -140,18 +140,22 @@ extension ShowAllTeamAndTimeVC: UITableViewDelegate,UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
      
-        let cell = tableList.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! JoinedEventCell
         
         
         if tableView == table_Leaderboard {
          
+            let cell = table_Leaderboard.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! JoinedEventCell
+
             let data = arr_Leaderbard[indexPath.row]
 
             cell.lbl_EventName.text = "\(data["team_name"].stringValue)"
             cell.lbl_Addrss.text = "\(data["event_total_time"].stringValue)"
 
+            return cell
 
         } else {
+
+            let cell = tableList.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! JoinedEventCell
 
             let data = nearMeEvents[indexPath.row]
 
@@ -159,9 +163,10 @@ extension ShowAllTeamAndTimeVC: UITableViewDelegate,UITableViewDataSource{
             let arr = data["date_time"].stringValue.components(separatedBy: " ")
             cell.lbl_Addrss.text = arr[0]
 
+            return cell
+
         }
 
-        return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 

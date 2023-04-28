@@ -44,7 +44,7 @@ class EndGameVC: UIViewController {
         paramsDict["lang"]     =   Singleton.shared.language as AnyObject
 
         print(paramsDict)
-        CommunicationManeger.callPostService(apiUrl: Router.event_end_time.url(), parameters: paramsDict, parentViewController: self, successBlock: { (responseData, message) in
+        CommunicationManeger.callPostService(apiUrl: Router.virus_event_end_time.url(), parameters: paramsDict, parentViewController: self, successBlock: { (responseData, message) in
             
             DispatchQueue.main.async { [self] in
                

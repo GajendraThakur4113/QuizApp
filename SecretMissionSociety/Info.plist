@@ -29,8 +29,6 @@
 		<string>poppins_bold.ttf</string>
 		<string>inter_semi_bold.ttf</string>
 	</array>
-	<key>UIStatusBarStyle</key>
-	<string>UIStatusBarStyleLightContent</string>
 	<key>gad_preferred_webview</key>
 	<string>wkwebview</string>
 </dict>
