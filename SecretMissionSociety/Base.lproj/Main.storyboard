@@ -2050,10 +2050,10 @@
                                 <rect key="frame" x="0.0" y="48" width="414" height="814"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ubP-B6-kHz">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="190"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="265"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="RUI-g9-3LF">
-                                                <rect key="frame" x="15" y="30" width="384" height="60"/>
+                                                <rect key="frame" x="15" y="30" width="384" height="135"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fNG-E4-DNT">
                                                         <rect key="frame" x="0.0" y="0.0" width="384" height="60"/>
@@ -2101,10 +2101,29 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
+                                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ucq-ij-hkC">
+                                                        <rect key="frame" x="0.0" y="75" width="384" height="60"/>
+                                                        <color key="backgroundColor" name="MAIN"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="60" id="yMW-9K-mRe"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="17"/>
+                                                        <state key="normal" title="DELETE ACCOUNT">
+                                                            <color key="titleColor" name="THEMECOLOR"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="10"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="deleteAcc:" destination="wcu-1m-wli" eventType="touchUpInside" id="B67-U1-PdG"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                             </stackView>
                                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uHz-vI-3nb">
-                                                <rect key="frame" x="15" y="110" width="384" height="60"/>
+                                                <rect key="frame" x="15" y="185" width="384" height="60"/>
                                                 <color key="backgroundColor" name="MAIN"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="60" id="gG2-Rh-Slf"/>
@@ -3152,7 +3171,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="Ppx-4Z-wLL">
-                                <rect key="frame" x="10" y="288" width="394" height="484"/>
+                                <rect key="frame" x="10" y="308" width="394" height="464"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <string key="text">Haz Click en el menú de arriba. \n  Click en Mapa para ver ubicaciones.\n  Click en Inventario para ver pistas encontradas \n * Click en Rompecabezas final para lograr terminar el reto</string>
                                 <color key="textColor" systemColor="labelColor"/>
@@ -3164,17 +3183,17 @@
                                 </connections>
                             </textView>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wxb-bd-zgl">
-                                <rect key="frame" x="10" y="283" width="394" height="489"/>
+                                <rect key="frame" x="10" y="303" width="394" height="469"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
                                     <wkPreferences key="preferences"/>
                                 </wkWebViewConfiguration>
                             </wkWebView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="inst_popup" translatesAutoresizingMaskIntoConstraints="NO" id="6Lo-T6-Hoe">
-                                <rect key="frame" x="0.0" y="63" width="414" height="200"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="inst_popup" translatesAutoresizingMaskIntoConstraints="NO" id="6Lo-T6-Hoe">
+                                <rect key="frame" x="0.0" y="63" width="414" height="220"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="Inj-zA-h0g"/>
+                                    <constraint firstAttribute="height" constant="220" id="Inj-zA-h0g"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -3182,8 +3201,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ufx-SM-1gu">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ufx-SM-1gu">
+                                <rect key="frame" x="0.0" y="1000" width="414" height="896"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="aYS-qQ-lO6">
                                         <rect key="frame" x="20" y="252" width="374" height="392"/>
@@ -5589,7 +5608,7 @@
         <image name="ic_checked" width="600" height="600"/>
         <image name="ic_loca" width="24" height="34"/>
         <image name="inst_popup" width="590" height="567"/>
-        <image name="last_acc_img" width="414" height="314"/>
+        <image name="last_acc_img" width="300" height="228"/>
         <image name="locationCen" width="60" height="60"/>
         <image name="nextt" width="7.5" height="12"/>
         <image name="place" width="1125" height="1302"/>

@@ -24,7 +24,23 @@ class ProfileVC: UIViewController {
         CheckGetAPI()
         
     }
-    
+    @IBAction func deleteAcc(_ sender: Any) {
+        logout()
+    }
+    func logout() {
+        let alertController = UIAlertController(title: APP_NAME, message: "Are you sure you want to delete account?", preferredStyle: .alert)
+        let yesAction: UIAlertAction = UIAlertAction(title: "Yes", style: .default) { [self] action -> Void in
+        
+            deleteAcc()
+        }
+        let noAction: UIAlertAction = UIAlertAction(title: "No", style: .cancel) { action -> Void in
+            //Just dismiss the action sheet
+        }
+        alertController.addAction(yesAction)
+        alertController.addAction(noAction)
+        present(alertController, animated: true, completion: nil)
+    }
+
     @IBAction func btnForgotPassword(_ sender: UIButton) {
         if isValidInput() {
             CheckEmailStatus()
@@ -75,7 +91,38 @@ class ProfileVC: UIViewController {
                 GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: (error.localizedDescription), on: self)
             })
         }
-  
+    func deleteAcc() {
+        showProgressBar()
+        
+        var paramsDict:[String:AnyObject] = [:]
+        paramsDict["user_id"]     =   kUserDefault.value(forKey: USERID) as AnyObject
+       
+        print(paramsDict)
+    
+        CommunicationManeger.callPostService(apiUrl: Router.account_delete.url(), parameters: paramsDict, parentViewController: self, successBlock: { (responseData, message) in
+            
+            DispatchQueue.main.async { [self] in
+                let swiftyJsonVar = JSON(responseData)
+                print(swiftyJsonVar)
+                if(swiftyJsonVar["message"] == "successfull") {
+                    UserDefaults.standard.removeObject(forKey: USERID)
+                    UserDefaults.standard.synchronize()
+                    Switcher.updateRootVC()
+                    
+                } else {
+                    let message = swiftyJsonVar["message"].string
+                    GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: message!, on: self)
+                }
+                self.hideProgressBar()
+            }
+            
+            
+        },failureBlock: { (error : Error) in
+            self.hideProgressBar()
+            GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: (error.localizedDescription), on: self)
+        })
+    }
+
     func CheckGetAPI() {
         showProgressBar()
         

@@ -875,12 +875,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Developer: GABRIEL KOHLER (N4VR3R8VK4)";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = Y33UCR56QH;
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = Y33UCR56QH;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SecretMissionSociety/Info.plist;
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_NSCameraUsageDescription = "App want use Camera for uplaod profile picture.";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "App want use your location for add new add post as your suitable address. User can find according to address of post location.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "App want use your location for add new add post as your suitable address. User can find according to address of post location.";
@@ -919,11 +919,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = Y33UCR56QH;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SecretMissionSociety/Info.plist;
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_NSCameraUsageDescription = "App want use Camera for uplaod profile picture.";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "App want use your location for add new add post as your suitable address. User can find according to address of post location.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "App want use your location for add new add post as your suitable address. User can find according to address of post location.";

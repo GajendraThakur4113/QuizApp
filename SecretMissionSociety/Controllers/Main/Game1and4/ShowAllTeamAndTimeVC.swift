@@ -82,7 +82,7 @@ class ShowAllTeamAndTimeVC: UIViewController {
                     self.nearMeEvents = swiftyJsonVar["result"].arrayValue
                     self.tableList.reloadData()
                     let dic = swiftyJsonVar["event_details"]
-                    lbl_Name.text = dic["event_name"].stringValue
+                    lbl_Name.text = "\(dic["event_name"].stringValue) \n\n Team Name : \(swiftyJsonVar["team_name"].stringValue)"
                     img_Event.sd_setImage(with: URL(string: dic["image"].stringValue), placeholderImage: UIImage(named: "NoImageAvailable"), options: .refreshCached, completed: nil)
 
                     lbl_Time.text = swiftyJsonVar["event_total_time"].stringValue
