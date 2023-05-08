@@ -33,6 +33,6 @@
 "Register"                              = "Registro";
 "Enter Details"                         = "Características del evento";
 
-"MainIntstruction"                      = "Haz Click en el menú de arriba. \n  Click en Mapa para ver ubicaciones.\n  Click en Inventario para ver pistas encontradas \n * Click en Rompecabezas final para lograr terminar el reto";
+"MainIntstruction"                      = "Haz Click en el menú de arriba. \n * Click en Mapa para ver ubicaciones.\n * Click en Inventario para ver pistas encontradas \n * Click en Rompecabezas final para lograr terminar el reto";
 "FinalPuzzle"                           = "Aquí acumularás las pistas encontradas.  Para resolver el acertijo final, ELIJE una persona, un objeto y un lugar que de acuerdo a las pistas de INVENTARIO te revelarán el paradero del TESORO AZTECA.  Si no respondes bien, se te penalizará con tiempo.";
 "EndGame"                               = "¡FELICIDADES!Acaban de salvar al mundo de una potencial pandemia.Asegúrate de sacar fotos y subirlo a tus redes sociales";
