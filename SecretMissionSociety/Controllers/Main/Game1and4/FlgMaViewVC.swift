@@ -11,6 +11,7 @@ import SwiftyJSON
 
 class FlgMaViewVC: UIViewController {
     
+    @IBOutlet weak var view_Bottom: UIView!
     @IBOutlet weak var mapView: MKMapView!
    
     var arrlist:[JSON]! = []
@@ -48,6 +49,8 @@ class FlgMaViewVC: UIViewController {
         }
     }
     
+    @IBAction func Archived(_ sender: Any) {
+    }
     func initMapViewAnnotation() {
         self.mapView.removeOverlays(mapView.overlays)
         self.mapView.annotations.forEach {
@@ -92,14 +95,19 @@ class FlgMaViewVC: UIViewController {
 extension FlgMaViewVC: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView){
-          
-            let strId = view.annotation?.title ?? ""
-            print("didSelectAnnotationTapped \(view.annotation?.title ?? "")")
-            let arr = arrlist.filter({$0["id"].stringValue == strId})
-            print("didSelectAnnotationTapped \(arr)")
-            let nVC = self.storyboard?.instantiateViewController(withIdentifier: "AnswerVC") as! AnswerVC
-            nVC.dicCurrentQuestion = arr[0]
-            self.navigationController?.pushViewController(nVC, animated: true)
+        
+//                if kappDelegate.dicCurrentEvent["type"].stringValue != "crime" {
+                    
+                    let strId = view.annotation?.title ?? ""
+                    print("didSelectAnnotationTapped \(view.annotation?.title ?? "")")
+                    let arr = arrlist.filter({$0["id"].stringValue == strId})
+                    print("didSelectAnnotationTapped \(arr)")
+                    let nVC = self.storyboard?.instantiateViewController(withIdentifier: "AnswerVC") as! AnswerVC
+                    nVC.dicCurrentQuestion = arr[0]
+                    self.navigationController?.pushViewController(nVC, animated: true)
+
+        
+//                }
 
         }
 

@@ -160,7 +160,7 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollecti
        
         if collectionView == nearestCollecView {
             
-            if indexPath.row == 0 {
+            if indexPath.row == 0 || indexPath.row == 2 {
                
                self.tabBarController?.selectedIndex = 3
                 
@@ -169,7 +169,7 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollecti
                 let nVC = self.storyboard?.instantiateViewController(withIdentifier: "VirsuHomeVC") as! VirsuHomeVC
                 self.navigationController?.pushViewController(nVC, animated: true)
 
-            } else if indexPath.row == 2  {
+            } else if indexPath.row == 3  {
                 
                 
             }

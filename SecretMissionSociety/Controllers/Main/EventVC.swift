@@ -84,16 +84,17 @@ extension EventVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollect
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
        
   
-        if indexPath.row == 0 {
-           
+        if indexPath.row == 0 || indexPath.row == 2 {
+
            self.tabBarController?.selectedIndex = 3
             
         } else if indexPath.row == 1  {
+           
             kappDelegate.dicCurrentVirus = nearMeEvents[indexPath.row]
             let nVC = self.storyboard?.instantiateViewController(withIdentifier: "VirsuHomeVC") as! VirsuHomeVC
             self.navigationController?.pushViewController(nVC, animated: true)
 
-        } else if indexPath.row == 2  {
+        } else if indexPath.row == 3  {
             
             
         }

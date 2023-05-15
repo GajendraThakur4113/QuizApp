@@ -13,6 +13,9 @@ import WebKit
 
 class AnswerVC: UIViewController,UIWebViewDelegate,WKNavigationDelegate {
     
+    @IBOutlet weak var img_Bg: UIImageView!
+    @IBOutlet weak var lbl_Count: UILabel!
+    @IBOutlet weak var view_A: UIView!
     @IBOutlet weak var height_table: NSLayoutConstraint!
     @IBOutlet weak var img_Answer: UIImageView!
     @IBOutlet weak var view_QuizSolved: UIView!
@@ -29,6 +32,9 @@ class AnswerVC: UIViewController,UIWebViewDelegate,WKNavigationDelegate {
     var arroptionAdnswer:[String] = ["A","B","C","D"]
     var isAnswer:String! = ""
 
+    var totalSecond = Int()
+    var timer:Timer?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,7 +43,23 @@ class AnswerVC: UIViewController,UIWebViewDelegate,WKNavigationDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.isHidden = false
+        
+        if dicCurrentQuestion["timer"].stringValue != "0" {
+            self.navigationController?.navigationBar.isHidden = true
+            view_A.isHidden = false
+            totalSecond = Int(dicCurrentQuestion["timer"].stringValue)!
+          
+            let imageData = try? Data(contentsOf: Bundle.main.url(forResource: "bacj", withExtension: "gif")!)
+            
+            let advTimeGif = UIImage.gifImageWithData(imageData!)
+            img_Bg.image = advTimeGif
+            startTimer()
+            
+        } else {
+            self.navigationController?.navigationBar.isHidden = false
+            view_A.isHidden = true
+
+        }
       
         setNavigationBarItem(LeftTitle: "", LeftImage: "back", CenterTitle: dicCurrentQuestion["event_type"].stringValue, CenterImage: "", RightTitle: "", RightImage: "", BackgroundColor: NAAV_BG_COLOR, BackgroundImage: "", TextColor: WHITE_COLOR, TintColor: WHITE_COLOR, Menu: "")
   
@@ -62,6 +84,35 @@ class AnswerVC: UIViewController,UIWebViewDelegate,WKNavigationDelegate {
         arroption.append(dicCurrentQuestion["option_C"].stringValue)
         arroption.append(dicCurrentQuestion["option_D"].stringValue)
         table_Answer.reloadData()
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        timer?.invalidate()
+
+    }
+    func startTimer(){
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(countdown), userInfo: nil, repeats: true)
+    }
+
+    @objc func countdown() {
+        var hours: Int
+        var minutes: Int
+        var seconds: Int
+
+        if totalSecond <= 0 {
+            timer?.invalidate()
+            isAnswer = dicCurrentQuestion["option_Ans"].stringValue
+            WebAddPenality(strepn: "10")
+            WebAddAnswer()
+            lbl_Count.text = "Time's Up"
+
+        } else {
+            totalSecond = totalSecond - 1
+            hours = totalSecond / 3600
+            minutes = (totalSecond % 3600) / 60
+            seconds = (totalSecond % 3600) % 60
+            lbl_Count.text = String(format: "%02d",totalSecond)
+        }
+        
     }
 
     @IBAction func cross(_ sender: Any) {
@@ -99,6 +150,10 @@ class AnswerVC: UIViewController,UIWebViewDelegate,WKNavigationDelegate {
 
     }
     
+    @IBAction func backk(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+
+    }
     //MARK:API
     func WebAddAnswer() {
         showProgressBar()
@@ -123,7 +178,7 @@ class AnswerVC: UIViewController,UIWebViewDelegate,WKNavigationDelegate {
 
                 } else {
                     GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: "Wrong Answer 2 Min Time Penalty Added", on: self)
-                    WebAddPenality()
+                    WebAddPenality(strepn: "2")
                 }
                 self.hideProgressBar()
             }
@@ -133,7 +188,7 @@ class AnswerVC: UIViewController,UIWebViewDelegate,WKNavigationDelegate {
             GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: (error.localizedDescription), on: self)
         })
     }
-    func WebAddPenality() {
+    func WebAddPenality(strepn:String) {
 
         var paramsDict:[String:AnyObject] = [:]
         paramsDict["user_id"]     =   USER_DEFAULT.value(forKey: USERID) as AnyObject
@@ -141,7 +196,7 @@ class AnswerVC: UIViewController,UIWebViewDelegate,WKNavigationDelegate {
         paramsDict["event_instructions_id"]     =   dicCurrentQuestion["id"].stringValue as AnyObject
         paramsDict["event_code"]     =    kappDelegate.strEventCode as AnyObject
         paramsDict["ans"]     =   isAnswer as AnyObject
-        paramsDict["time"]     =   "2" as AnyObject
+        paramsDict["time"]     =   strepn as AnyObject
         paramsDict["hint_type"]     =   "2" as AnyObject
 
         print(paramsDict)
@@ -189,3 +244,4 @@ extension AnswerVC: UITableViewDelegate,UITableViewDataSource {
     }
 
 }
+

@@ -24,11 +24,13 @@ class MainInstructionVC: UIViewController,UIWebViewDelegate,WKNavigationDelegate
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+ 
         self.navigationController?.navigationBar.isHidden = false
-       setNavigationBarItem(LeftTitle: "", LeftImage: "back", CenterTitle: "Instructions", CenterImage: "", RightTitle: "", RightImage: "Dotss", BackgroundColor: NAAV_BG_COLOR, BackgroundImage: "", TextColor: WHITE_COLOR, TintColor: WHITE_COLOR, Menu: "")
+   
+        setNavigationBarItem(LeftTitle: "", LeftImage: "back", CenterTitle: "Instructions", CenterImage: "", RightTitle: "", RightImage: "Dotss", BackgroundColor: NAAV_BG_COLOR, BackgroundImage: "", TextColor: WHITE_COLOR, TintColor: WHITE_COLOR, Menu: "")
+  
         transView.isHidden = true
- //       text_Detail.attributedText = Languages.MainIntstruction.htmlToAttributedString
-      
+
         web_View.scrollView.isScrollEnabled = true
         web_View.scrollView.bounces = false
         web_View.allowsBackForwardNavigationGestures = false
@@ -54,11 +56,11 @@ class MainInstructionVC: UIViewController,UIWebViewDelegate,WKNavigationDelegate
     }
     @IBAction func map(_ sender: Any) {
         
-        if kappDelegate.dicCurrentEvent["type"].stringValue != "crime" {
+//        if kappDelegate.dicCurrentEvent["type"].stringValue != "crime" {
             let nVC = self.storyboard?.instantiateViewController(withIdentifier: "FlgMaViewVC") as! FlgMaViewVC
             self.navigationController?.pushViewController(nVC, animated: true)
-
-        }
+//
+//        }
 
     }
     @IBAction func inventery(_ sender: Any) {
