@@ -31,6 +31,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var dicCurrentEvent:JSON!
     var dicCurrentVirus:JSON!
 
+    var dicCurrentQuestion:JSON!
+    var strIsFrom:String! = ""
+
 
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {

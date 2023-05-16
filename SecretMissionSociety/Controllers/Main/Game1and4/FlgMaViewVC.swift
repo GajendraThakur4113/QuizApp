@@ -28,8 +28,12 @@ class FlgMaViewVC: UIViewController {
         self.navigationController?.navigationBar.isHidden = false
        setNavigationBarItem(LeftTitle: "", LeftImage: "back", CenterTitle: "Map", CenterImage: "", RightTitle: "", RightImage: "", BackgroundColor: NAAV_BG_COLOR, BackgroundImage: "", TextColor: WHITE_COLOR, TintColor: WHITE_COLOR, Menu: "")
         WebGetCode()
+        
+       
     }
-    
+    override func viewDidDisappear(_ animated: Bool) {
+        kappDelegate.strIsFrom = "No"
+    }
     //MARK:Map
      
     func updateMapViewAndAnnotation(_ address: String, _ location_coordinate: CLLocationCoordinate2D) {
@@ -104,6 +108,7 @@ extension FlgMaViewVC: MKMapViewDelegate {
                     print("didSelectAnnotationTapped \(arr)")
                     let nVC = self.storyboard?.instantiateViewController(withIdentifier: "AnswerVC") as! AnswerVC
                     nVC.dicCurrentQuestion = arr[0]
+                    kappDelegate.strIsFrom = "No"
                     self.navigationController?.pushViewController(nVC, animated: true)
 
         
@@ -114,16 +119,35 @@ extension FlgMaViewVC: MKMapViewDelegate {
     func showAnnotaionOnMap(arrAll:[JSON]) {
         mapView.removeAnnotations(mapView.annotations)
         var arrAllAnn:[MKPointAnnotation] =  []
+        var coordinates:[CLLocationCoordinate2D] =  [CLLocationCoordinate2D(latitude: 19.429831909884044, longitude: -99.19601930833377),CLLocationCoordinate2D(latitude: 19.430473340790762, longitude: -99.19647760455643)]
+      
+//        let sourcePlacemark = MKPlacemark(coordinate: pickupCoordinate, addressDictionary: nil)
+//        let destinationPlacemark = MKPlacemark(coordinate: destinationCoordinate, addressDictionary: nil)
+        
+        
 
+//        let sourceMapItem = MKMapItem(placemark: sourcePlacemark)
+//        let destinationMapItem = MKMapItem(placemark: destinationPlacemark)
+
+        var isCurrentId:Double! = 0.0
+       
+        if kappDelegate.strIsFrom == "Yes" {
+            
+            let pdiLat = kappDelegate.dicCurrentQuestion["lat"].stringValue.trimmingCharacters(in: .whitespaces)
+            let pdiLot = kappDelegate.dicCurrentQuestion["lon"].stringValue.trimmingCharacters(in: .whitespaces)
+            isCurrentId = Double(kappDelegate.dicCurrentQuestion["id"].stringValue.trimmingCharacters(in: .whitespaces))! + 1.0
+           // coordinates.append(CLLocationCoordinate2DMake(Double(pdiLat)!, Double(pdiLot)!))
+
+        }
         for dic in arrAll {
             
             var pickupCoordinat:CLLocationCoordinate2D!
             let pdiLat = dic["lat"].stringValue.trimmingCharacters(in: .whitespaces)
             let pdiLot = dic["lon"].stringValue.trimmingCharacters(in: .whitespaces)
+            let idISCurent = dic["id"].stringValue.trimmingCharacters(in: .whitespaces)
 
-            print("All latlong \(pdiLat) \(pdiLot)")
-            print("All latlong \(Double(pdiLat) ?? 0.0) \(Double(pdiLot))")
-
+            
+            
             let sourceAnnotation = CustomPointAnnotation()
 
             if pdiLat != "" &&  pdiLot != "" && dic["answer_status"].numberValue == 0 {
@@ -141,14 +165,39 @@ extension FlgMaViewVC: MKMapViewDelegate {
                 sourceAnnotation.title = dic["id"].stringValue
 
             }
+            print("No Routesfs \(isCurrentId)")
+            print("No Routefssf \(Double(idISCurent)!)")
+
+            if kappDelegate.strIsFrom == "Yes"  {
+                print("Yes Route ")
+
+                if isCurrentId == Double(idISCurent)! {
+                   // coordinates.append(CLLocationCoordinate2DMake(Double(pdiLat)!, Double(pdiLot)!))
+                    
+                    print("Yes coordinates \(coordinates) ")
+
+                    let polyline = MKPolyline(coordinates: coordinates, count: coordinates.count)
+                    mapView.addOverlay(polyline)
+
+                }
+            } else {
+                print("No Route")
+            }
+            
             arrAllAnn.append(sourceAnnotation)
         }
 
-
+       
         self.initMapViewAnnotation()
 
         self.mapView.showAnnotations(arrAllAnn, animated: true )
 
+        if kappDelegate.strIsFrom == "Yes" {
+            view_Bottom.isHidden = false
+        } else  {
+            view_Bottom.isHidden = true
+
+        }
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -179,6 +228,17 @@ extension FlgMaViewVC: MKMapViewDelegate {
         
         return anView
     }
-    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+
+        if let routePolyline = overlay as? MKPolyline {
+            let renderer = MKPolylineRenderer(polyline: routePolyline)
+            renderer.strokeColor = .darkGray
+            renderer.lineWidth = 7
+            return renderer
+        }
+        
+        return MKOverlayRenderer()
+    }
+
 
 }

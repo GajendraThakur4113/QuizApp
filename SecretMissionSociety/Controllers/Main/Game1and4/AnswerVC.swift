@@ -120,7 +120,15 @@ class AnswerVC: UIViewController,UIWebViewDelegate,WKNavigationDelegate {
     }
     
     @IBAction func gotoMap(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+      
+        if dicCurrentQuestion["timer"].stringValue != "0" {
+            kappDelegate.strIsFrom = "Yes"
+            kappDelegate.dicCurrentQuestion = dicCurrentQuestion
+            self.navigationController?.popViewController(animated: true)
+        } else {
+            self.navigationController?.popViewController(animated: true)
+        }
+        
     }
     
     @IBAction func submitAnswer(_ sender: Any) {
