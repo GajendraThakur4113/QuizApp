@@ -11,6 +11,7 @@ import SwiftyJSON
 
 class FlgMaViewVC: UIViewController {
     
+    @IBOutlet weak var lbl_Timer: UILabel!
     @IBOutlet weak var view_Bottom: UIView!
     @IBOutlet weak var mapView: MKMapView!
    
@@ -119,15 +120,8 @@ extension FlgMaViewVC: MKMapViewDelegate {
     func showAnnotaionOnMap(arrAll:[JSON]) {
         mapView.removeAnnotations(mapView.annotations)
         var arrAllAnn:[MKPointAnnotation] =  []
-        var coordinates:[CLLocationCoordinate2D] =  [CLLocationCoordinate2D(latitude: 19.429831909884044, longitude: -99.19601930833377),CLLocationCoordinate2D(latitude: 19.430473340790762, longitude: -99.19647760455643)]
+        var coordinates:[CLLocationCoordinate2D] =  []
       
-//        let sourcePlacemark = MKPlacemark(coordinate: pickupCoordinate, addressDictionary: nil)
-//        let destinationPlacemark = MKPlacemark(coordinate: destinationCoordinate, addressDictionary: nil)
-        
-        
-
-//        let sourceMapItem = MKMapItem(placemark: sourcePlacemark)
-//        let destinationMapItem = MKMapItem(placemark: destinationPlacemark)
 
         var isCurrentId:Double! = 0.0
        
@@ -136,7 +130,7 @@ extension FlgMaViewVC: MKMapViewDelegate {
             let pdiLat = kappDelegate.dicCurrentQuestion["lat"].stringValue.trimmingCharacters(in: .whitespaces)
             let pdiLot = kappDelegate.dicCurrentQuestion["lon"].stringValue.trimmingCharacters(in: .whitespaces)
             isCurrentId = Double(kappDelegate.dicCurrentQuestion["id"].stringValue.trimmingCharacters(in: .whitespaces))! + 1.0
-           // coordinates.append(CLLocationCoordinate2DMake(Double(pdiLat)!, Double(pdiLot)!))
+            coordinates.append(CLLocationCoordinate2DMake(Double(pdiLat)!, Double(pdiLot)!))
 
         }
         for dic in arrAll {
@@ -146,8 +140,6 @@ extension FlgMaViewVC: MKMapViewDelegate {
             let pdiLot = dic["lon"].stringValue.trimmingCharacters(in: .whitespaces)
             let idISCurent = dic["id"].stringValue.trimmingCharacters(in: .whitespaces)
 
-            
-            
             let sourceAnnotation = CustomPointAnnotation()
 
             if pdiLat != "" &&  pdiLot != "" && dic["answer_status"].numberValue == 0 {
@@ -172,16 +164,53 @@ extension FlgMaViewVC: MKMapViewDelegate {
                 print("Yes Route ")
 
                 if isCurrentId == Double(idISCurent)! {
-                   // coordinates.append(CLLocationCoordinate2DMake(Double(pdiLat)!, Double(pdiLot)!))
+                    coordinates.append(CLLocationCoordinate2DMake(Double(pdiLat)!, Double(pdiLot)!))
                     
-                    print("Yes coordinates \(coordinates) ")
+                    let sourcePlacemark = MKPlacemark(coordinate: coordinates[0], addressDictionary: nil)
+                    let destinationPlacemark = MKPlacemark(coordinate: coordinates[1], addressDictionary: nil)
+                    
+                    
 
-                    let polyline = MKPolyline(coordinates: coordinates, count: coordinates.count)
-                    mapView.addOverlay(polyline)
+                    let sourceMapItem = MKMapItem(placemark: sourcePlacemark)
+                    let destinationMapItem = MKMapItem(placemark: destinationPlacemark)
 
+                    // Calculate the direction
+                    
+                    let directionRequest = MKDirections.Request()
+                    directionRequest.source = sourceMapItem
+                    directionRequest.destination = destinationMapItem
+                    directionRequest.transportType = .automobile
+
+                    let directions = MKDirections(request: directionRequest)
+                    
+                    directions.calculate {
+                        (response, error) -> Void in
+                        
+                        guard let response = response else {
+                            if let error = error {
+                                print("Error: \(error)")
+                            }
+                            
+                            return
+                        }
+                        
+                        let route = response.routes[0]
+                        self.mapView.addOverlay((route.polyline), level: MKOverlayLevel.aboveRoads)
+                        
+                        //            let rect = route.polyline.boundingMapRect
+                        //            self.mapView.setRegion(MKCoordinateRegionForMapRect(rect), animated: true)
+                        
+                        let mapRect = MKPolygon(points: route.polyline.points(), count: route.polyline.pointCount)
+                        self.mapView.setVisibleMapRect(mapRect.boundingMapRect, edgePadding: UIEdgeInsets(top: 150.0,left: 50.0,bottom: 150.0,right: 50.0), animated: true)
+                        
+                        print("Yes Route dsdsd")
+
+                    }
                 }
             } else {
+                
                 print("No Route")
+                
             }
             
             arrAllAnn.append(sourceAnnotation)
@@ -194,6 +223,7 @@ extension FlgMaViewVC: MKMapViewDelegate {
 
         if kappDelegate.strIsFrom == "Yes" {
             view_Bottom.isHidden = false
+            lbl_Timer.text = "You have only \(kappDelegate.dicCurrentQuestion["arrival_time"].stringValue) Minutes To Reach Next CheckPoint Hurry up!"
         } else  {
             view_Bottom.isHidden = true
 
@@ -229,16 +259,26 @@ extension FlgMaViewVC: MKMapViewDelegate {
         return anView
     }
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-
+        //        if let overlay = overlay as? MKPolyline {
+        /// define a list of colors you want in your gradient
         if let routePolyline = overlay as? MKPolyline {
             let renderer = MKPolylineRenderer(polyline: routePolyline)
-            renderer.strokeColor = .darkGray
+            renderer.strokeColor = hexStringToUIColor(hex: MAIN_COLOR)
             renderer.lineWidth = 7
             return renderer
         }
         
         return MKOverlayRenderer()
+        
+        //        let gradientColors = [ hexStringToUIColor(hex: MAIN_COLOR), hexStringToUIColor(hex: MAIN_COLOR)]
+        //
+        //        /// Initialise a GradientPathRenderer with the colors
+        //        let polylineRenderer = GradientPathRenderer(polyline: overlay as! MKPolyline, colors: gradientColors)
+        //
+        //        /// set a linewidth
+        //        polylineRenderer.lineWidth = 7
+        //        return polylineRenderer
+        //        }
     }
-
 
 }

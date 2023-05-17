@@ -3144,7 +3144,7 @@
                                 </connections>
                             </mapView>
                             <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ngJ-bg-VFQ">
-                                <rect key="frame" x="20" y="717" width="374" height="125"/>
+                                <rect key="frame" x="20" y="751" width="374" height="91"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_loca" translatesAutoresizingMaskIntoConstraints="NO" id="ING-Zf-emx">
                                         <rect key="frame" x="15" y="15" width="36" height="50"/>
@@ -3154,7 +3154,7 @@
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="MWN-Ve-xzp">
-                                        <rect key="frame" x="264" y="10" width="100" height="105"/>
+                                        <rect key="frame" x="264" y="10" width="100" height="71"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="2Jy-fu-HrT"/>
@@ -3184,7 +3184,7 @@ REACHED</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XgK-e4-8GM">
-                                        <rect key="frame" x="243" y="5" width="1" height="115"/>
+                                        <rect key="frame" x="243" y="5" width="1" height="81"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="1" id="qYD-pI-laF"/>
@@ -3198,12 +3198,12 @@ REACHED</string>
                                 <constraints>
                                     <constraint firstItem="XgK-e4-8GM" firstAttribute="top" secondItem="ngJ-bg-VFQ" secondAttribute="top" constant="5" id="32b-mk-jUu"/>
                                     <constraint firstItem="ING-Zf-emx" firstAttribute="top" secondItem="ngJ-bg-VFQ" secondAttribute="top" constant="15" id="94U-84-1qz"/>
-                                    <constraint firstAttribute="height" constant="125" id="H5R-Iu-d1p"/>
                                     <constraint firstItem="XgK-e4-8GM" firstAttribute="leading" secondItem="ted-gK-huq" secondAttribute="trailing" constant="8" id="MgV-em-tHl"/>
                                     <constraint firstAttribute="bottom" secondItem="XgK-e4-8GM" secondAttribute="bottom" constant="5" id="T7N-2n-vyW"/>
                                     <constraint firstItem="MWN-Ve-xzp" firstAttribute="leading" secondItem="XgK-e4-8GM" secondAttribute="trailing" constant="20" id="WPY-ji-ApB"/>
                                     <constraint firstItem="MWN-Ve-xzp" firstAttribute="top" secondItem="ngJ-bg-VFQ" secondAttribute="top" constant="10" id="Ypl-5W-K59"/>
                                     <constraint firstItem="ted-gK-huq" firstAttribute="top" secondItem="ngJ-bg-VFQ" secondAttribute="top" constant="15" id="cca-Ep-HTh"/>
+                                    <constraint firstAttribute="bottom" secondItem="ted-gK-huq" secondAttribute="bottom" constant="15" id="dCs-QP-68q"/>
                                     <constraint firstAttribute="trailing" secondItem="MWN-Ve-xzp" secondAttribute="trailing" constant="10" id="eb5-as-C1Y"/>
                                     <constraint firstItem="ted-gK-huq" firstAttribute="leading" secondItem="ING-Zf-emx" secondAttribute="trailing" constant="8" id="pIH-od-Un4"/>
                                     <constraint firstItem="ING-Zf-emx" firstAttribute="leading" secondItem="ngJ-bg-VFQ" secondAttribute="leading" constant="15" id="tkv-Lv-JKq"/>
@@ -3230,6 +3230,7 @@ REACHED</string>
                     </view>
                     <navigationItem key="navigationItem" id="52g-BH-ys5"/>
                     <connections>
+                        <outlet property="lbl_Timer" destination="ted-gK-huq" id="fUS-Hm-Ku9"/>
                         <outlet property="mapView" destination="g2H-oi-W0T" id="9Mh-GY-AYQ"/>
                         <outlet property="view_Bottom" destination="ngJ-bg-VFQ" id="5XM-Ol-3Y8"/>
                     </connections>
@@ -5738,7 +5739,7 @@ REACHED</string>
         <image name="ic_checked" width="600" height="600"/>
         <image name="ic_loca" width="24" height="34"/>
         <image name="inst_popup" width="590" height="567"/>
-        <image name="last_acc_img" width="414" height="314"/>
+        <image name="last_acc_img" width="300" height="228"/>
         <image name="locationCen" width="60" height="60"/>
         <image name="nextt" width="7.5" height="12"/>
         <image name="place" width="1125" height="1302"/>
