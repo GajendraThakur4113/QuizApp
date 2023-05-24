@@ -42,15 +42,23 @@ class MaplocationVC: UIViewController {
     //MARK:Map
     
     @IBAction func startNow(_ sender: Any) {
-        let objVC = self.storyboard?.instantiateViewController(withIdentifier: "CreateTeamVC") as! CreateTeamVC
-        objVC.completion = {
+        
+        if kappDelegate.dicCurrentEvent["team_name"].stringValue != "" {
             let nVC = self.storyboard?.instantiateViewController(withIdentifier: "InstructionVC") as! InstructionVC
             nVC.strDetail = kappDelegate.dicCurrentEvent["disclaimer"].stringValue
             self.navigationController?.pushViewController(nVC, animated: true)
+        } else {
+            let objVC = self.storyboard?.instantiateViewController(withIdentifier: "CreateTeamVC") as! CreateTeamVC
+            objVC.completion = {
+                let nVC = self.storyboard?.instantiateViewController(withIdentifier: "InstructionVC") as! InstructionVC
+                nVC.strDetail = kappDelegate.dicCurrentEvent["disclaimer"].stringValue
+                self.navigationController?.pushViewController(nVC, animated: true)
+            }
+            objVC.modalPresentationStyle = .overCurrentContext
+            objVC.modalTransitionStyle = .crossDissolve
+            self.present(objVC, animated: false, completion: nil)
+
         }
-        objVC.modalPresentationStyle = .overCurrentContext
-        objVC.modalTransitionStyle = .crossDissolve
-        self.present(objVC, animated: false, completion: nil)
     }
  
     func setCurrentLocation() {

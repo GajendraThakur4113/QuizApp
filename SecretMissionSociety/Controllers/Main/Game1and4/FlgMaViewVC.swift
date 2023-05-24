@@ -55,6 +55,9 @@ class FlgMaViewVC: UIViewController {
     }
     
     @IBAction func Archived(_ sender: Any) {
+        view_Bottom.isHidden = true
+        WebGetCode()
+
     }
     func initMapViewAnnotation() {
         self.mapView.removeOverlays(mapView.overlays)

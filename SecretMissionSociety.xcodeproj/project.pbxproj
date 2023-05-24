@@ -100,6 +100,7 @@
 		04BF602D29CEFCA900002970 /* LanguageHalper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF602829CEFCA800002970 /* LanguageHalper.swift */; };
 		04BF602E29CEFCA900002970 /* Languages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF602929CEFCA800002970 /* Languages.swift */; };
 		04BF603029CEFCF900002970 /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF602F29CEFCF900002970 /* Singleton.swift */; };
+		04CC1AAF2A1E0DDE002C03C7 /* PuzzleInstructionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CC1AAE2A1E0DDE002C03C7 /* PuzzleInstructionVC.swift */; };
 		04F3C3B429D1947E009AF02F /* TabbarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C3B329D1947E009AF02F /* TabbarVC.swift */; };
 		04F3C3B629D19D66009AF02F /* EventVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C3B529D19D66009AF02F /* EventVC.swift */; };
 		04F3C3B829D1A014009AF02F /* MaplocationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C3B729D1A014009AF02F /* MaplocationVC.swift */; };
@@ -208,6 +209,7 @@
 		04BF602829CEFCA800002970 /* LanguageHalper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageHalper.swift; sourceTree = "<group>"; };
 		04BF602929CEFCA800002970 /* Languages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Languages.swift; sourceTree = "<group>"; };
 		04BF602F29CEFCF900002970 /* Singleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
+		04CC1AAE2A1E0DDE002C03C7 /* PuzzleInstructionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleInstructionVC.swift; sourceTree = "<group>"; };
 		04F3C3B329D1947E009AF02F /* TabbarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarVC.swift; sourceTree = "<group>"; };
 		04F3C3B529D19D66009AF02F /* EventVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventVC.swift; sourceTree = "<group>"; };
 		04F3C3B729D1A014009AF02F /* MaplocationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaplocationVC.swift; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 			children = (
 				04A490B329D2FBE9002E8D58 /* CreateTeamVC.swift */,
 				047A347729D41FED00DA43E3 /* InstructionVC.swift */,
+				04CC1AAE2A1E0DDE002C03C7 /* PuzzleInstructionVC.swift */,
 				047A347929D4201C00DA43E3 /* VideoPlayerVC.swift */,
 				047A347B29D4298800DA43E3 /* MainInstructionVC.swift */,
 				040E436729D4495300E1AAC8 /* FlgMaViewVC.swift */,
@@ -705,6 +708,7 @@
 				04F3C3B829D1A014009AF02F /* MaplocationVC.swift in Sources */,
 				047A347C29D4298800DA43E3 /* MainInstructionVC.swift in Sources */,
 				04A490AE29D2BEEC002E8D58 /* ProfileVC.swift in Sources */,
+				04CC1AAF2A1E0DDE002C03C7 /* PuzzleInstructionVC.swift in Sources */,
 				04BF600B29CEE4B000002970 /* LocationManager.swift in Sources */,
 				04BF602129CEFC5800002970 /* PrivacyPolicyVC.swift in Sources */,
 				044DAFC029DB20E4005AADB6 /* InventaryDetailVC.swift in Sources */,
@@ -903,7 +907,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ios.secret;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = SecretDev;
@@ -946,7 +950,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ios.secret;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = SecretProd;

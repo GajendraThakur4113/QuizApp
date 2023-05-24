@@ -40,7 +40,7 @@ class InstructionVC: UIViewController,UIWebViewDelegate,WKNavigationDelegate {
 
 
     @IBAction func next(_ sender: Any) {
-        let nVC = self.storyboard?.instantiateViewController(withIdentifier: "VideoPlayerVC") as! VideoPlayerVC
+        let nVC = self.storyboard?.instantiateViewController(withIdentifier: "PuzzleInstructionVC") as! PuzzleInstructionVC
         self.navigationController?.pushViewController(nVC, animated: true)
     }
     

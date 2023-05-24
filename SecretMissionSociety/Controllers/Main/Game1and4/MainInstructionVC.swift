@@ -50,34 +50,36 @@ class MainInstructionVC: UIViewController,UIWebViewDelegate,WKNavigationDelegate
 
     }
     @IBAction func instruction(_ sender: Any) {
+        
         let nVC = self.storyboard?.instantiateViewController(withIdentifier: "InstructionVC") as! InstructionVC
         nVC.strDetail = kappDelegate.dicCurrentEvent["event_instructions"].stringValue
         self.navigationController?.pushViewController(nVC, animated: true)
-    }
-    @IBAction func map(_ sender: Any) {
         
+    }
+    
+    @IBAction func map(_ sender: Any) {
 //        if kappDelegate.dicCurrentEvent["type"].stringValue != "crime" {
             let nVC = self.storyboard?.instantiateViewController(withIdentifier: "FlgMaViewVC") as! FlgMaViewVC
             self.navigationController?.pushViewController(nVC, animated: true)
-//
 //        }
-
     }
+    
     @IBAction func inventery(_ sender: Any) {
-        if kappDelegate.dicCurrentEvent["type"].stringValue != "crime" {
-            let nVC = self.storyboard?.instantiateViewController(withIdentifier: "InventorylistVC") as! InventorylistVC
+//
+        //if kappDelegate.dicCurrentEvent["type"].stringValue != "crime" {
+          
+           let nVC = self.storyboard?.instantiateViewController(withIdentifier: "InventorylistVC") as! InventorylistVC
             self.navigationController?.pushViewController(nVC, animated: true)
-
-        }
+        
+//        }
 
     }
     @IBAction func finalPuzzle(_ sender: Any) {
         
-        if kappDelegate.dicCurrentEvent["type"].stringValue != "crime" {
+//        if kappDelegate.dicCurrentEvent["type"].stringValue != "crime" {
             let nVC = self.storyboard?.instantiateViewController(withIdentifier: "FinalPuzzleVC") as! FinalPuzzleVC
             self.navigationController?.pushViewController(nVC, animated: true)
-
-        }
+//        }
 
 
     }
