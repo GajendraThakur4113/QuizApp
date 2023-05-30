@@ -121,9 +121,9 @@ extension InventorylistVC: UITableViewDelegate,UITableViewDataSource{
     
     func tableView( _ tableView : UITableView,  titleForHeaderInSection section: Int)->String? {
        switch(section) {
-         case 0:return "5 places"
-         case 1:return "5 people"
-         case 2:return "5 object"
+         case 0:return "Places"
+         case 1:return "People"
+         case 2:return "Object"
          default :return ""
        }
     }

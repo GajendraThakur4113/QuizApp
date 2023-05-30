@@ -24,6 +24,7 @@ class AnswerVC: UIViewController,UIWebViewDelegate,WKNavigationDelegate {
     @IBOutlet weak var img_user: UIImageView!
     @IBOutlet weak var text_Detail: UITextView!
   
+    @IBOutlet weak var heightIMage: NSLayoutConstraint!
     @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var table_Answer: UITableView!
     var dicCurrentQuestion:JSON!
@@ -45,16 +46,9 @@ class AnswerVC: UIViewController,UIWebViewDelegate,WKNavigationDelegate {
         super.viewWillAppear(animated)
         
         if dicCurrentQuestion["timer"].stringValue != "0" {
-            self.navigationController?.navigationBar.isHidden = true
-            view_A.isHidden = false
-            totalSecond = Int(dicCurrentQuestion["timer"].stringValue)!
-          
-            let imageData = try? Data(contentsOf: Bundle.main.url(forResource: "bacj", withExtension: "gif")!)
-            
-            let advTimeGif = UIImage.gifImageWithData(imageData!)
-            img_Bg.image = advTimeGif
-            startTimer()
-            
+            self.navigationController?.navigationBar.isHidden = false
+            view_A.isHidden = true
+
         } else {
             self.navigationController?.navigationBar.isHidden = false
             view_A.isHidden = true
@@ -68,7 +62,19 @@ class AnswerVC: UIViewController,UIWebViewDelegate,WKNavigationDelegate {
         webView.scrollView.isScrollEnabled = true
         webView.scrollView.bounces = false
         webView.allowsBackForwardNavigationGestures = false
-        webView.contentMode = .scaleToFill
+
+        
+        if dicCurrentQuestion["instructions"].stringValue.contains("http") {
+            heightIMage.constant = 0
+            img_user.isHidden = true
+            webView.contentMode = .scaleAspectFit
+
+        } else {
+            heightIMage.constant = 220
+            img_user.isHidden = false
+            webView.contentMode = .scaleToFill
+
+        }
         webView.navigationDelegate = self
         webView.loadHTMLString(Singleton.shared.header + "\(dicCurrentQuestion["instructions"].stringValue)" + "</body>", baseURL: nil)
         webView.evaluateJavaScript(Singleton.shared.javascript, completionHandler: nil)
@@ -117,6 +123,15 @@ class AnswerVC: UIViewController,UIWebViewDelegate,WKNavigationDelegate {
 
     @IBAction func cross(_ sender: Any) {
         transView.isHidden = true
+        if dicCurrentQuestion["timer"].stringValue != "0" {
+            self.navigationController?.navigationBar.isHidden = false
+            view_A.isHidden = true
+            totalSecond = Int(dicCurrentQuestion["timer"].stringValue)!
+            timer?.invalidate()
+        } else {
+            view_A.isHidden = true
+        }
+
     }
     
     @IBAction func gotoMap(_ sender: Any) {
@@ -155,6 +170,21 @@ class AnswerVC: UIViewController,UIWebViewDelegate,WKNavigationDelegate {
         transView.isHidden = false
         view_QuizSolved.isHidden = true
         view_Question.isHidden = false
+    
+        if dicCurrentQuestion["timer"].stringValue != "0" {
+            view_A.isHidden = false
+            self.navigationController?.navigationBar.isHidden = true
+            totalSecond = Int(dicCurrentQuestion["timer"].stringValue)!
+            let imageData = try? Data(contentsOf: Bundle.main.url(forResource: "bacj", withExtension: "gif")!)
+            let advTimeGif = UIImage.gifImageWithData(imageData!)
+            img_Bg.image = advTimeGif
+            startTimer()
+            
+        } else {
+            view_A.isHidden = true
+            self.navigationController?.navigationBar.isHidden = false
+
+        }
 
     }
     

@@ -130,8 +130,9 @@ extension JoinedEventVC: UITableViewDelegate,UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         kappDelegate.dicCurrentEvent = nearMeEvents[indexPath.row]
+        kappDelegate.strEventCode = nearMeEvents[indexPath.row]["event_code"].stringValue
         self.tabBarController?.selectedIndex = 2
-
+     //   strEventCode
     }
 
 }

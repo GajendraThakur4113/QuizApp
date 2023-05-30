@@ -15,6 +15,7 @@ class VideoPlayerVC: UIViewController {
   
     var strFrom:String! = ""
     var strurl:String! = ""
+    var player = AVPlayer()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +37,7 @@ class VideoPlayerVC: UIViewController {
 
                 print("sdsd \(url)")
 
-                  let player = AVPlayer(url: url)
+                  player = AVPlayer(url: url)
                   let controller = AVPlayerViewController()
                   controller.player = player
                   controller.view.frame = self.view_Video.frame
@@ -59,7 +60,10 @@ class VideoPlayerVC: UIViewController {
 
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        player.pause()
 
+    }
     @IBAction func next(_ sender: Any) {
         
         if strFrom == "virus" {

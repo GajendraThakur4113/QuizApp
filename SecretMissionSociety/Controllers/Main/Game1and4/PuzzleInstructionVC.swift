@@ -8,11 +8,15 @@
 import UIKit
 import SwiftyJSON
 import SDWebImage
+import MapKit
+import SwiftyJSON
+import SDWebImage
+import WebKit
 
-class PuzzleInstructionVC: UIViewController {
+class PuzzleInstructionVC: UIViewController,UIWebViewDelegate,WKNavigationDelegate {
     
+    @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var img_user: UIImageView!
-    @IBOutlet weak var text_Detail: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,11 +28,18 @@ class PuzzleInstructionVC: UIViewController {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = false
      
-        setNavigationBarItem(LeftTitle: "", LeftImage: "back", CenterTitle: "Welcome", CenterImage: "", RightTitle: "", RightImage: "", BackgroundColor: NAAV_BG_COLOR, BackgroundImage: "", TextColor: WHITE_COLOR, TintColor: WHITE_COLOR, Menu: "")
+        setNavigationBarItem(LeftTitle: "", LeftImage: "back", CenterTitle: "Introduction", CenterImage: "", RightTitle: "", RightImage: "", BackgroundColor: NAAV_BG_COLOR, BackgroundImage: "", TextColor: WHITE_COLOR, TintColor: WHITE_COLOR, Menu: "")
 
-        img_user.sd_setImage(with: URL(string: "http://appsmsjuegos.com/Quiz/uploads/images/" + kappDelegate.dicCurrentEvent["intro_image"].stringValue), placeholderImage: UIImage(named: "NoImageAvailable"), options: .refreshCached, completed: nil)
+        img_user.sd_setImage(with: URL(string: kappDelegate.dicCurrentEvent["image"].stringValue), placeholderImage: UIImage(named: "NoImageAvailable"), options: .refreshCached, completed: nil)
 
-        text_Detail.text = kappDelegate.dicCurrentEvent["intro_sp"].stringValue
+        webView.scrollView.isScrollEnabled = true
+        webView.scrollView.bounces = false
+        webView.allowsBackForwardNavigationGestures = false
+        webView.contentMode = .scaleToFill
+        webView.navigationDelegate = self
+        webView.loadHTMLString(Singleton.shared.header + "\(kappDelegate.dicCurrentEvent["intro_sp"].stringValue)" + "</body>", baseURL: nil)
+        webView.evaluateJavaScript(Singleton.shared.javascript, completionHandler: nil)
+        webView.isHidden = false
     }
 
     @IBAction func cross(_ sender: Any) {

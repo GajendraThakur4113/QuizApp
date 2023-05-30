@@ -169,9 +169,6 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollecti
                 let nVC = self.storyboard?.instantiateViewController(withIdentifier: "VirsuHomeVC") as! VirsuHomeVC
                 self.navigationController?.pushViewController(nVC, animated: true)
 
-            } else if indexPath.row == 3  {
-                
-                
             }
             
             
