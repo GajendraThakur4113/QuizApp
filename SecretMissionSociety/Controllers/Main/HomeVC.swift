@@ -169,6 +169,8 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollecti
                 let nVC = self.storyboard?.instantiateViewController(withIdentifier: "VirsuHomeVC") as! VirsuHomeVC
                 self.navigationController?.pushViewController(nVC, animated: true)
 
+            } else {
+                GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: "Coming soon", on: self)
             }
             
             

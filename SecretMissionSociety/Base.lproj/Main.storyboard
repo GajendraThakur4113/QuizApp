@@ -141,25 +141,25 @@
                                                                 <fragment content="Don't have an account">
                                                                     <attributes>
                                                                         <color key="NSColor" red="0.19137066599999999" green="0.19137066599999999" blue="0.19137066599999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                        <font key="NSFont" size="21" name="Arial-BoldMT"/>
+                                                                        <font key="NSFont" size="20" name="Arial-BoldMT"/>
                                                                     </attributes>
                                                                 </fragment>
                                                                 <fragment content="?">
                                                                     <attributes>
                                                                         <color key="NSColor" red="0.10543470317814625" green="0.10574413481212798" blue="0.099477754969175172" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                        <font key="NSFont" size="21" name="Arial-BoldMT"/>
+                                                                        <font key="NSFont" size="20" name="Arial-BoldMT"/>
                                                                     </attributes>
                                                                 </fragment>
                                                                 <fragment content=" ">
                                                                     <attributes>
                                                                         <color key="NSColor" name="MAIN"/>
-                                                                        <font key="NSFont" size="21" name="Arial-BoldMT"/>
+                                                                        <font key="NSFont" size="20" name="Arial-BoldMT"/>
                                                                     </attributes>
                                                                 </fragment>
                                                                 <fragment content="Sign Up Now">
                                                                     <attributes>
                                                                         <color key="NSColor" name="MAIN"/>
-                                                                        <font key="NSFont" size="21" name="Arial-BoldMT"/>
+                                                                        <font key="NSFont" size="20" name="Arial-BoldMT"/>
                                                                         <integer key="NSUnderline" value="1"/>
                                                                     </attributes>
                                                                 </fragment>
