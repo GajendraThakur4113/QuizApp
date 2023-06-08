@@ -39,7 +39,7 @@ class FinalPuzzleVC: UIViewController {
      
         setNavigationBarItem(LeftTitle: "", LeftImage: "back", CenterTitle: "Final Puzzle", CenterImage: "", RightTitle: "", RightImage: "", BackgroundColor: NAAV_BG_COLOR, BackgroundImage: "", TextColor: WHITE_COLOR, TintColor: WHITE_COLOR, Menu: "")
 
-        lbl_Titile.text = Languages.FinalPuzzle
+      //  lbl_Titile.att = Languages.FinalPuzzle
         WebGetAllInvent()
     }
 
@@ -72,13 +72,14 @@ class FinalPuzzleVC: UIViewController {
         paramsDict["lang"]     =   Singleton.shared.language as AnyObject
 
         print(paramsDict)
-        CommunicationManeger.callPostService(apiUrl: Router.get_all_inventory_event.url(), parameters: paramsDict, parentViewController: self, successBlock: { (responseData, message) in
+        CommunicationManeger.callPostService(apiUrl: Router.get_inventory_event.url(), parameters: paramsDict, parentViewController: self, successBlock: { (responseData, message) in
             
             DispatchQueue.main.async { [self] in
                 let swiftyJsonVar = JSON(responseData)
                 print(swiftyJsonVar)
                 if(swiftyJsonVar["status"].stringValue == "1") {
                     arrayList = swiftyJsonVar["result"].arrayValue
+                    lbl_Titile.attributedText = swiftyJsonVar["notice"].stringValue.htmlToAttributedString
                     collection_place.reloadData()
                     collection_People.reloadData()
                     collection_object.reloadData()

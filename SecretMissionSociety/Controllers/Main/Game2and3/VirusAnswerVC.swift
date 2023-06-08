@@ -161,11 +161,10 @@ class VirusAnswerVC: UIViewController {
                 print(swiftyJsonVar)
                 if(swiftyJsonVar["status"].stringValue == "1") {
                     text_Answer.text = dicCurrentQuestion["option_Ans"].stringValue
+                } else if(swiftyJsonVar["status"].stringValue == "2") {
+                    GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: swiftyJsonVar["result"].stringValue, on: self)
                 } else {
-                    text_Answer.text = dicCurrentQuestion["option_Ans"].stringValue
-
-                 //   GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: swiftyJsonVar["result"].stringValue, on: self)
-
+                    GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: swiftyJsonVar["result"].stringValue, on: self)
                 }
                 self.hideProgressBar()
             }
@@ -182,7 +181,7 @@ class VirusAnswerVC: UIViewController {
         var paramsDict:[String:AnyObject] = [:]
         paramsDict["lang"]     =   Singleton.shared.language as AnyObject
         paramsDict["user_id"]     =   USER_DEFAULT.value(forKey: USERID) as AnyObject
-        paramsDict["event_id"]     =   "4" as AnyObject
+        paramsDict["event_id"]     =   kappDelegate.dicCurrentVirus["id"].stringValue as AnyObject
         paramsDict["lang"]     =   Singleton.shared.language as AnyObject
 
         
@@ -227,10 +226,8 @@ class VirusAnswerVC: UIViewController {
                 print(swiftyJsonVar)
                 if(swiftyJsonVar["status"].stringValue == "1") {
                     changeQuestion()
-                } else {
+                } else  {
                     changeQuestion()
-
-                   // GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: swiftyJsonVar["result"].stringValue, on: self)
                 }
                 self.hideProgressBar()
             }

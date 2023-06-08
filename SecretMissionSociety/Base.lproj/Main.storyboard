@@ -5157,7 +5157,7 @@ REACHED</string>
                                     <outlet property="delegate" destination="K1G-6c-z6m" id="qsC-c6-5Sb"/>
                                 </connections>
                             </textView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Tq4-Yc-NAP">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Tq4-Yc-NAP">
                                 <rect key="frame" x="0.0" y="118" width="414" height="180"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="180" id="FqG-F8-sgn"/>
@@ -5818,7 +5818,7 @@ REACHED</string>
         <image name="ic_checked" width="600" height="600"/>
         <image name="ic_loca" width="24" height="34"/>
         <image name="inst_popup" width="590" height="567"/>
-        <image name="last_acc_img" width="300" height="228"/>
+        <image name="last_acc_img" width="414" height="314"/>
         <image name="locationCen" width="60" height="60"/>
         <image name="nextt" width="7.5" height="12"/>
         <image name="place" width="1125" height="1302"/>

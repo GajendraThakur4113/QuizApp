@@ -160,12 +160,14 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollecti
        
         if collectionView == nearestCollecView {
             
-            if indexPath.row == 0 || indexPath.row == 2 {
+            if indexPath.row == 0 || indexPath.row == 2 || indexPath.row == 4 {
                
                self.tabBarController?.selectedIndex = 3
                 
-            } else if indexPath.row == 1  {
+            } else if indexPath.row == 1 || indexPath.row == 3  {
                 kappDelegate.dicCurrentVirus = nearMeEvents[indexPath.row]
+                kappDelegate.strGameName = kappDelegate.dicCurrentVirus["event_name"].stringValue
+
                 let nVC = self.storyboard?.instantiateViewController(withIdentifier: "VirsuHomeVC") as! VirsuHomeVC
                 self.navigationController?.pushViewController(nVC, animated: true)
 
@@ -177,7 +179,7 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollecti
         } else {
 
         }
-        
+        //get_inventory_event
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

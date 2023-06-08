@@ -29,7 +29,7 @@ class VirsuHomeVC: UIViewController {
         trans_View.isHidden = true
         img_Virus.sd_setImage(with: URL(string: kappDelegate.dicCurrentVirus["image"].stringValue), placeholderImage: UIImage(named: "NoImageAvailable"), options: .refreshCached, completed: nil)
         self.tabBarController?.tabBar.isHidden = true
-        setNavigationBarItem(LeftTitle: "", LeftImage: "back", CenterTitle: "Welcome to Virus", CenterImage: "", RightTitle: "", RightImage: "", BackgroundColor: NAAV_BG_COLOR, BackgroundImage: "", TextColor: WHITE_COLOR, TintColor: WHITE_COLOR, Menu: "")
+        setNavigationBarItem(LeftTitle: "", LeftImage: "back", CenterTitle: "Welcome to \(kappDelegate.strGameName!)", CenterImage: "", RightTitle: "", RightImage: "", BackgroundColor: NAAV_BG_COLOR, BackgroundImage: "", TextColor: WHITE_COLOR, TintColor: WHITE_COLOR, Menu: "")
 
 
     }
@@ -62,7 +62,7 @@ class VirsuHomeVC: UIViewController {
         var paramsDict:[String:AnyObject] = [:]
         paramsDict["lang"]     =   Singleton.shared.language as AnyObject
         paramsDict["user_id"]     =   USER_DEFAULT.value(forKey: USERID) as AnyObject
-        paramsDict["event_id"]     =   "4" as AnyObject
+        paramsDict["event_id"]     =   kappDelegate.dicCurrentVirus["id"].stringValue as AnyObject
 
         
         print(paramsDict)

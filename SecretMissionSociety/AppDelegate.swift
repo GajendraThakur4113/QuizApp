@@ -33,6 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var dicCurrentQuestion:JSON!
     var strIsFrom:String! = ""
+    var strGameName:String! = ""
 
 
     
