@@ -10,10 +10,12 @@ import WebKit
 
 class InstructionVC: UIViewController,UIWebViewDelegate,WKNavigationDelegate {
  
+    @IBOutlet weak var btn_next: UIButton!
     @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var text_Detail: UITextView!
     var strDetail:String! = ""
-    
+    var strfrom:String! = ""
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -36,6 +38,12 @@ class InstructionVC: UIViewController,UIWebViewDelegate,WKNavigationDelegate {
         
         
         self.tabBarController?.tabBar.isHidden = true
+        
+        
+        if strfrom == "map" {
+            btn_next.isHidden = true
+        }
+        
     }
 
 

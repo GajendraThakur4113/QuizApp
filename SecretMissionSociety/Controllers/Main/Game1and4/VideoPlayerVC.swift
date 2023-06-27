@@ -73,7 +73,7 @@ class VideoPlayerVC: UIViewController {
 
         } else {
             
-            let nVC = self.storyboard?.instantiateViewController(withIdentifier: "MainInstructionVC") as! MainInstructionVC
+            let nVC = self.storyboard?.instantiateViewController(withIdentifier: "MapBottomBarVC") as! MapBottomBarVC
             self.navigationController?.pushViewController(nVC, animated: true)
 
         }

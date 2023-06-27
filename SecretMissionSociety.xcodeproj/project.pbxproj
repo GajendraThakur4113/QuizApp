@@ -101,6 +101,7 @@
 		04BF602E29CEFCA900002970 /* Languages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF602929CEFCA800002970 /* Languages.swift */; };
 		04BF603029CEFCF900002970 /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF602F29CEFCF900002970 /* Singleton.swift */; };
 		04CC1AAF2A1E0DDE002C03C7 /* PuzzleInstructionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CC1AAE2A1E0DDE002C03C7 /* PuzzleInstructionVC.swift */; };
+		04E919CD2A4AC7170041E312 /* MapBottomBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E919CC2A4AC7170041E312 /* MapBottomBarVC.swift */; };
 		04F3C3B429D1947E009AF02F /* TabbarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C3B329D1947E009AF02F /* TabbarVC.swift */; };
 		04F3C3B629D19D66009AF02F /* EventVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C3B529D19D66009AF02F /* EventVC.swift */; };
 		04F3C3B829D1A014009AF02F /* MaplocationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C3B729D1A014009AF02F /* MaplocationVC.swift */; };
@@ -210,6 +211,7 @@
 		04BF602929CEFCA800002970 /* Languages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Languages.swift; sourceTree = "<group>"; };
 		04BF602F29CEFCF900002970 /* Singleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
 		04CC1AAE2A1E0DDE002C03C7 /* PuzzleInstructionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleInstructionVC.swift; sourceTree = "<group>"; };
+		04E919CC2A4AC7170041E312 /* MapBottomBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapBottomBarVC.swift; sourceTree = "<group>"; };
 		04F3C3B329D1947E009AF02F /* TabbarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarVC.swift; sourceTree = "<group>"; };
 		04F3C3B529D19D66009AF02F /* EventVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventVC.swift; sourceTree = "<group>"; };
 		04F3C3B729D1A014009AF02F /* MaplocationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaplocationVC.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 				047A347729D41FED00DA43E3 /* InstructionVC.swift */,
 				04CC1AAE2A1E0DDE002C03C7 /* PuzzleInstructionVC.swift */,
 				047A347929D4201C00DA43E3 /* VideoPlayerVC.swift */,
+				04E919CC2A4AC7170041E312 /* MapBottomBarVC.swift */,
 				047A347B29D4298800DA43E3 /* MainInstructionVC.swift */,
 				040E436729D4495300E1AAC8 /* FlgMaViewVC.swift */,
 				041B477729D5A50800FC8062 /* AnswerVC.swift */,
@@ -697,6 +700,7 @@
 				04BF602E29CEFCA900002970 /* Languages.swift in Sources */,
 				047A347A29D4201C00DA43E3 /* VideoPlayerVC.swift in Sources */,
 				049F602829CF12CA00E0D073 /* HomeVC.swift in Sources */,
+				04E919CD2A4AC7170041E312 /* MapBottomBarVC.swift in Sources */,
 				04BF601F29CEED4000002970 /* ChangeLangugeVC.swift in Sources */,
 				04BF5FDF29CEE4B000002970 /* CloseButton.swift in Sources */,
 				0436B70129E83E3E003000FD /* ShowAllVirusTimeVC.swift in Sources */,
