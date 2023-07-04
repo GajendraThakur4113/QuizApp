@@ -13,6 +13,9 @@ import WebKit
 
 class AnswerVC: UIViewController,UIWebViewDelegate,WKNavigationDelegate {
     
+    @IBOutlet weak var heightAnswer: NSLayoutConstraint!
+    @IBOutlet weak var view_Answer: UIView!
+    @IBOutlet weak var text_Answer: UITextField!
     @IBOutlet weak var img_Bg: UIImageView!
     @IBOutlet weak var lbl_Count: UILabel!
     @IBOutlet weak var view_A: UIView!
@@ -32,6 +35,7 @@ class AnswerVC: UIViewController,UIWebViewDelegate,WKNavigationDelegate {
     var isIndex:Int! = -1
     var arroptionAdnswer:[String] = ["A","B","C","D"]
     var isAnswer:String! = ""
+    var strCustom:String! = "no"
 
     var totalSecond = Int()
     var timer:Timer?
@@ -44,17 +48,32 @@ class AnswerVC: UIViewController,UIWebViewDelegate,WKNavigationDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+//
+//        if dicCurrentQuestion["timer"].stringValue != "0" {
+//            self.navigationController?.navigationBar.isHidden = false
+//            view_A.isHidden = true
+//
+//        } else {
+//            self.navigationController?.navigationBar.isHidden = false
+//            view_A.isHidden = true
+//
+//        }
         if dicCurrentQuestion["timer"].stringValue != "0" {
-            self.navigationController?.navigationBar.isHidden = false
-            view_A.isHidden = true
-
+            view_A.isHidden = false
+            self.navigationController?.navigationBar.isHidden = true
+            totalSecond = Int(dicCurrentQuestion["timer"].stringValue)!
+            let imageData = try? Data(contentsOf: Bundle.main.url(forResource: "bacj", withExtension: "gif")!)
+            let advTimeGif = UIImage.gifImageWithData(imageData!)
+            img_Bg.image = advTimeGif
+            startTimer()
+            
         } else {
-            self.navigationController?.navigationBar.isHidden = false
             view_A.isHidden = true
+            self.navigationController?.navigationBar.isHidden = false
 
         }
-      
+
+        
         setNavigationBarItem(LeftTitle: "", LeftImage: "back", CenterTitle: dicCurrentQuestion["event_type"].stringValue, CenterImage: "", RightTitle: "", RightImage: "", BackgroundColor: NAAV_BG_COLOR, BackgroundImage: "", TextColor: WHITE_COLOR, TintColor: WHITE_COLOR, Menu: "")
   
         transView.isHidden = true
@@ -85,10 +104,25 @@ class AnswerVC: UIViewController,UIWebViewDelegate,WKNavigationDelegate {
 
 //        text_Detail.attributedText = "\(dicCurrentQuestion["hint_discovered"].stringValue) \n\n \(dicCurrentQuestion["hint_discovered_sp"].stringValue)".htmlToAttributedString
         img_user.sd_setImage(with: URL(string: dicCurrentQuestion["image"].stringValue), placeholderImage: UIImage(named: "NoImageAvailable"), options: .refreshCached, completed: nil)
-        arroption.append(dicCurrentQuestion["option_A"].stringValue)
-        arroption.append(dicCurrentQuestion["option_B"].stringValue)
-        arroption.append(dicCurrentQuestion["option_C"].stringValue)
-        arroption.append(dicCurrentQuestion["option_D"].stringValue)
+        heightAnswer.constant = 0
+        view_Answer.isHidden = true
+
+     
+        if dicCurrentQuestion["custom_ans"].stringValue != "" {
+            arroption.append("Or Enter answer")
+            isIndex = 0
+            heightAnswer.constant = 50.0
+            view_Answer.isHidden = false
+            strCustom = "yes"
+            height_table.constant = 70
+        } else {
+            arroption.append(dicCurrentQuestion["option_A"].stringValue)
+            arroption.append(dicCurrentQuestion["option_B"].stringValue)
+            arroption.append(dicCurrentQuestion["option_C"].stringValue)
+            arroption.append(dicCurrentQuestion["option_D"].stringValue)
+        }
+ 
+        
         table_Answer.reloadData()
     }
     override func viewDidDisappear(_ animated: Bool) {
@@ -148,10 +182,24 @@ class AnswerVC: UIViewController,UIWebViewDelegate,WKNavigationDelegate {
     
     @IBAction func submitAnswer(_ sender: Any) {
         
-        if isIndex != -1 {
-            WebAddAnswer()
+        
+        if dicCurrentQuestion["custom_ans"].stringValue != "" {
+            
+            if text_Answer.text?.count != 0 {
+                isAnswer = text_Answer.text!
+                WebAddAnswer()
+            } else {
+                GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: "Enter answer", on: self)
+
+            }
+            
         } else {
-            GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: "Choose option", on: self)
+            if isIndex != -1 {
+                WebAddAnswer()
+            } else {
+                GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: "Choose option", on: self)
+
+            }
 
         }
     }
@@ -171,20 +219,20 @@ class AnswerVC: UIViewController,UIWebViewDelegate,WKNavigationDelegate {
         view_QuizSolved.isHidden = true
         view_Question.isHidden = false
     
-        if dicCurrentQuestion["timer"].stringValue != "0" {
-            view_A.isHidden = false
-            self.navigationController?.navigationBar.isHidden = true
-            totalSecond = Int(dicCurrentQuestion["timer"].stringValue)!
-            let imageData = try? Data(contentsOf: Bundle.main.url(forResource: "bacj", withExtension: "gif")!)
-            let advTimeGif = UIImage.gifImageWithData(imageData!)
-            img_Bg.image = advTimeGif
-            startTimer()
-            
-        } else {
-            view_A.isHidden = true
-            self.navigationController?.navigationBar.isHidden = false
-
-        }
+//        if dicCurrentQuestion["timer"].stringValue != "0" {
+//            view_A.isHidden = false
+//            self.navigationController?.navigationBar.isHidden = true
+//            totalSecond = Int(dicCurrentQuestion["timer"].stringValue)!
+//            let imageData = try? Data(contentsOf: Bundle.main.url(forResource: "bacj", withExtension: "gif")!)
+//            let advTimeGif = UIImage.gifImageWithData(imageData!)
+//            img_Bg.image = advTimeGif
+//            startTimer()
+//
+//        } else {
+//            view_A.isHidden = true
+//            self.navigationController?.navigationBar.isHidden = false
+//
+//        }
 
     }
     
@@ -201,6 +249,7 @@ class AnswerVC: UIViewController,UIWebViewDelegate,WKNavigationDelegate {
         paramsDict["event_game_id"]     =   dicCurrentQuestion["id"].stringValue as AnyObject
         paramsDict["event_code"]     =    kappDelegate.strEventCode as AnyObject
         paramsDict["ans"]     =   isAnswer as AnyObject
+        paramsDict["custom_type"]     =   strCustom as AnyObject
 
         print(paramsDict)
         CommunicationManeger.callPostService(apiUrl: Router.event_instructions_game_ans.url(), parameters: paramsDict, parentViewController: self, successBlock: { (responseData, message) in

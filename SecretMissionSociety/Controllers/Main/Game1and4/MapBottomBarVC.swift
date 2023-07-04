@@ -11,11 +11,15 @@ import SwiftyJSON
 
 class MapBottomBarVC: UIViewController {
     
+    @IBOutlet weak var lbl_Time: UILabel!
     @IBOutlet weak var view_Bottom: UIView!
     @IBOutlet weak var mapView: MKMapView!
    
     var arrlist:[JSON]! = []
     
+    var totalSecond = Int()
+    var timer:Timer?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,14 +29,34 @@ class MapBottomBarVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.isHidden = false
-       setNavigationBarItem(LeftTitle: "", LeftImage: "back", CenterTitle: "Map", CenterImage: "", RightTitle: "", RightImage: "", BackgroundColor: NAAV_BG_COLOR, BackgroundImage: "", TextColor: WHITE_COLOR, TintColor: WHITE_COLOR, Menu: "")
+        self.navigationController?.navigationBar.isHidden = true
         WebGetCode()
-        
-       
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        WebGetTime()
     }
     override func viewDidDisappear(_ animated: Bool) {
+        timer?.invalidate()
 
+    }
+    func startTimer(){
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(countdown), userInfo: nil, repeats: true)
+    }
+
+    @objc func countdown() {
+        var hours: Int
+        var minutes: Int
+        var seconds: Int
+
+        totalSecond = totalSecond + 1
+        hours = totalSecond / 3600
+        minutes = (totalSecond % 3600) / 60
+        seconds = (totalSecond % 3600) % 60
+        lbl_Time.text = String(format: "%02d:%02d:%02d", hours, minutes, seconds)
+
+    }
+    @IBAction func backk(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
     
     //MARK:Map
@@ -62,9 +86,15 @@ class MapBottomBarVC: UIViewController {
              self.navigationController?.pushViewController(nVC, animated: true)
 
         } else if sender.tag == 1 {
-            
+           
+            let nVC = self.storyboard?.instantiateViewController(withIdentifier: "FinalPuzzleVC") as! FinalPuzzleVC
+            self.navigationController?.pushViewController(nVC, animated: true)
+
         } else if sender.tag == 2 {
-            
+         
+            let nVC = self.storyboard?.instantiateViewController(withIdentifier: "FlgMaViewVC") as! FlgMaViewVC
+            self.navigationController?.pushViewController(nVC, animated: true)
+
         } else if sender.tag == 3 {
             
             let nVC = self.storyboard?.instantiateViewController(withIdentifier: "InstructionVC") as! InstructionVC
@@ -75,6 +105,8 @@ class MapBottomBarVC: UIViewController {
         }
         
     }
+    
+    
     func initMapViewAnnotation() {
         self.mapView.removeOverlays(mapView.overlays)
         self.mapView.annotations.forEach {
@@ -85,6 +117,41 @@ class MapBottomBarVC: UIViewController {
     }
 
     
+    func WebGetTime() {
+        showProgressBar()
+        var paramsDict:[String:AnyObject] = [:]
+        paramsDict["user_id"]     =   USER_DEFAULT.value(forKey: USERID) as AnyObject
+        paramsDict["event_id"]     =   kappDelegate.dicCurrentEvent["id"].stringValue as AnyObject
+        paramsDict["event_code"]     =    kappDelegate.strEventCode as AnyObject
+        paramsDict["lang"]     =   Singleton.shared.language as AnyObject
+
+        print(paramsDict)
+        CommunicationManeger.callPostService(apiUrl: Router.get_event_time.url(), parameters: paramsDict, parentViewController: self, successBlock: { (responseData, message) in
+            
+            DispatchQueue.main.async { [self] in
+                let swiftyJsonVar = JSON(responseData)
+                print(swiftyJsonVar)
+                if(swiftyJsonVar["status"].stringValue == "1") {
+
+                    let sec = Int(truncating: swiftyJsonVar["result"].numberValue).msToSeconds
+                    print("secsec \(sec)")
+                    totalSecond = Int(sec)
+                    print("secsec \(totalSecond)")
+
+                    startTimer()
+                    
+                } else {
+
+                }
+                self.hideProgressBar()
+            }
+
+        },failureBlock: { (error : Error) in
+            self.hideProgressBar()
+            GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: (error.localizedDescription), on: self)
+        })
+    }
+
     func WebGetCode() {
         showProgressBar()
         var paramsDict:[String:AnyObject] = [:]
@@ -296,3 +363,26 @@ extension MapBottomBarVC: MKMapViewDelegate {
 
 }
 
+extension Int {
+    var msToSeconds: Double { Double(self) / 1000 }
+}
+extension TimeInterval {
+    var hourMinuteSecondMS: String {
+        String(format:"%d:%02d:%02d.%03d", hour, minute, second, millisecond)
+    }
+    var minuteSecondMS: String {
+        String(format:"%d:%02d.%03d", minute, second, millisecond)
+    }
+    var hour: Int {
+        Int((self/3600).truncatingRemainder(dividingBy: 3600))
+    }
+    var minute: Int {
+        Int((self/60).truncatingRemainder(dividingBy: 60))
+    }
+    var second: Int {
+        Int(truncatingRemainder(dividingBy: 60))
+    }
+    var millisecond: Int {
+        Int((self*1000).truncatingRemainder(dividingBy: 1000))
+    }
+}
