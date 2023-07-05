@@ -11,6 +11,8 @@
 		041B477829D5A50900FC8062 /* AnswerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041B477729D5A50800FC8062 /* AnswerVC.swift */; };
 		0436B70129E83E3E003000FD /* ShowAllVirusTimeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0436B70029E83E3E003000FD /* ShowAllVirusTimeVC.swift */; };
 		044DAFC029DB20E4005AADB6 /* InventaryDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044DAFBF29DB20E4005AADB6 /* InventaryDetailVC.swift */; };
+		0469B9FA2A557404008EF672 /* FinalPuzzleCodigoVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0469B9F92A557404008EF672 /* FinalPuzzleCodigoVc.swift */; };
+		0469B9FC2A557C1B008EF672 /* CongratsCodigoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0469B9FB2A557C1B008EF672 /* CongratsCodigoVC.swift */; };
 		046F4D7529DEB20A0079B8EB /* WelcomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046F4D7429DEB2090079B8EB /* WelcomeVC.swift */; };
 		046F4D7729DEB86D0079B8EB /* VirusInstructionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046F4D7629DEB86D0079B8EB /* VirusInstructionVC.swift */; };
 		046F4D7B29DEBB990079B8EB /* VirusAnswerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046F4D7A29DEBB990079B8EB /* VirusAnswerVC.swift */; };
@@ -115,6 +117,8 @@
 		041B477729D5A50800FC8062 /* AnswerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerVC.swift; sourceTree = "<group>"; };
 		0436B70029E83E3E003000FD /* ShowAllVirusTimeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAllVirusTimeVC.swift; sourceTree = "<group>"; };
 		044DAFBF29DB20E4005AADB6 /* InventaryDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventaryDetailVC.swift; sourceTree = "<group>"; };
+		0469B9F92A557404008EF672 /* FinalPuzzleCodigoVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalPuzzleCodigoVc.swift; sourceTree = "<group>"; };
+		0469B9FB2A557C1B008EF672 /* CongratsCodigoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CongratsCodigoVC.swift; sourceTree = "<group>"; };
 		046F4D7429DEB2090079B8EB /* WelcomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeVC.swift; sourceTree = "<group>"; };
 		046F4D7629DEB86D0079B8EB /* VirusInstructionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirusInstructionVC.swift; sourceTree = "<group>"; };
 		046F4D7A29DEBB990079B8EB /* VirusAnswerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirusAnswerVC.swift; sourceTree = "<group>"; };
@@ -263,6 +267,8 @@
 				044DAFBF29DB20E4005AADB6 /* InventaryDetailVC.swift */,
 				0484CF0229D71D0E00BDF003 /* FinalPuzzleVC.swift */,
 				04952A6029DC314F00065956 /* ShowAllTeamAndTimeVC.swift */,
+				0469B9F92A557404008EF672 /* FinalPuzzleCodigoVc.swift */,
+				0469B9FB2A557C1B008EF672 /* CongratsCodigoVC.swift */,
 			);
 			path = Game1and4;
 			sourceTree = "<group>";
@@ -685,6 +691,7 @@
 				04BF5FE029CEE4B000002970 /* TagView.swift in Sources */,
 				04952A6129DC314F00065956 /* ShowAllTeamAndTimeVC.swift in Sources */,
 				0484CF0129D71C9C00BDF003 /* InventorylistVC.swift in Sources */,
+				0469B9FC2A557C1B008EF672 /* CongratsCodigoVC.swift in Sources */,
 				04BF5FA729CEE4B000002970 /* View.swift in Sources */,
 				04BF5FAB29CEE4B000002970 /* Reachability.m in Sources */,
 				04BF600729CEE4B000002970 /* CommunicationManager.swift in Sources */,
@@ -720,6 +727,7 @@
 				04A490B229D2BF1A002E8D58 /* ContactVC.swift in Sources */,
 				04BF600C29CEE4B000002970 /* DatePickerDialog.swift in Sources */,
 				04BF5FE229CEE4B000002970 /* Countries.swift in Sources */,
+				0469B9FA2A557404008EF672 /* FinalPuzzleCodigoVc.swift in Sources */,
 				04BF601A29CEE8B600002970 /* ForgotPasswordVC.swift in Sources */,
 				04AE696129E58747008F6036 /* EndGameVC.swift in Sources */,
 				04BF5FDD29CEE4B000002970 /* CustomPointAnnotation.swift in Sources */,

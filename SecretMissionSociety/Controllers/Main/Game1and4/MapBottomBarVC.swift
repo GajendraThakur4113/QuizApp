@@ -87,8 +87,15 @@ class MapBottomBarVC: UIViewController {
 
         } else if sender.tag == 1 {
            
-            let nVC = self.storyboard?.instantiateViewController(withIdentifier: "FinalPuzzleVC") as! FinalPuzzleVC
-            self.navigationController?.pushViewController(nVC, animated: true)
+            if kappDelegate.dicCurrentEvent["id"].stringValue == "8" {
+                let nVC = self.storyboard?.instantiateViewController(withIdentifier: "FinalPuzzleCodigoVc") as! FinalPuzzleCodigoVc
+                self.navigationController?.pushViewController(nVC, animated: true)
+
+            } else {
+                let nVC = self.storyboard?.instantiateViewController(withIdentifier: "FinalPuzzleVC") as! FinalPuzzleVC
+                self.navigationController?.pushViewController(nVC, animated: true)
+
+            }
 
         } else if sender.tag == 2 {
          
