@@ -36,7 +36,7 @@ class MaplocationVC: UIViewController {
         }
         setCurrentLocation()
         self.tabBarController?.tabBar.isHidden = false
-
+      //  WebGetLeverl()
     }
     
     //MARK:Map
@@ -50,9 +50,18 @@ class MaplocationVC: UIViewController {
         } else {
             let objVC = self.storyboard?.instantiateViewController(withIdentifier: "CreateTeamVC") as! CreateTeamVC
             objVC.completion = {
-                let nVC = self.storyboard?.instantiateViewController(withIdentifier: "InstructionVC") as! InstructionVC
-                nVC.strDetail = kappDelegate.dicCurrentEvent["disclaimer"].stringValue
-                self.navigationController?.pushViewController(nVC, animated: true)
+                
+                if  kappDelegate.dicCurrentEvent["id"].stringValue == "18" {
+                    let nVC = self.storyboard?.instantiateViewController(withIdentifier: "LevelVC") as! LevelVC
+                    self.navigationController?.pushViewController(nVC, animated: true)
+
+                } else {
+                    let nVC = self.storyboard?.instantiateViewController(withIdentifier: "InstructionVC") as! InstructionVC
+                    nVC.strDetail = kappDelegate.dicCurrentEvent["disclaimer"].stringValue
+                    self.navigationController?.pushViewController(nVC, animated: true)
+
+                }
+                
             }
             objVC.modalPresentationStyle = .overCurrentContext
             objVC.modalTransitionStyle = .crossDissolve
@@ -117,6 +126,30 @@ class MaplocationVC: UIViewController {
                     lbl_address.text = kappDelegate.dicCurrentEvent["address"].stringValue
                     view_Pop.isHidden = false
 
+                } else {
+                    GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: swiftyJsonVar["result"].stringValue, on: self)
+
+                }
+                self.hideProgressBar()
+            }
+
+        },failureBlock: { (error : Error) in
+            self.hideProgressBar()
+            GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: (error.localizedDescription), on: self)
+        })
+    }
+    func WebGetLeverl() {
+        showProgressBar()
+        var paramsDict:[String:AnyObject] = [:]
+
+        print(paramsDict)
+        CommunicationManeger.callPostService(apiUrl: Router.get_level.url(), parameters: paramsDict, parentViewController: self, successBlock: { (responseData, message) in
+            
+            DispatchQueue.main.async { [self] in
+                let swiftyJsonVar = JSON(responseData)
+                print(swiftyJsonVar)
+                if(swiftyJsonVar["status"].stringValue == "1") {
+                    kappDelegate.dicCurrentlevle = swiftyJsonVar["result"]
                 } else {
                     GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: swiftyJsonVar["result"].stringValue, on: self)
 

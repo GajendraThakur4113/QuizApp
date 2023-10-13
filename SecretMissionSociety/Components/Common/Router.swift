@@ -10,9 +10,12 @@ import Foundation
 
 enum Router: String {
     
-    static let BASE_SERVICE_URL = "http://appsmsjuegos.com/Quiz/webservice/"
-    static let BASE_IMAGE_URL = "https://appsmsjuegos.com/uploads/images/"
+//    static let BASE_SERVICE_URL = "http://appsmsjuegos.com/Quiz/webservice/"
+//    static let BASE_IMAGE_URL = "https://appsmsjuegos.com/uploads/images/"
     
+    static let BASE_SERVICE_URL = "http://appsmsjuegos.com/Quiz/api/"
+    static let BASE_IMAGE_URL = "https://appsmsjuegos.com/uploads/images/"
+
     case logIn
     case signUp
     case get_term_conditions
@@ -46,6 +49,8 @@ enum Router: String {
     case get_inventory_event
     case get_event_time
     case get_event_instructions_game_images
+    case event_start_time_game4
+    case get_level
 
 
     public func url() -> String {
@@ -116,6 +121,10 @@ enum Router: String {
             return Router.oAuthRoute(path: "get_event_time")
         case .get_event_instructions_game_images:
             return Router.oAuthRoute(path: "get_event_instructions_game_images")
+        case .event_start_time_game4:
+            return Router.oAuthRoute(path: "event_start_time_game4")
+        case .get_level:
+            return Router.oAuthRoute(path: "get_level")
 
         }
     }

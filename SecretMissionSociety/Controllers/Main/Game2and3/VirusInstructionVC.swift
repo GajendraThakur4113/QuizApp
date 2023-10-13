@@ -53,8 +53,19 @@ class VirusInstructionVC: UIViewController {
                 let swiftyJsonVar = JSON(responseData)
                 print(swiftyJsonVar)
                 if(swiftyJsonVar["status"].stringValue == "1") {
-                    let nVC = self.storyboard?.instantiateViewController(withIdentifier: "VirusAnswerVC") as! VirusAnswerVC
-                    self.navigationController?.pushViewController(nVC, animated: true)
+                    
+                    if kappDelegate.dicCurrentVirus["id"].stringValue == "14"  {
+                        
+                        let nVC = self.storyboard?.instantiateViewController(withIdentifier: "CabanaVC") as! CabanaVC
+                        self.navigationController?.pushViewController(nVC, animated: true)
+
+                    } else {
+                        
+                       let nVC = self.storyboard?.instantiateViewController(withIdentifier: "VirusAnswerVC") as! VirusAnswerVC
+                        self.navigationController?.pushViewController(nVC, animated: true)
+
+                    }
+
                 } else {
                     GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: swiftyJsonVar["result"].stringValue, on: self)
                 }

@@ -43,6 +43,13 @@ class CreateTeamVC: UIViewController {
         
         if text_name.text?.count != 0 && text_Code.text?.count != 0 {
             WebApplyCode()
+
+//            if kappDelegate.dicCurrentEvent["id"].stringValue == "8" {
+//                WebApplyCodeForCodigoFrida()
+//            } else {
+//                WebApplyCode()
+//            }
+            
         } else {
             GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: "Please enter Team name and code", on: self)
 
@@ -52,8 +59,44 @@ class CreateTeamVC: UIViewController {
     @IBAction func useAcode(_ sender: Any) {
         self.dismiss(animated: false, completion: nil)
     }
-
+        //get_event_time
     func WebApplyCode() {
+        
+        showProgressBar()
+        var paramsDict:[String:AnyObject] = [:]
+        paramsDict["user_id"]     =   USER_DEFAULT.value(forKey: USERID) as AnyObject
+        paramsDict["event_id"]     =   kappDelegate.dicCurrentEvent["id"].stringValue as AnyObject
+        paramsDict["event_code"]     =   text_Code.text! as AnyObject
+        paramsDict["team_name"]     =   text_name.text! as AnyObject
+        paramsDict["lat"]     =   kappDelegate.CURRENT_LAT as AnyObject
+        paramsDict["lon"]     =   kappDelegate.CURRENT_LON as AnyObject
+        paramsDict["level"]     =   kappDelegate.strLevelId as AnyObject
+
+        print(paramsDict)
+        CommunicationManeger.callPostService(apiUrl: Router.event_start_time.url(), parameters: paramsDict, parentViewController: self, successBlock: { (responseData, message) in
+            
+            DispatchQueue.main.async { [self] in
+                let swiftyJsonVar = JSON(responseData)
+                print(swiftyJsonVar)
+                if(swiftyJsonVar["status"].stringValue == "1") {
+                    if let completion = completion {
+                      completion()
+                        kappDelegate.strEventCode = text_Code.text!
+                    }
+                    self.dismiss(animated: false, completion: nil)
+                } else {
+                    self.dismiss(animated: false, completion: nil)
+                }
+                self.hideProgressBar()
+            }
+
+        },failureBlock: { (error : Error) in
+            self.hideProgressBar()
+            GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: (error.localizedDescription), on: self)
+        })
+    }
+
+    func WebApplyCodeForCodigoFrida() {
         showProgressBar()
         var paramsDict:[String:AnyObject] = [:]
         paramsDict["user_id"]     =   USER_DEFAULT.value(forKey: USERID) as AnyObject
@@ -65,7 +108,7 @@ class CreateTeamVC: UIViewController {
 
      //   lon=79.00105708465577&team_name=dcc&lat=21.997414921678143
         print(paramsDict)
-        CommunicationManeger.callPostService(apiUrl: Router.event_start_time.url(), parameters: paramsDict, parentViewController: self, successBlock: { (responseData, message) in
+        CommunicationManeger.callPostService(apiUrl: Router.event_start_time_game4.url(), parameters: paramsDict, parentViewController: self, successBlock: { (responseData, message) in
             
             DispatchQueue.main.async { [self] in
                 let swiftyJsonVar = JSON(responseData)

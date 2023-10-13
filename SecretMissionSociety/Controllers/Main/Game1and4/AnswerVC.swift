@@ -81,12 +81,11 @@ class AnswerVC: UIViewController,UIWebViewDelegate,WKNavigationDelegate {
         webView.scrollView.isScrollEnabled = true
         webView.scrollView.bounces = false
         webView.allowsBackForwardNavigationGestures = false
-
         
         if dicCurrentQuestion["instructions"].stringValue.contains("http") {
             heightIMage.constant = 0
             img_user.isHidden = true
-            webView.contentMode = .scaleAspectFit
+            webView.contentMode = .scaleToFill
 
         } else {
             heightIMage.constant = 220
@@ -94,26 +93,30 @@ class AnswerVC: UIViewController,UIWebViewDelegate,WKNavigationDelegate {
             webView.contentMode = .scaleToFill
 
         }
-        webView.navigationDelegate = self
-        webView.loadHTMLString(Singleton.shared.header + "\(dicCurrentQuestion["instructions"].stringValue)" + "</body>", baseURL: nil)
-        webView.evaluateJavaScript(Singleton.shared.javascript, completionHandler: nil)
-        webView.isHidden = false
+       
 
         table_Answer.estimatedRowHeight = 65
         table_Answer.rowHeight = UITableView.automaticDimension
 
-//        text_Detail.attributedText = "\(dicCurrentQuestion["hint_discovered"].stringValue) \n\n \(dicCurrentQuestion["hint_discovered_sp"].stringValue)".htmlToAttributedString
+     
+   
+        webView.contentMode = .scaleToFill
+        webView.navigationDelegate = self
+        webView.loadHTMLString(Singleton.shared.header + "\(dicCurrentQuestion["instructions"].stringValue)" + "</body>", baseURL: nil)
+        webView.evaluateJavaScript(Singleton.shared.javascript, completionHandler: nil)
+        webView.isHidden = false
+        
         img_user.sd_setImage(with: URL(string: dicCurrentQuestion["image"].stringValue), placeholderImage: UIImage(named: "NoImageAvailable"), options: .refreshCached, completed: nil)
+
         heightAnswer.constant = 0
         view_Answer.isHidden = true
 
-     
         if dicCurrentQuestion["custom_ans"].stringValue != "" {
             arroption.append("Or Enter answer")
             isIndex = 0
             heightAnswer.constant = 50.0
             view_Answer.isHidden = false
-            strCustom = "yes"
+            strCustom = "custom"
             height_table.constant = 70
         } else {
             arroption.append(dicCurrentQuestion["option_A"].stringValue)
@@ -305,6 +308,11 @@ class AnswerVC: UIViewController,UIWebViewDelegate,WKNavigationDelegate {
             GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: (error.localizedDescription), on: self)
         })
     }
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        webView.evaluateJavaScript(Singleton.shared.javascript, completionHandler: nil)
+        print("sdsdsd")
+    }
+
 }
 
 extension AnswerVC: UITableViewDelegate,UITableViewDataSource {

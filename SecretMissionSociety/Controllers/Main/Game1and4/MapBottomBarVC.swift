@@ -24,7 +24,7 @@ class MapBottomBarVC: UIViewController {
         super.viewDidLoad()
 
        // WebGetCode()
-
+        lbl_Time.text = ""
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,6 +44,7 @@ class MapBottomBarVC: UIViewController {
     }
 
     @objc func countdown() {
+    
         var hours: Int
         var minutes: Int
         var seconds: Int
@@ -87,7 +88,7 @@ class MapBottomBarVC: UIViewController {
 
         } else if sender.tag == 1 {
            
-            if kappDelegate.dicCurrentEvent["id"].stringValue == "8" {
+            if kappDelegate.dicCurrentEvent["id"].stringValue == "8" || kappDelegate.dicCurrentEvent["id"].stringValue == "15" {
                 let nVC = self.storyboard?.instantiateViewController(withIdentifier: "FinalPuzzleCodigoVc") as! FinalPuzzleCodigoVc
                 self.navigationController?.pushViewController(nVC, animated: true)
 
@@ -123,7 +124,7 @@ class MapBottomBarVC: UIViewController {
         }
     }
 
-    
+    //event_start_time
     func WebGetTime() {
         showProgressBar()
         var paramsDict:[String:AnyObject] = [:]
@@ -131,7 +132,9 @@ class MapBottomBarVC: UIViewController {
         paramsDict["event_id"]     =   kappDelegate.dicCurrentEvent["id"].stringValue as AnyObject
         paramsDict["event_code"]     =    kappDelegate.strEventCode as AnyObject
         paramsDict["lang"]     =   Singleton.shared.language as AnyObject
+        paramsDict["level"]     =   kappDelegate.strLevelId as AnyObject
 
+        
         print(paramsDict)
         CommunicationManeger.callPostService(apiUrl: Router.get_event_time.url(), parameters: paramsDict, parentViewController: self, successBlock: { (responseData, message) in
             
@@ -148,7 +151,8 @@ class MapBottomBarVC: UIViewController {
                     startTimer()
                     
                 } else {
-
+                    totalSecond = 0
+                    startTimer()
                 }
                 self.hideProgressBar()
             }
@@ -166,6 +170,7 @@ class MapBottomBarVC: UIViewController {
         paramsDict["event_id"]     =   kappDelegate.dicCurrentEvent["id"].stringValue as AnyObject
         paramsDict["event_code"]     =    kappDelegate.strEventCode as AnyObject
         paramsDict["lang"]     =   Singleton.shared.language as AnyObject
+        paramsDict["level"]     =   kappDelegate.strLevelId as AnyObject
 
         print(paramsDict)
         CommunicationManeger.callPostService(apiUrl: Router.get_event_instructions_game.url(), parameters: paramsDict, parentViewController: self, successBlock: { (responseData, message) in

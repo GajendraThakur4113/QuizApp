@@ -84,21 +84,20 @@ extension EventVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollect
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
        
   
-        if indexPath.row == 0 || indexPath.row == 2 {
-
+        if indexPath.row == 0 || indexPath.row == 2 || indexPath.row == 4 || indexPath.row == 6  {
+           
            self.tabBarController?.selectedIndex = 3
             
-        } else if indexPath.row == 1  {
-           
+        } else if indexPath.row == 1 || indexPath.row == 3 || indexPath.row == 5 || indexPath.row == 7 {
             kappDelegate.dicCurrentVirus = nearMeEvents[indexPath.row]
+            kappDelegate.strGameName = kappDelegate.dicCurrentVirus["event_name"].stringValue
+
             let nVC = self.storyboard?.instantiateViewController(withIdentifier: "VirsuHomeVC") as! VirsuHomeVC
             self.navigationController?.pushViewController(nVC, animated: true)
 
-        } else if indexPath.row == 3  {
-            
-            
+        } else {
+            GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: "Coming soon", on: self)
         }
-
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

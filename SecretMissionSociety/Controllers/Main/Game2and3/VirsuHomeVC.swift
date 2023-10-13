@@ -46,7 +46,7 @@ class VirsuHomeVC: UIViewController {
     @IBAction func useAcode(_ sender: Any) {
         if dicEvent != nil {
             
-            if dicEvent["status"].stringValue != "Finish" {
+            if dicEvent["event_status"].stringValue != "END" {
                 let nVC = self.storyboard?.instantiateViewController(withIdentifier: "WelcomeVC") as! WelcomeVC
                 self.navigationController?.pushViewController(nVC, animated: true)
             } else {

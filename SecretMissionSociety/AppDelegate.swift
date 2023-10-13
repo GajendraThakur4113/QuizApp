@@ -34,6 +34,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var dicCurrentQuestion:JSON!
     var strIsFrom:String! = ""
     var strGameName:String! = ""
+    var dicCurrentlevle:JSON!
+    var strLevelId:String! = "1"
 
 
     

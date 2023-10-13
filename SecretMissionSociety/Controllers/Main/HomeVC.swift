@@ -59,13 +59,14 @@ class HomeVC: UIViewController {
     }
    
     @IBAction func frontBannerBtn(_ sender: UIButton){
+     
         if counter <= 0{
             counter = 0
         }
         counter = counter + 1
         if counter >= self.bannerResult.count{
          //   Singleton.shared.showToast(text: "")
-        }else{
+        } else {
             pageControl.currentPage = counter
             bannerCollecView.scrollToItem(at: IndexPath(item: counter, section: 0), at: .centeredHorizontally, animated: true)
         }
@@ -160,11 +161,11 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollecti
        
         if collectionView == nearestCollecView {
             
-            if indexPath.row == 0 || indexPath.row == 2 || indexPath.row == 4 {
+            if indexPath.row == 0 || indexPath.row == 2 || indexPath.row == 4 || indexPath.row == 6  {
                
                self.tabBarController?.selectedIndex = 3
                 
-            } else if indexPath.row == 1 || indexPath.row == 3  {
+            } else if indexPath.row == 1 || indexPath.row == 3 || indexPath.row == 5 || indexPath.row == 7 {
                 kappDelegate.dicCurrentVirus = nearMeEvents[indexPath.row]
                 kappDelegate.strGameName = kappDelegate.dicCurrentVirus["event_name"].stringValue
 

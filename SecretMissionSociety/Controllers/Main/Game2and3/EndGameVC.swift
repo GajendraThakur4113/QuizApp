@@ -25,9 +25,9 @@ class EndGameVC: UIViewController {
      
         setNavigationBarItem(LeftTitle: "", LeftImage: "back", CenterTitle: "", CenterImage: "", RightTitle: "", RightImage: "", BackgroundColor: NAAV_BG_COLOR, BackgroundImage: "", TextColor: WHITE_COLOR, TintColor: WHITE_COLOR, Menu: "")
 
-        img_user.sd_setImage(with: URL(string: kappDelegate.dicCurrentVirus["image"].stringValue), placeholderImage: UIImage(named: "NoImageAvailable"), options: .refreshCached, completed: nil)
+        img_user.sd_setImage(with: URL(string: kappDelegate.dicCurrentVirus["after_finish_image"].stringValue), placeholderImage: UIImage(named: "NoImageAvailable"), options: .refreshCached, completed: nil)
 
-        text_Detail.text = Languages.EndGame
+        text_Detail.text = kappDelegate.dicCurrentVirus["after_finish_text"].stringValue
         
     }
 
