@@ -84,7 +84,7 @@ extension EventVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollect
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
        
   
-        if indexPath.row == 0 || indexPath.row == 2 || indexPath.row == 4 || indexPath.row == 6  {
+        if indexPath.row == 0 || indexPath.row == 2 || indexPath.row == 4 || indexPath.row == 6 || indexPath.row == 8 {
            
            self.tabBarController?.selectedIndex = 3
             

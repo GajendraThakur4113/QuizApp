@@ -161,7 +161,7 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollecti
        
         if collectionView == nearestCollecView {
             
-            if indexPath.row == 0 || indexPath.row == 2 || indexPath.row == 4 || indexPath.row == 6  {
+            if indexPath.row == 0 || indexPath.row == 2 || indexPath.row == 4 || indexPath.row == 6 || indexPath.row == 8 {
                
                self.tabBarController?.selectedIndex = 3
                 
@@ -170,6 +170,7 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollecti
                 kappDelegate.strGameName = kappDelegate.dicCurrentVirus["event_name"].stringValue
 
                 let nVC = self.storyboard?.instantiateViewController(withIdentifier: "VirsuHomeVC") as! VirsuHomeVC
+                nVC.isINdex = indexPath.row
                 self.navigationController?.pushViewController(nVC, animated: true)
 
             } else {

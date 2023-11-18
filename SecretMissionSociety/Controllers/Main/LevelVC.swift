@@ -24,6 +24,7 @@ class LevelVC: UIViewController {
     var arr_Leaderbard:[JSON]! = []
     var isIdSelect:String! = ""
     var isIndex:Int! = -1
+    var isIndexN:Int! = -1
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,9 +75,18 @@ class LevelVC: UIViewController {
   
         if isIndex != -1 {
       
-            let nVC = self.storyboard?.instantiateViewController(withIdentifier: "InstructionVC") as! InstructionVC
-            nVC.strDetail = kappDelegate.dicCurrentEvent["disclaimer"].stringValue
-            self.navigationController?.pushViewController(nVC, animated: true)
+            if isIndexN == 1 || isIndexN == 3 || isIndexN == 5 || isIndexN == 7 {
+
+                let nVC = self.storyboard?.instantiateViewController(withIdentifier: "WelcomeVC") as! WelcomeVC
+                self.navigationController?.pushViewController(nVC, animated: true)
+
+            } else {
+                
+                let nVC = self.storyboard?.instantiateViewController(withIdentifier: "InstructionVC") as! InstructionVC
+                nVC.strDetail = kappDelegate.dicCurrentEvent["disclaimer"].stringValue
+                self.navigationController?.pushViewController(nVC, animated: true)
+
+            }
 
         } else {
             

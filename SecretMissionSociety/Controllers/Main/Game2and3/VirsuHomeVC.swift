@@ -17,6 +17,8 @@ class VirsuHomeVC: UIViewController {
     @IBOutlet weak var trans_View: UIView!
     @IBOutlet weak var text_Code: UITextField!
     
+    var isINdex:Int! = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -47,8 +49,12 @@ class VirsuHomeVC: UIViewController {
         if dicEvent != nil {
             
             if dicEvent["event_status"].stringValue != "END" {
-                let nVC = self.storyboard?.instantiateViewController(withIdentifier: "WelcomeVC") as! WelcomeVC
+                
+                
+                let nVC = self.storyboard?.instantiateViewController(withIdentifier: "LevelVC") as! LevelVC
+                nVC.isIndexN = isINdex
                 self.navigationController?.pushViewController(nVC, animated: true)
+
             } else {
                 trans_View.isHidden = false
             }
