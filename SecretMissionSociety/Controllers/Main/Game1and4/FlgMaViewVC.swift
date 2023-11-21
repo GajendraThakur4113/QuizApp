@@ -105,21 +105,33 @@ extension FlgMaViewVC: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView){
         
-//                if kappDelegate.dicCurrentEvent["type"].stringValue != "crime" {
+        let strId = view.annotation?.title ?? ""
+        print("didSelectAnnotationTapped \(view.annotation?.title ?? "")")
+        let arr = arrlist.filter({$0["id"].stringValue == strId})
+        print("didSelectAnnotationTapped \(arr)")
+
+        var coordinate1v = CLLocation(latitude: Double(arr[0]["lat"].stringValue)!, longitude: Double(arr[0]["lon"].stringValue)!)
+        print("coordinate1v \(coordinate1v)")
+        print("coordinate1vc \(kappDelegate.coordinate2)")
+
+        let d = kappDelegate.coordinate2.distance(from: coordinate1v)
+        
+        print("distacne \(kappDelegate.coordinate2)")
+
+//        if d < 50 {
                     
-                    let strId = view.annotation?.title ?? ""
-                    print("didSelectAnnotationTapped \(view.annotation?.title ?? "")")
-                    let arr = arrlist.filter({$0["id"].stringValue == strId})
-                    print("didSelectAnnotationTapped \(arr)")
                     let nVC = self.storyboard?.instantiateViewController(withIdentifier: "AnswerVC") as! AnswerVC
                     nVC.dicCurrentQuestion = arr[0]
                     kappDelegate.strIsFrom = "No"
                     self.navigationController?.pushViewController(nVC, animated: true)
 
-        
-//                }
+//        } else {
+//            
+//            GlobalConstant.showAlertMessageClose(withOkButtonAndTitle: "Not On Point Location\n\nDistance :- \(d) Meter's", andMessage: "Its loo like your are not on puzzle location.You need to be inside the 50 meter radius of target location to begin the game", on: self)
+//            
+//        }
 
-        }
+    }
 
     func showAnnotaionOnMap(arrAll:[JSON]) {
         mapView.removeAnnotations(mapView.annotations)

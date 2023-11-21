@@ -83,6 +83,15 @@ class GlobalConstant: NSObject {
         controller.present(alertController, animated: true, completion: nil)
         
     }
+    class func showAlertMessageClose(withOkButtonAndTitle strTitle: String, andMessage strMessage: String, on controller: UIViewController) {
+        
+        let alertController = UIAlertController(title: strTitle, message: strMessage, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "Close", style: .default, handler: nil)
+        alertController.addAction(ok)
+        controller.present(alertController, animated: true, completion: nil)
+        
+    }
+
     class func showAlertYesNoAction(withTitle title: String, message msg: String, delegate del: Any?, parentViewController parentVC: UIViewController, completionHandler: @escaping (Bool) -> Void ) {
            let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
            alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
