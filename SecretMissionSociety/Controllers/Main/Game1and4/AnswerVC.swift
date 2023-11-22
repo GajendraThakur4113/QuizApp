@@ -253,6 +253,7 @@ class AnswerVC: UIViewController,UIWebViewDelegate,WKNavigationDelegate {
         paramsDict["event_code"]     =    kappDelegate.strEventCode as AnyObject
         paramsDict["ans"]     =   isAnswer as AnyObject
         paramsDict["custom_type"]     =   strCustom as AnyObject
+        paramsDict["level"]     =   kappDelegate.strLevelId as AnyObject
 
         print(paramsDict)
         CommunicationManeger.callPostService(apiUrl: Router.event_instructions_game_ans.url(), parameters: paramsDict, parentViewController: self, successBlock: { (responseData, message) in
