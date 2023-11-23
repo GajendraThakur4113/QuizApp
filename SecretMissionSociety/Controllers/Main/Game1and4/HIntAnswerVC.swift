@@ -55,6 +55,7 @@ class HIntAnswerVC: UIViewController {
         paramsDict["event_code"]     =    kappDelegate.strEventCode as AnyObject
         paramsDict["time"]     =   strPenalityTime as AnyObject
         paramsDict["hint_type"]     =   "\(isIndex!)" as AnyObject
+        paramsDict["level"]     =   kappDelegate.strLevelId as AnyObject
 
         var strAPI:String! = ""
 

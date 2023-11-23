@@ -289,6 +289,7 @@ class AnswerVC: UIViewController,UIWebViewDelegate,WKNavigationDelegate {
         paramsDict["ans"]     =   isAnswer as AnyObject
         paramsDict["time"]     =   strepn as AnyObject
         paramsDict["hint_type"]     =   "2" as AnyObject
+        paramsDict["level"]     =   kappDelegate.strLevelId as AnyObject
 
         print(paramsDict)
         CommunicationManeger.callPostService(apiUrl: Router.add_hint.url(), parameters: paramsDict, parentViewController: self, successBlock: { (responseData, message) in

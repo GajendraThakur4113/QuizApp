@@ -70,6 +70,7 @@ class FinalPuzzleVC: UIViewController {
         paramsDict["event_id"]     =   kappDelegate.dicCurrentEvent["id"].stringValue as AnyObject
         paramsDict["event_code"]     =    kappDelegate.strEventCode as AnyObject
         paramsDict["lang"]     =   Singleton.shared.language as AnyObject
+        paramsDict["level"]     =   kappDelegate.strLevelId as AnyObject
 
         print(paramsDict)
         CommunicationManeger.callPostService(apiUrl: Router.get_inventory_event.url(), parameters: paramsDict, parentViewController: self, successBlock: { (responseData, message) in
