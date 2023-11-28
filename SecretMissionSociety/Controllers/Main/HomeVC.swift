@@ -8,9 +8,11 @@
 import UIKit
 import SwiftyJSON
 import SDWebImage
+import DropDown
 
 class HomeVC: UIViewController {
     
+    @IBOutlet weak var lbl_city: UILabel!
     @IBOutlet weak var bannerCollecView: UICollectionView!
     @IBOutlet weak var nearestCollecView: UICollectionView!
     @IBOutlet weak var pageControl: UIPageControl!
@@ -21,6 +23,8 @@ class HomeVC: UIViewController {
     var counter = 0
     var bannerResult:[JSON]! = []
     var nearMeEvents:[JSON]! = []
+    var drop = DropDown()
+    var allnearMeEvents:[JSON]! = []
 
 
     override func viewDidLoad() {
@@ -48,6 +52,25 @@ class HomeVC: UIViewController {
     }
     
     //Mark:- Button Actions
+    @IBAction func cityy(_ sender: UIButton) {
+        
+        drop.anchorView = sender
+        drop.dataSource = ["CDMX / Metropotitian area","Gudalajara"]
+        drop.bottomOffset = CGPoint(x: 0, y: 50)
+        self.drop.show()
+        drop.selectionAction = { [unowned self] (index: Int, item: String) in
+            self.lbl_city.text = item
+            
+            if item == "CDMX / Metropotitian area" {
+                self.nearMeEvents = allnearMeEvents.filter({$0["city_id"].stringValue == "1"})
+            } else {
+                self.nearMeEvents = allnearMeEvents.filter({$0["city_id"].stringValue == "2"})
+            }
+            self.nearestCollecView.reloadData()
+            self.view.endEditing(true)
+        }
+
+    }
     @IBAction func backBannerBtn(_ sender: UIButton){
         if counter > self.bannerResult.count{
             //Singleton.shared.showToast(text: "")
@@ -110,6 +133,7 @@ class HomeVC: UIViewController {
                 print(swiftyJsonVar)
                 if(swiftyJsonVar["status"].stringValue == "1") {
                     self.nearMeEvents = swiftyJsonVar["result"].arrayValue
+                    self.allnearMeEvents = swiftyJsonVar["result"].arrayValue
                     self.nearestCollecView.reloadData()
                 }
                 self.hideProgressBar()
@@ -161,11 +185,14 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollecti
        
         if collectionView == nearestCollecView {
             
-            if indexPath.row == 0 || indexPath.row == 2 || indexPath.row == 4 || indexPath.row == 6 || indexPath.row == 8 {
+            let eventid = nearMeEvents[indexPath.row]["id"].stringValue
+        
+            
+            if eventid == "1" || eventid == "5" || eventid == "8" || eventid == "15" || eventid == "18" || eventid == "19" || eventid == "20" {
                
                self.tabBarController?.selectedIndex = 3
                 
-            } else if indexPath.row == 1 || indexPath.row == 3 || indexPath.row == 5 || indexPath.row == 7 {
+            } else if eventid == "4" || eventid == "7" || eventid == "14" || eventid == "17" {
                 kappDelegate.dicCurrentVirus = nearMeEvents[indexPath.row]
                 kappDelegate.strGameName = kappDelegate.dicCurrentVirus["event_name"].stringValue
 
