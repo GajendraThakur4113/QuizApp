@@ -188,7 +188,7 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollecti
             let eventid = nearMeEvents[indexPath.row]["id"].stringValue
         
             
-            if eventid == "1" || eventid == "5" || eventid == "8" || eventid == "15" || eventid == "18" || eventid == "19" || eventid == "20" {
+            if eventid == "1" || eventid == "5" || eventid == "8" || eventid == "15" || eventid == "18" || eventid == "19" || eventid == "20" || eventid == "22" {
                
                self.tabBarController?.selectedIndex = 3
                 

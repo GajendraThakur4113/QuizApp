@@ -69,7 +69,7 @@ class JoinedEventVC: UIViewController {
                 let swiftyJsonVar = JSON(responseData)
                 print(swiftyJsonVar)
                 if(swiftyJsonVar["status"].stringValue == "1") {
-                    self.nearMeEvents = swiftyJsonVar["result"].arrayValue.filter({$0["type"].stringValue == "puzzle" || $0["type"].stringValue == "crime" || $0["type"].stringValue == "codigo_frida" || $0["type"].stringValue == "zombie" || $0["type"].stringValue == "rescate" && $0["event_status"].stringValue != "END"})
+                    self.nearMeEvents = swiftyJsonVar["result"].arrayValue.filter({$0["type"].stringValue == "puzzle" || $0["type"].stringValue == "crime" || $0["type"].stringValue == "codigo_frida" || $0["type"].stringValue == "zombie" || $0["type"].stringValue == "rescate" || $0["type"].stringValue == "mision_magica" && $0["event_status"].stringValue != "END"})
                     self.tableList.reloadData()
                 }
                 self.hideProgressBar()

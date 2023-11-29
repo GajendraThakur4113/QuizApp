@@ -27,7 +27,7 @@ class EventVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = false
-        setNavigationBarItem(LeftTitle: "", LeftImage: "", CenterTitle: "Accomplishments", CenterImage: "", RightTitle: "", RightImage: "", BackgroundColor: NAAV_BG_COLOR, BackgroundImage: "", TextColor: WHITE_COLOR, TintColor: WHITE_COLOR, Menu: "")
+        setNavigationBarItem(LeftTitle: "", LeftImage: "", CenterTitle: "Logros", CenterImage: "", RightTitle: "", RightImage: "", BackgroundColor: NAAV_BG_COLOR, BackgroundImage: "", TextColor: WHITE_COLOR, TintColor: WHITE_COLOR, Menu: "")
       //  WebGetEvent()
         self.tabBarController?.tabBar.isHidden = false
 
