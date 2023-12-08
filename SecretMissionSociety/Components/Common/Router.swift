@@ -16,6 +16,8 @@ enum Router: String {
     static let BASE_SERVICE_URL = "http://appsmsjuegos.com/Quiz/api/"
     static let BASE_IMAGE_URL = "https://appsmsjuegos.com/uploads/images/"
 
+    
+    
     case logIn
     case signUp
     case get_term_conditions
@@ -51,6 +53,7 @@ enum Router: String {
     case get_event_instructions_game_images
     case event_start_time_game4
     case get_level
+    case get_Accomplishments
 
 
     public func url() -> String {
@@ -125,6 +128,8 @@ enum Router: String {
             return Router.oAuthRoute(path: "event_start_time_game4")
         case .get_level:
             return Router.oAuthRoute(path: "get_level")
+        case .get_Accomplishments:
+            return Router.oAuthRoute(path: "get_Accomplishments")
 
         }
     }

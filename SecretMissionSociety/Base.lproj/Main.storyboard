@@ -1371,7 +1371,7 @@
                                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ezf-Du-wtS">
                                                     <rect key="frame" x="2" y="2" width="199" height="265"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="3" translatesAutoresizingMaskIntoConstraints="NO" id="Bzi-bI-p1Y">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="3" translatesAutoresizingMaskIntoConstraints="NO" id="Bzi-bI-p1Y">
                                                             <rect key="frame" x="0.0" y="0.0" width="199" height="265"/>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tYd-rz-DBn">
@@ -6921,7 +6921,7 @@ REACHED</string>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hdb-84-lAd">
                                 <rect key="frame" x="15" y="63" width="384" height="71.5"/>
-                                <string key="text">Note: You can only choose team difficulty level for once, once you pick the level your team will play game it the selected level</string>
+                                <string key="text">Nota: Únicamente puedes elegir el nivel de dificultad antes de jugar. Una vez que elijas el nivel de dificultad, no podrás cambiarlo.</string>
                                 <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>

@@ -57,6 +57,7 @@ class JoinedEventVC: UIViewController {
     }
     
     func WebGetEvent() {
+        
         showProgressBar()
         var paramsDict:[String:AnyObject] = [:]
         paramsDict["lang"]     =   Singleton.shared.language as AnyObject

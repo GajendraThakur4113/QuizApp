@@ -28,9 +28,9 @@ class EventVC: UIViewController {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = false
         setNavigationBarItem(LeftTitle: "", LeftImage: "", CenterTitle: "Logros", CenterImage: "", RightTitle: "", RightImage: "", BackgroundColor: NAAV_BG_COLOR, BackgroundImage: "", TextColor: WHITE_COLOR, TintColor: WHITE_COLOR, Menu: "")
-      //  WebGetEvent()
+        WebGetEvent()
         self.tabBarController?.tabBar.isHidden = false
-
+        nearestCollecView.isHidden  = false
     }
 
     func WebGetEvent() {
@@ -39,7 +39,7 @@ class EventVC: UIViewController {
         paramsDict["lang"]     =   Singleton.shared.language as AnyObject
 
         print(paramsDict)
-        CommunicationManeger.callPostService(apiUrl: Router.get_event.url(), parameters: paramsDict, parentViewController: self, successBlock: { (responseData, message) in
+        CommunicationManeger.callPostService(apiUrl: Router.get_Accomplishments.url(), parameters: paramsDict, parentViewController: self, successBlock: { (responseData, message) in
             
             DispatchQueue.main.async { [self] in
                 let swiftyJsonVar = JSON(responseData)
@@ -73,8 +73,8 @@ extension EventVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollect
             print("Nearestsddsd")
             let cell = nearestCollecView.dequeueReusableCell(withReuseIdentifier: "NearestCollectionCell", for: indexPath) as! NearestCollectionCell
             let data = nearMeEvents[indexPath.row]
-            cell.img.sd_setImage(with: URL(string: data["image"].stringValue), placeholderImage: UIImage(named: "NoImageAvailable"), options: .refreshCached, completed: nil)
-            cell.lblTime.text = data["event_name"].stringValue
+            cell.img.sd_setImage(with: URL(string: data["complete_image"].stringValue), placeholderImage: UIImage(named: "NoImageAvailable"), options: .refreshCached, completed: nil)
+            cell.lblTime.text = ""
 
             return cell
         
@@ -84,20 +84,20 @@ extension EventVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollect
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
        
   
-        if indexPath.row == 0 || indexPath.row == 2 || indexPath.row == 4 || indexPath.row == 6 || indexPath.row == 8 {
-           
-           self.tabBarController?.selectedIndex = 3
-            
-        } else if indexPath.row == 1 || indexPath.row == 3 || indexPath.row == 5 || indexPath.row == 7 {
-            kappDelegate.dicCurrentVirus = nearMeEvents[indexPath.row]
-            kappDelegate.strGameName = kappDelegate.dicCurrentVirus["event_name"].stringValue
-
-            let nVC = self.storyboard?.instantiateViewController(withIdentifier: "VirsuHomeVC") as! VirsuHomeVC
-            self.navigationController?.pushViewController(nVC, animated: true)
-
-        } else {
-            GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: "Coming soon", on: self)
-        }
+//        if indexPath.row == 0 || indexPath.row == 2 || indexPath.row == 4 || indexPath.row == 6 || indexPath.row == 8 {
+//
+//           self.tabBarController?.selectedIndex = 3
+//
+//        } else if indexPath.row == 1 || indexPath.row == 3 || indexPath.row == 5 || indexPath.row == 7 {
+//            kappDelegate.dicCurrentVirus = nearMeEvents[indexPath.row]
+//            kappDelegate.strGameName = kappDelegate.dicCurrentVirus["event_name"].stringValue
+//
+//            let nVC = self.storyboard?.instantiateViewController(withIdentifier: "VirsuHomeVC") as! VirsuHomeVC
+//            self.navigationController?.pushViewController(nVC, animated: true)
+//
+//        } else {
+//            GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: "Coming soon", on: self)
+//        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

@@ -132,8 +132,9 @@ class HomeVC: UIViewController {
                 let swiftyJsonVar = JSON(responseData)
                 print(swiftyJsonVar)
                 if(swiftyJsonVar["status"].stringValue == "1") {
-                    self.nearMeEvents = swiftyJsonVar["result"].arrayValue
                     self.allnearMeEvents = swiftyJsonVar["result"].arrayValue
+                    self.nearMeEvents = allnearMeEvents.filter({$0["city_id"].stringValue == "1"})
+                    self.lbl_city.text = "CDMX / Metropotitian area"
                     self.nearestCollecView.reloadData()
                 }
                 self.hideProgressBar()

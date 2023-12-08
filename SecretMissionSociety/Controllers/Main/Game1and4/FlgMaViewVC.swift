@@ -101,6 +101,7 @@ class FlgMaViewVC: UIViewController {
     }
 
 }
+
 extension FlgMaViewVC: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView){
@@ -110,7 +111,9 @@ extension FlgMaViewVC: MKMapViewDelegate {
         let arr = arrlist.filter({$0["id"].stringValue == strId})
         print("didSelectAnnotationTapped \(arr)")
 
-        var coordinate1v = CLLocation(latitude: Double(arr[0]["lat"].stringValue)!, longitude: Double(arr[0]["lon"].stringValue)!)
+        print("coordinate1v \(arr[0]["lat"].string) \(arr[0]["lon"].string)")
+
+        var coordinate1v = CLLocation(latitude: Double(arr[0]["lat"].stringValue.removingWhitespaces())!, longitude: Double(arr[0]["lon"].stringValue.removingWhitespaces())!)
         print("coordinate1v \(coordinate1v)")
         print("coordinate1vc \(kappDelegate.coordinate2)")
 
@@ -118,19 +121,31 @@ extension FlgMaViewVC: MKMapViewDelegate {
         
         print("distacne \(kappDelegate.coordinate2)")
 
-//        if d < 50 {
-                    
-                    let nVC = self.storyboard?.instantiateViewController(withIdentifier: "AnswerVC") as! AnswerVC
-                    nVC.dicCurrentQuestion = arr[0]
-                    kappDelegate.strIsFrom = "No"
-                    self.navigationController?.pushViewController(nVC, animated: true)
+        if kappDelegate.dicCurrentEvent["id"].stringValue == "15" {
+            
+            
+            if d < 200 {
+                
+                        
+                let nVC = self.storyboard?.instantiateViewController(withIdentifier: "AnswerVC") as! AnswerVC
+                nVC.dicCurrentQuestion = arr[0]
+                kappDelegate.strIsFrom = "No"
+                self.navigationController?.pushViewController(nVC, animated: true)
 
-//        } else {
-//            
-//            GlobalConstant.showAlertMessageClose(withOkButtonAndTitle: "Not On Point Location\n\nDistance :- \(d) Meter's", andMessage: "Its loo like your are not on puzzle location.You need to be inside the 50 meter radius of target location to begin the game", on: self)
-//            
-//        }
+            } else {
+                
+                GlobalConstant.showAlertMessageClose(withOkButtonAndTitle: "UBICACION LEJANA", andMessage: "Distance :- \(d) Meter's\n\nIParece que no estás dentro del radio cercano a las marcas del juego.Debes estar al menos 200 metros próximos a la ubicación marcada.", on: self)
+                
+            }
+            
+        } else {
+            
+            let nVC = self.storyboard?.instantiateViewController(withIdentifier: "AnswerVC") as! AnswerVC
+            nVC.dicCurrentQuestion = arr[0]
+            kappDelegate.strIsFrom = "No"
+            self.navigationController?.pushViewController(nVC, animated: true)
 
+        }
     }
 
     func showAnnotaionOnMap(arrAll:[JSON]) {
@@ -297,4 +312,9 @@ extension FlgMaViewVC: MKMapViewDelegate {
         //        }
     }
 
+}
+extension String {
+    func removingWhitespaces() -> String {
+        return components(separatedBy: .whitespaces).joined()
+    }
 }
