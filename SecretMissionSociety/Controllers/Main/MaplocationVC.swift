@@ -46,7 +46,11 @@ class MaplocationVC: UIViewController {
         if kappDelegate.dicCurrentEvent["team_name"].stringValue != "" {
             let nVC = self.storyboard?.instantiateViewController(withIdentifier: "InstructionVC") as! InstructionVC
             nVC.strDetail = kappDelegate.dicCurrentEvent["disclaimer"].stringValue
-            kappDelegate.strLevelId = kappDelegate.dicCurrentEvent["level"].stringValue
+            if kappDelegate.dicCurrentEvent["level"].stringValue == "" {
+                kappDelegate.strLevelId = "1"
+            } else {
+                kappDelegate.strLevelId = kappDelegate.dicCurrentEvent["level"].stringValue
+            }
             self.navigationController?.pushViewController(nVC, animated: true)
         } else {
             let objVC = self.storyboard?.instantiateViewController(withIdentifier: "CreateTeamVC") as! CreateTeamVC

@@ -244,7 +244,18 @@ extension MapBottomBarVC: MKMapViewDelegate {
         }
        
     }
-  
+    func usernameTest(testStr:String) -> Bool {
+         let letters = CharacterSet.punctuationCharacters
+         let range = testStr.rangeOfCharacter(from: letters)
+         // range will be nil if no letters is found
+         if range != nil {
+            return true
+         }
+         else {
+            return false
+         }
+    }
+
     func showAnnotaionOnMap(arrAll:[JSON]) {
         mapView.removeAnnotations(mapView.annotations)
         var arrAllAnn:[MKPointAnnotation] =  []
@@ -270,14 +281,20 @@ extension MapBottomBarVC: MKMapViewDelegate {
 
             let sourceAnnotation = CustomPointAnnotation()
 
-            if pdiLat != "" &&  pdiLot != "" && dic["answer_status"].numberValue == 0 {
+
+            if usernameTest(testStr: pdiLat) == true {
+                print("No Routesfs \(usernameTest(testStr: pdiLat))")
+
+            }
+
+            if pdiLat != "" &&  pdiLot != ""  && dic["answer_status"].numberValue == 0  {
                 pickupCoordinat = CLLocationCoordinate2DMake(Double(pdiLat)!, Double(pdiLot)!)
                 let sourcePlacemark = MKPlacemark(coordinate: pickupCoordinat!, addressDictionary: nil)
                 sourceAnnotation.coordinate = sourcePlacemark.coordinate
                 sourceAnnotation.imageName = "flag_red"
                 sourceAnnotation.title = dic["id"].stringValue
             
-            } else if pdiLat != "" &&  pdiLot != "" && dic["answer_status"].numberValue == 1 {
+            } else if pdiLat != "" &&  pdiLot != "" && dic["answer_status"].numberValue == 1  {
                 pickupCoordinat = CLLocationCoordinate2DMake(Double(pdiLat)!, Double(pdiLot)!)
                 let sourcePlacemark = MKPlacemark(coordinate: pickupCoordinat!, addressDictionary: nil)
                 sourceAnnotation.coordinate = sourcePlacemark.coordinate
@@ -425,5 +442,16 @@ extension TimeInterval {
     }
     var millisecond: Int {
         Int((self*1000).truncatingRemainder(dividingBy: 1000))
+    }
+}
+
+extension String {
+    func containsOnlyLetters(input: String) -> Bool {
+       for chr in input {
+          if (!(chr >= "a" && chr <= "z") && !(chr >= "A" && chr <= "Z") ) {
+             return false
+          }
+       }
+       return true
     }
 }

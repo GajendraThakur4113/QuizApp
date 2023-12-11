@@ -55,7 +55,7 @@ class HomeVC: UIViewController {
     @IBAction func cityy(_ sender: UIButton) {
         
         drop.anchorView = sender
-        drop.dataSource = ["CDMX / Metropotitian area","Gudalajara"]
+        drop.dataSource = ["CDMX / Metropotitian area","Guadalajara"]
         drop.bottomOffset = CGPoint(x: 0, y: 50)
         self.drop.show()
         drop.selectionAction = { [unowned self] (index: Int, item: String) in
