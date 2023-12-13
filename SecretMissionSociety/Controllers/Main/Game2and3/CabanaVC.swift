@@ -182,6 +182,7 @@ class CabanaVC: UIViewController {
         } else {
             
             let nVC = self.storyboard?.instantiateViewController(withIdentifier: "EndGameVC") as! EndGameVC
+            nVC.strFromVirus = "virus"
             self.navigationController?.pushViewController(nVC, animated: true)
 
         }

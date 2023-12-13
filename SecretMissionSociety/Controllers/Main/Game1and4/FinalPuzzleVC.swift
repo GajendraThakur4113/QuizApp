@@ -26,6 +26,7 @@ class FinalPuzzleVC: UIViewController {
     var isObject:Int! = -1
     var isPeople:Int! = -1
     var isPlace:Int! = -1
+    var dicAll:JSON!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,18 +47,27 @@ class FinalPuzzleVC: UIViewController {
 
     @IBAction func finish(_ sender: Any) {
      
+//        let nVC = self.storyboard?.instantiateViewController(withIdentifier: "EndGameVC") as! EndGameVC
+//        nVC.dicAll = dicAll
+//        self.navigationController?.pushViewController(nVC, animated: true)
+
         if isObject != -1 && isPeople != -1 && isPlace != -1 {
-            
+
             if strObject == "Yes" && strPlace == "Yes" && strPeople == "Yes" {
-                WebEndTime()
+//                WebEndTime()
+
+                let nVC = self.storyboard?.instantiateViewController(withIdentifier: "EndGameVC") as! EndGameVC
+                nVC.dicAll = dicAll
+                self.navigationController?.pushViewController(nVC, animated: true)
+
             } else {
                 GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: "Wrong image selected penalty Time Added 5 min.", on: self)
                 WebAddPenality()
             }
-            
+
         } else {
-        
-            GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: "Please select a people image", on: self)
+
+            GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: "Please select one image in all three section", on: self)
 
         }
         
@@ -79,6 +89,7 @@ class FinalPuzzleVC: UIViewController {
                 let swiftyJsonVar = JSON(responseData)
                 print(swiftyJsonVar)
                 if(swiftyJsonVar["status"].stringValue == "1") {
+                    dicAll = swiftyJsonVar
                     arrayList = swiftyJsonVar["result"].arrayValue
                     lbl_Titile.attributedText = swiftyJsonVar["notice"].stringValue.htmlToAttributedString
                     collection_place.reloadData()

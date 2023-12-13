@@ -6992,7 +6992,7 @@ REACHED</string>
         <image name="ic_loca" width="24" height="34"/>
         <image name="info.circle.fill" catalog="system" width="128" height="123"/>
         <image name="inst_popup" width="590" height="567"/>
-        <image name="last_acc_img" width="414" height="314"/>
+        <image name="last_acc_img" width="300" height="228"/>
         <image name="locationCen" width="60" height="60"/>
         <image name="magnifyingglass.circle.fill" catalog="system" width="128" height="123"/>
         <image name="map.fill" catalog="system" width="128" height="110"/>

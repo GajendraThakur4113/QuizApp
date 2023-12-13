@@ -26,7 +26,7 @@ class CongratsCodigoVC: UIViewController {
      
         self.navigationController?.navigationBar.isHidden = false
       
-        setNavigationBarItem(LeftTitle: "", LeftImage: "back", CenterTitle: "Congratulations", CenterImage: "", RightTitle: "", RightImage: "", BackgroundColor: NAAV_BG_COLOR, BackgroundImage: "", TextColor: WHITE_COLOR, TintColor: WHITE_COLOR, Menu: "")
+        setNavigationBarItem(LeftTitle: "", LeftImage: "back", CenterTitle: "Felicidades", CenterImage: "", RightTitle: "", RightImage: "", BackgroundColor: NAAV_BG_COLOR, BackgroundImage: "", TextColor: WHITE_COLOR, TintColor: WHITE_COLOR, Menu: "")
 
         let strAll = dicInfo["after_finish_text"].stringValue
         text_Detail.attributedText = strAll.htmlToAttributedString

@@ -219,19 +219,28 @@ extension MapBottomBarVC: MKMapViewDelegate {
 
         if kappDelegate.dicCurrentEvent["id"].stringValue == "15" {
             
-            
-            if d < 200 {
+            if arr[0]["geolocation"].stringValue == "on" {
                 
-                        
+                if d < 200 {
+                    
+                    let nVC = self.storyboard?.instantiateViewController(withIdentifier: "AnswerVC") as! AnswerVC
+                    nVC.dicCurrentQuestion = arr[0]
+                    kappDelegate.strIsFrom = "No"
+                    self.navigationController?.pushViewController(nVC, animated: true)
+
+                } else {
+                    
+                    GlobalConstant.showAlertMessageClose(withOkButtonAndTitle: "UBICACION LEJANA", andMessage: "Distance :- \(d) Meter's\n\nIParece que no estás dentro del radio cercano a las marcas del juego.Debes estar al menos 200 metros próximos a la ubicación marcada.", on: self)
+                    
+                }
+
+            } else {
+                
                 let nVC = self.storyboard?.instantiateViewController(withIdentifier: "AnswerVC") as! AnswerVC
                 nVC.dicCurrentQuestion = arr[0]
                 kappDelegate.strIsFrom = "No"
                 self.navigationController?.pushViewController(nVC, animated: true)
 
-            } else {
-                
-                GlobalConstant.showAlertMessageClose(withOkButtonAndTitle: "UBICACION LEJANA", andMessage: "Distance :- \(d) Meter's\n\nIParece que no estás dentro del radio cercano a las marcas del juego.Debes estar al menos 200 metros próximos a la ubicación marcada.", on: self)
-                
             }
             
         } else {
@@ -282,10 +291,10 @@ extension MapBottomBarVC: MKMapViewDelegate {
             let sourceAnnotation = CustomPointAnnotation()
 
 
-            if usernameTest(testStr: pdiLat) == true {
-                print("No Routesfs \(usernameTest(testStr: pdiLat))")
-
-            }
+//            if usernameTest(testStr: pdiLat) == true {
+//                print("No Routesfs \(usernameTest(testStr: pdiLat))")
+//
+//            }
 
             if pdiLat != "" &&  pdiLot != ""  && dic["answer_status"].numberValue == 0  {
                 pickupCoordinat = CLLocationCoordinate2DMake(Double(pdiLat)!, Double(pdiLot)!)
