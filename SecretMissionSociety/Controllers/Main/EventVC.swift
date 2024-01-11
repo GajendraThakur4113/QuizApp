@@ -73,8 +73,8 @@ extension EventVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollect
             print("Nearestsddsd")
             let cell = nearestCollecView.dequeueReusableCell(withReuseIdentifier: "NearestCollectionCell", for: indexPath) as! NearestCollectionCell
             let data = nearMeEvents[indexPath.row]
-            cell.img.sd_setImage(with: URL(string: data["complete_image"].stringValue), placeholderImage: UIImage(named: "NoImageAvailable"), options: .refreshCached, completed: nil)
-            cell.lblTime.text = ""
+            cell.img.sd_setImage(with: URL(string: data["incomplete_image"].stringValue), placeholderImage: UIImage(named: "NoImageAvailable"), options: .refreshCached, completed: nil)
+            cell.lblTime.text = data["title"].stringValue
 
             return cell
         
@@ -102,7 +102,7 @@ extension EventVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollect
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
             
-        return CGSize(width: self.nearestCollecView.frame.width/2 - 5, height: self.nearestCollecView.frame.height/2.3)
+        return CGSize(width: self.nearestCollecView.frame.width/3.2 - 5, height: self.nearestCollecView.frame.height/3)
         
     }
     

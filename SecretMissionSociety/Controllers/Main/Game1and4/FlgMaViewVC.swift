@@ -120,22 +120,30 @@ extension FlgMaViewVC: MKMapViewDelegate {
         let d = kappDelegate.coordinate2.distance(from: coordinate1v)
         
         print("distacne \(kappDelegate.coordinate2)")
-
-        if kappDelegate.dicCurrentEvent["id"].stringValue == "15" {
+        if kappDelegate.dicCurrentEvent["id"].stringValue == "1" || kappDelegate.dicCurrentEvent["id"].stringValue == "5" || kappDelegate.dicCurrentEvent["id"].stringValue == "20"  || kappDelegate.dicCurrentEvent["id"].stringValue == "8" || kappDelegate.dicCurrentEvent["id"].stringValue == "18" {
             
-            
-            if d < 200 {
+            if arr[0]["geolocation"].stringValue == "on" {
                 
-                        
+                if d < 100 {
+                    
+                    let nVC = self.storyboard?.instantiateViewController(withIdentifier: "AnswerVC") as! AnswerVC
+                    nVC.dicCurrentQuestion = arr[0]
+                    kappDelegate.strIsFrom = "No"
+                    self.navigationController?.pushViewController(nVC, animated: true)
+
+                } else {
+                    
+                    GlobalConstant.showAlertMessageClose(withOkButtonAndTitle: "UBICACION LEJANA", andMessage: "Distance :- \(d) Meter's\n\nIParece que no estás dentro del radio cercano a las marcas del juego.Debes estar al menos 100 metros próximos a la ubicación marcada.", on: self)
+                    
+                }
+
+            } else {
+                
                 let nVC = self.storyboard?.instantiateViewController(withIdentifier: "AnswerVC") as! AnswerVC
                 nVC.dicCurrentQuestion = arr[0]
                 kappDelegate.strIsFrom = "No"
                 self.navigationController?.pushViewController(nVC, animated: true)
 
-            } else {
-                
-                GlobalConstant.showAlertMessageClose(withOkButtonAndTitle: "UBICACION LEJANA", andMessage: "Distance :- \(d) Meter's\n\nIParece que no estás dentro del radio cercano a las marcas del juego.Debes estar al menos 200 metros próximos a la ubicación marcada.", on: self)
-                
             }
             
         } else {
@@ -146,6 +154,7 @@ extension FlgMaViewVC: MKMapViewDelegate {
             self.navigationController?.pushViewController(nVC, animated: true)
 
         }
+        
     }
 
     func showAnnotaionOnMap(arrAll:[JSON]) {
@@ -164,6 +173,7 @@ extension FlgMaViewVC: MKMapViewDelegate {
             coordinates.append(CLLocationCoordinate2DMake(Double(pdiLat)!, Double(pdiLot)!))
 
         }
+        
         for dic in arrAll {
             
             var pickupCoordinat:CLLocationCoordinate2D!

@@ -184,7 +184,7 @@ class MapBottomBarVC: UIViewController {
                     arrlist = swiftyJsonVar["result"].arrayValue
                     showAnnotaionOnMap(arrAll: arrlist)
                 } else {
-                    GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: swiftyJsonVar["result"].stringValue, on: self)
+                    GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: "No puzzle found", on: self)
 
                 }
                 self.hideProgressBar()
@@ -217,11 +217,11 @@ extension MapBottomBarVC: MKMapViewDelegate {
         
         print("distacne \(kappDelegate.coordinate2)")
 
-        if kappDelegate.dicCurrentEvent["id"].stringValue == "15" {
+        if kappDelegate.dicCurrentEvent["id"].stringValue == "1" || kappDelegate.dicCurrentEvent["id"].stringValue == "5" || kappDelegate.dicCurrentEvent["id"].stringValue == "20"  || kappDelegate.dicCurrentEvent["id"].stringValue == "8" || kappDelegate.dicCurrentEvent["id"].stringValue == "18" {
             
             if arr[0]["geolocation"].stringValue == "on" {
                 
-                if d < 200 {
+                if d < 100 {
                     
                     let nVC = self.storyboard?.instantiateViewController(withIdentifier: "AnswerVC") as! AnswerVC
                     nVC.dicCurrentQuestion = arr[0]
@@ -230,7 +230,7 @@ extension MapBottomBarVC: MKMapViewDelegate {
 
                 } else {
                     
-                    GlobalConstant.showAlertMessageClose(withOkButtonAndTitle: "UBICACION LEJANA", andMessage: "Distance :- \(d) Meter's\n\nIParece que no estás dentro del radio cercano a las marcas del juego.Debes estar al menos 200 metros próximos a la ubicación marcada.", on: self)
+                    GlobalConstant.showAlertMessageClose(withOkButtonAndTitle: "UBICACION LEJANA", andMessage: "Distance :- \(d) Meter's\n\nIParece que no estás dentro del radio cercano a las marcas del juego.Debes estar al menos 100 metros próximos a la ubicación marcada.", on: self)
                     
                 }
 
