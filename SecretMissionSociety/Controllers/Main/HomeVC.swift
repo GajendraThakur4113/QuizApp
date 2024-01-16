@@ -187,23 +187,31 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollecti
         if collectionView == nearestCollecView {
             
             let eventid = nearMeEvents[indexPath.row]["id"].stringValue
+            let city_id = nearMeEvents[indexPath.row]["city_id"].stringValue
+
+            if self.lbl_city.text == "CDMX / Metropotitian area" || self.lbl_city.text == "Guadalajara" {
         
-            
-            if eventid == "1" || eventid == "5" || eventid == "8" || eventid == "15" || eventid == "18" || eventid == "19" || eventid == "20" || eventid == "22" {
-               
-               self.tabBarController?.selectedIndex = 3
+                if eventid == "1" || eventid == "5" || eventid == "8" || eventid == "15" || eventid == "18" || eventid == "19" || eventid == "20" || eventid == "22" || eventid == "34" || eventid == "24" || eventid == "35" {
+                   
+                   self.tabBarController?.selectedIndex = 3
+                    
+                } else if eventid == "4" || eventid == "7" || eventid == "14" || eventid == "17" {
+                    kappDelegate.dicCurrentVirus = nearMeEvents[indexPath.row]
+                    kappDelegate.strGameName = kappDelegate.dicCurrentVirus["event_name"].stringValue
+
+                    let nVC = self.storyboard?.instantiateViewController(withIdentifier: "VirsuHomeVC") as! VirsuHomeVC
+                    nVC.isINdex = indexPath.row
+                    self.navigationController?.pushViewController(nVC, animated: true)
+
+                } else {
+                    GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: "Available soon", on: self)
+                }
+
                 
-            } else if eventid == "4" || eventid == "7" || eventid == "14" || eventid == "17" {
-                kappDelegate.dicCurrentVirus = nearMeEvents[indexPath.row]
-                kappDelegate.strGameName = kappDelegate.dicCurrentVirus["event_name"].stringValue
-
-                let nVC = self.storyboard?.instantiateViewController(withIdentifier: "VirsuHomeVC") as! VirsuHomeVC
-                nVC.isINdex = indexPath.row
-                self.navigationController?.pushViewController(nVC, animated: true)
-
             } else {
-                GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: "Coming soon", on: self)
+                GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: "Available soon", on: self)
             }
+            
             
             
         } else {

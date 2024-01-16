@@ -81,38 +81,44 @@ class MapBottomBarVC: UIViewController {
     
     @IBAction func Archived(_ sender: UIButton) {
 
-        if sender.tag == 0 {
-          
-            let nVC = self.storyboard?.instantiateViewController(withIdentifier: "InventorylistVC") as! InventorylistVC
-             self.navigationController?.pushViewController(nVC, animated: true)
+        
+//        if kappDelegate.dicCurrentEvent["id"].stringValue != "34" {
+            
+        
+            if sender.tag == 0 {
+              
+                let nVC = self.storyboard?.instantiateViewController(withIdentifier: "InventorylistVC") as! InventorylistVC
+                 self.navigationController?.pushViewController(nVC, animated: true)
 
-        } else if sender.tag == 1 {
-           
-            if kappDelegate.dicCurrentEvent["id"].stringValue == "8" || kappDelegate.dicCurrentEvent["id"].stringValue == "15" || kappDelegate.dicCurrentEvent["id"].stringValue == "18" {
-                
-                let nVC = self.storyboard?.instantiateViewController(withIdentifier: "FinalPuzzleCodigoVc") as! FinalPuzzleCodigoVc
+            } else if sender.tag == 1 {
+               
+                if kappDelegate.dicCurrentEvent["id"].stringValue == "8" || kappDelegate.dicCurrentEvent["id"].stringValue == "15" || kappDelegate.dicCurrentEvent["id"].stringValue == "18" {
+                    
+                    let nVC = self.storyboard?.instantiateViewController(withIdentifier: "FinalPuzzleCodigoVc") as! FinalPuzzleCodigoVc
+                    self.navigationController?.pushViewController(nVC, animated: true)
+
+                } else {
+                    
+                    let nVC = self.storyboard?.instantiateViewController(withIdentifier: "FinalPuzzleVC") as! FinalPuzzleVC
+                    self.navigationController?.pushViewController(nVC, animated: true)
+
+                }
+
+            } else if sender.tag == 2 {
+             
+                let nVC = self.storyboard?.instantiateViewController(withIdentifier: "FlgMaViewVC") as! FlgMaViewVC
                 self.navigationController?.pushViewController(nVC, animated: true)
 
-            } else {
+            } else if sender.tag == 3 {
                 
-                let nVC = self.storyboard?.instantiateViewController(withIdentifier: "FinalPuzzleVC") as! FinalPuzzleVC
+                let nVC = self.storyboard?.instantiateViewController(withIdentifier: "InstructionVC") as! InstructionVC
+                nVC.strDetail = kappDelegate.dicCurrentEvent["event_instructions"].stringValue
+                nVC.strfrom = "map"
                 self.navigationController?.pushViewController(nVC, animated: true)
 
             }
 
-        } else if sender.tag == 2 {
-         
-            let nVC = self.storyboard?.instantiateViewController(withIdentifier: "FlgMaViewVC") as! FlgMaViewVC
-            self.navigationController?.pushViewController(nVC, animated: true)
-
-        } else if sender.tag == 3 {
-            
-            let nVC = self.storyboard?.instantiateViewController(withIdentifier: "InstructionVC") as! InstructionVC
-            nVC.strDetail = kappDelegate.dicCurrentEvent["event_instructions"].stringValue
-            nVC.strfrom = "map"
-            self.navigationController?.pushViewController(nVC, animated: true)
-
-        }
+//     }
         
     }
     
