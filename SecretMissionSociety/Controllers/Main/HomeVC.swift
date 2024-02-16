@@ -63,7 +63,11 @@ class HomeVC: UIViewController {
             
             if item == "CDMX / Metropotitian area" {
                 self.nearMeEvents = allnearMeEvents.filter({$0["city_id"].stringValue == "1"})
-            } else {
+            } else if item == "Guadalajara"  {
+                self.nearMeEvents = allnearMeEvents.filter({$0["city_id"].stringValue == "2"})
+            } else if item == "Monterrey"  {
+                self.nearMeEvents = allnearMeEvents.filter({$0["city_id"].stringValue == "3"})
+            } else  {
                 self.nearMeEvents = allnearMeEvents.filter({$0["city_id"].stringValue == "2"})
             }
             self.nearestCollecView.reloadData()
@@ -165,10 +169,12 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollecti
             print("Banner")
             let cell = bannerCollecView.dequeueReusableCell(withReuseIdentifier: "BannerCollectionCell", for: indexPath) as! BannerCollectionCell
             let data = self.bannerResult[indexPath.row]
-//            let data = nearMeEvents[collectionView.tag]["user_product"].arrayValue[indexPath.row]["image"].str
+
             cell.imgView.sd_setShowActivityIndicatorView(true)
             cell.imgView.sd_setImage(with: URL(string: data["image"].stringValue), placeholderImage: UIImage(named: "NoImageAvailable"), options: .refreshCached, completed: nil)
+            
             return cell
+            
         } else {
             print("Nearestsddsd")
             let cell = nearestCollecView.dequeueReusableCell(withReuseIdentifier: "NearestCollectionCell", for: indexPath) as! NearestCollectionCell
@@ -187,11 +193,11 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollecti
         if collectionView == nearestCollecView {
             
             let eventid = nearMeEvents[indexPath.row]["id"].stringValue
-            let city_id = nearMeEvents[indexPath.row]["city_id"].stringValue
+            _ = nearMeEvents[indexPath.row]["city_id"].stringValue
 
-            if self.lbl_city.text == "CDMX / Metropotitian area" || self.lbl_city.text == "Guadalajara" {
+            if self.lbl_city.text == "CDMX / Metropotitian area" || self.lbl_city.text == "Guadalajara" || self.lbl_city.text == "Monterrey" {
         
-                if eventid == "1" || eventid == "5" || eventid == "8" || eventid == "15" || eventid == "18" || eventid == "19" || eventid == "20" || eventid == "22" || eventid == "34" || eventid == "24" || eventid == "35" {
+                if eventid == "1" || eventid == "5" || eventid == "8" || eventid == "15" || eventid == "18" || eventid == "19" || eventid == "20" || eventid == "22" || eventid == "34" || eventid == "24" || eventid == "35" || eventid == "36" || eventid == "31"  || eventid == "28" || eventid == "25" {
                    
                    self.tabBarController?.selectedIndex = 3
                     

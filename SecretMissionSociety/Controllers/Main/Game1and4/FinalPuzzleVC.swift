@@ -11,6 +11,9 @@ import SDWebImage
 
 class FinalPuzzleVC: UIViewController {
 
+    @IBOutlet weak var hight3: NSLayoutConstraint!
+    @IBOutlet weak var hight2: NSLayoutConstraint!
+    @IBOutlet weak var hight1: NSLayoutConstraint!
     @IBOutlet weak var lbl_Titile: UILabel!
  
     @IBOutlet weak var collection_object: UICollectionView!
@@ -92,6 +95,45 @@ class FinalPuzzleVC: UIViewController {
                     dicAll = swiftyJsonVar
                     arrayList = swiftyJsonVar["result"].arrayValue
                     lbl_Titile.attributedText = swiftyJsonVar["notice"].stringValue.htmlToAttributedString
+                    
+                    let Places = arrayList.filter({$0["type"].stringValue == "Places"}).count
+                    var newS = Places/3
+                    newS += 1
+
+//                    if newS%3 == 0 {
+                        hight1.constant = CGFloat(130 * newS)
+//                    } else {
+//                        newS += 1
+//                        hight1.constant = CGFloat(130 * newS)
+//                    }
+
+                    let People =  arrayList.filter({$0["type"].stringValue == "People"}).count
+                    var Peoples = People/3
+                        Peoples += 1
+//                    if Peoples%3 == 0 {
+                        hight2.constant = CGFloat(130 * Peoples)
+//                    } else {
+//                        Peoples += 1
+//                        hight2.constant = CGFloat(130 * Peoples)
+//                    }
+
+                 
+
+                    
+                    let Objects =  arrayList.filter({$0["type"].stringValue == "Objects"}).count
+                    var Objectsd = Objects/3
+                    Objectsd += 1
+
+//                    if Objectsd%3 == 0 {
+                        hight3.constant = CGFloat(130 * Objectsd)
+//                    } else {
+//                        Objectsd += 1
+//                        hight3.constant = CGFloat(130 * Objectsd)
+//                    }
+
+
+                    
+                    
                     collection_place.reloadData()
                     collection_People.reloadData()
                     collection_object.reloadData()
@@ -259,7 +301,7 @@ extension FinalPuzzleVC: UICollectionViewDelegate,UICollectionViewDataSource,UIC
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
       
-        return CGSize(width: 138, height: self.collection_place.frame.height)
+        return CGSize(width: self.collection_place.frame.width/3 - 10, height: 130)
     }
     
 }

@@ -4096,7 +4096,7 @@ REACHED</string>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="130" id="d12-cv-Bee"/>
                                                                 </constraints>
-                                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Em6-gw-YfN">
+                                                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Em6-gw-YfN">
                                                                     <size key="itemSize" width="134" height="131"/>
                                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -4104,7 +4104,7 @@ REACHED</string>
                                                                 </collectionViewFlowLayout>
                                                                 <cells>
                                                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BannerCollectionCell" id="PGS-OV-wPW" customClass="BannerCollectionCell" customModule="SecretMissionSociety" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="-0.5" width="134" height="131"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="134" height="131"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="17c-Rm-Tpl">
                                                                             <rect key="frame" x="0.0" y="0.0" width="134" height="131"/>
@@ -4208,7 +4208,7 @@ REACHED</string>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="130" id="heJ-ii-ofi"/>
                                                                 </constraints>
-                                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="wk6-nB-HTU">
+                                                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="wk6-nB-HTU">
                                                                     <size key="itemSize" width="134" height="131"/>
                                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -4216,7 +4216,7 @@ REACHED</string>
                                                                 </collectionViewFlowLayout>
                                                                 <cells>
                                                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BannerCollectionCell" id="amJ-vb-yFJ" customClass="BannerCollectionCell" customModule="SecretMissionSociety" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="-0.5" width="134" height="131"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="134" height="131"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="lHM-fY-coK">
                                                                             <rect key="frame" x="0.0" y="0.0" width="134" height="131"/>
@@ -4320,7 +4320,7 @@ REACHED</string>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="130" id="sH5-iA-EQc"/>
                                                                 </constraints>
-                                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="YEm-q1-32w">
+                                                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="YEm-q1-32w">
                                                                     <size key="itemSize" width="134" height="131"/>
                                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -4328,7 +4328,7 @@ REACHED</string>
                                                                 </collectionViewFlowLayout>
                                                                 <cells>
                                                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BannerCollectionCell" id="GBX-uT-AR5" customClass="BannerCollectionCell" customModule="SecretMissionSociety" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="-0.5" width="134" height="131"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="134" height="131"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="NAy-to-8Ua">
                                                                             <rect key="frame" x="0.0" y="0.0" width="134" height="131"/>
@@ -4478,6 +4478,9 @@ REACHED</string>
                         <outlet property="collection_People" destination="7aZ-i8-NZd" id="2wI-4V-APR"/>
                         <outlet property="collection_object" destination="P4I-lY-KyA" id="Zln-7J-6kx"/>
                         <outlet property="collection_place" destination="dCT-2N-ah8" id="Rq8-Nj-Ege"/>
+                        <outlet property="hight1" destination="d12-cv-Bee" id="2sr-EB-WL9"/>
+                        <outlet property="hight2" destination="heJ-ii-ofi" id="3ig-Wf-PXc"/>
+                        <outlet property="hight3" destination="sH5-iA-EQc" id="ChH-ud-MfW"/>
                         <outlet property="lbl_Titile" destination="P46-D7-U9F" id="V7V-jz-ifg"/>
                     </connections>
                 </viewController>
@@ -5528,9 +5531,12 @@ REACHED</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="iML-zn-JU2">
-                                <rect key="frame" x="10" y="378" width="394" height="384"/>
+                            <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="iML-zn-JU2">
+                                <rect key="frame" x="10" y="782" width="394" height="0.0"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" id="Rih-4G-Uyu"/>
+                                </constraints>
                                 <string key="text">Haz Click en el menú de arriba. \n  Click en Mapa para ver ubicaciones.\n  Click en Inventario para ver pistas encontradas \n * Click en Rompecabezas final para lograr terminar el reto</string>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="18"/>
@@ -5541,22 +5547,18 @@ REACHED</string>
                                 </connections>
                             </textView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="18H-KR-tCF">
-                                <rect key="frame" x="0.0" y="63" width="414" height="300"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="aO5-M1-lBo"/>
-                                </constraints>
+                                <rect key="frame" x="0.0" y="63" width="414" height="704"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="last_acc_img" translatesAutoresizingMaskIntoConstraints="NO" id="6Wt-7A-2VE">
-                                <rect key="frame" x="20" y="589" width="277" height="180"/>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="last_acc_img" translatesAutoresizingMaskIntoConstraints="NO" id="6Wt-7A-2VE">
+                                <rect key="frame" x="20" y="769" width="277" height="0.0"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="277" id="mIY-b3-YFq"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="180" id="nzV-9N-7vR"/>
-                                    <constraint firstAttribute="height" constant="180" id="obF-jT-9Wu"/>
+                                    <constraint firstAttribute="height" id="obF-jT-9Wu"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -5565,7 +5567,7 @@ REACHED</string>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zDc-RV-TIP">
-                                <rect key="frame" x="154" y="782" width="240" height="60"/>
+                                <rect key="frame" x="87" y="782" width="240" height="60"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="6Ca-uQ-cd6"/>
@@ -5590,16 +5592,16 @@ REACHED</string>
                         <viewLayoutGuide key="safeArea" id="3hr-pV-ORv"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="zDc-RV-TIP" firstAttribute="top" secondItem="iML-zn-JU2" secondAttribute="bottom" constant="20" id="2cR-Vl-7yx"/>
+                            <constraint firstItem="zDc-RV-TIP" firstAttribute="top" secondItem="iML-zn-JU2" secondAttribute="bottom" id="2cR-Vl-7yx"/>
                             <constraint firstItem="3hr-pV-ORv" firstAttribute="trailing" secondItem="18H-KR-tCF" secondAttribute="trailing" id="FFd-Pg-BiQ"/>
                             <constraint firstItem="iML-zn-JU2" firstAttribute="top" secondItem="18H-KR-tCF" secondAttribute="bottom" constant="15" id="Laf-BL-ViN"/>
                             <constraint firstItem="zDc-RV-TIP" firstAttribute="top" secondItem="6Wt-7A-2VE" secondAttribute="bottom" constant="13" id="Obw-Gg-8BJ"/>
                             <constraint firstItem="18H-KR-tCF" firstAttribute="top" secondItem="3hr-pV-ORv" secondAttribute="top" constant="15" id="WVu-JB-SDk"/>
+                            <constraint firstItem="zDc-RV-TIP" firstAttribute="centerX" secondItem="Hzm-Gz-llG" secondAttribute="centerX" id="WzU-VB-ItP"/>
                             <constraint firstItem="3hr-pV-ORv" firstAttribute="trailing" secondItem="iML-zn-JU2" secondAttribute="trailing" constant="10" id="afk-gr-F61"/>
                             <constraint firstItem="iML-zn-JU2" firstAttribute="leading" secondItem="3hr-pV-ORv" secondAttribute="leading" constant="10" id="eBb-QY-T9h"/>
                             <constraint firstItem="3hr-pV-ORv" firstAttribute="trailing" secondItem="6Wt-7A-2VE" secondAttribute="trailing" constant="117" id="eMk-ha-A7G"/>
                             <constraint firstItem="18H-KR-tCF" firstAttribute="leading" secondItem="3hr-pV-ORv" secondAttribute="leading" id="fpd-Tx-l2Z"/>
-                            <constraint firstItem="3hr-pV-ORv" firstAttribute="trailing" secondItem="zDc-RV-TIP" secondAttribute="trailing" constant="20" id="roM-lc-FKY"/>
                             <constraint firstItem="3hr-pV-ORv" firstAttribute="bottom" secondItem="zDc-RV-TIP" secondAttribute="bottom" constant="20" id="t4Q-34-zvx"/>
                         </constraints>
                     </view>
@@ -6992,7 +6994,7 @@ REACHED</string>
         <image name="ic_loca" width="24" height="34"/>
         <image name="info.circle.fill" catalog="system" width="128" height="123"/>
         <image name="inst_popup" width="590" height="567"/>
-        <image name="last_acc_img" width="414" height="314"/>
+        <image name="last_acc_img" width="300" height="228"/>
         <image name="locationCen" width="60" height="60"/>
         <image name="magnifyingglass.circle.fill" catalog="system" width="128" height="123"/>
         <image name="map.fill" catalog="system" width="128" height="110"/>
