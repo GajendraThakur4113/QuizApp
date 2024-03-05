@@ -53,7 +53,7 @@ class FinalPuzzleVC: UIViewController {
 //        let nVC = self.storyboard?.instantiateViewController(withIdentifier: "EndGameVC") as! EndGameVC
 //        nVC.dicAll = dicAll
 //        self.navigationController?.pushViewController(nVC, animated: true)
-
+//
         if isObject != -1 && isPeople != -1 && isPlace != -1 {
 
             if strObject == "Yes" && strPlace == "Yes" && strPeople == "Yes" {

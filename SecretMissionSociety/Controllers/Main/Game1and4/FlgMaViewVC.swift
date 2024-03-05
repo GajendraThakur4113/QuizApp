@@ -120,7 +120,7 @@ extension FlgMaViewVC: MKMapViewDelegate {
         let d = kappDelegate.coordinate2.distance(from: coordinate1v)
         
         print("distacne \(kappDelegate.coordinate2)")
-        if kappDelegate.dicCurrentEvent["id"].stringValue == "1" || kappDelegate.dicCurrentEvent["id"].stringValue == "5" || kappDelegate.dicCurrentEvent["id"].stringValue == "20"  || kappDelegate.dicCurrentEvent["id"].stringValue == "8" || kappDelegate.dicCurrentEvent["id"].stringValue == "18" {
+        if kappDelegate.dicCurrentEvent["id"].stringValue == "1" || kappDelegate.dicCurrentEvent["id"].stringValue == "5" || kappDelegate.dicCurrentEvent["id"].stringValue == "20" || kappDelegate.dicCurrentEvent["id"].stringValue == "8" || kappDelegate.dicCurrentEvent["id"].stringValue == "18" || kappDelegate.dicCurrentEvent["id"].stringValue == "4" || kappDelegate.dicCurrentEvent["id"].stringValue == "7" || kappDelegate.dicCurrentEvent["id"].stringValue == "17" {
             
             if arr[0]["geolocation"].stringValue == "on" {
                 
@@ -161,7 +161,8 @@ extension FlgMaViewVC: MKMapViewDelegate {
         mapView.removeAnnotations(mapView.annotations)
         var arrAllAnn:[MKPointAnnotation] =  []
         var coordinates:[CLLocationCoordinate2D] =  []
-      
+        var allLocations:[CLLocationCoordinate2D] = []
+
 
         var isCurrentId:Double! = 0.0
        
@@ -189,6 +190,8 @@ extension FlgMaViewVC: MKMapViewDelegate {
                 sourceAnnotation.coordinate = sourcePlacemark.coordinate
                 sourceAnnotation.imageName = "flag_red"
                 sourceAnnotation.title = dic["id"].stringValue
+                allLocations.append(pickupCoordinat)
+
             
             } else if pdiLat != "" &&  pdiLot != "" && dic["answer_status"].numberValue == 1 {
                 pickupCoordinat = CLLocationCoordinate2DMake(Double(pdiLat)!, Double(pdiLot)!)
@@ -196,6 +199,8 @@ extension FlgMaViewVC: MKMapViewDelegate {
                 sourceAnnotation.coordinate = sourcePlacemark.coordinate
                 sourceAnnotation.imageName = "flag_green"
                 sourceAnnotation.title = dic["id"].stringValue
+                allLocations.append(pickupCoordinat)
+
 
             }
             print("No Routesfs \(isCurrentId)")
@@ -262,11 +267,16 @@ extension FlgMaViewVC: MKMapViewDelegate {
 
         self.mapView.showAnnotations(arrAllAnn, animated: true )
 
+        
+
         if kappDelegate.strIsFrom == "Yes" {
             view_Bottom.isHidden = false
             lbl_Timer.text = "You have only \(kappDelegate.dicCurrentQuestion["arrival_time"].stringValue) Minutes To Reach Next CheckPoint Hurry up!"
         } else  {
             view_Bottom.isHidden = true
+            var poly:MKPolygon = MKPolygon(coordinates: &allLocations, count: allLocations.count)
+
+            self.mapView.setVisibleMapRect(poly.boundingMapRect, edgePadding: UIEdgeInsets(top: 20.0, left: 20.0, bottom: 20.0, right: 20.0), animated: false)
 
         }
     }
@@ -294,7 +304,7 @@ extension FlgMaViewVC: MKMapViewDelegate {
         
         let cpa = annotation as! CustomPointAnnotation
         
-        anView?.image = UIImage.init(named: cpa.imageName)
+        anView?.image = UIImage.init(named: cpa.imageName ?? "")
       //  anView?.ti = cpa
         
         return anView

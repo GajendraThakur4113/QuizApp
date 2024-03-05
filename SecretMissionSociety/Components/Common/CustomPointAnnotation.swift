@@ -10,6 +10,6 @@ import UIKit
 import MapKit
 
 class CustomPointAnnotation: MKPointAnnotation {
-    var imageName: String!
-    var point:String!
+    var imageName: String?
+    var point:String?
 }

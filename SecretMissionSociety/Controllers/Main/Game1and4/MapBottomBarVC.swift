@@ -213,7 +213,11 @@ extension MapBottomBarVC: MKMapViewDelegate {
         print("didSelectAnnotationTapped \(view.annotation?.title ?? "")")
         let arr = arrlist.filter({$0["id"].stringValue == strId})
         print("didSelectAnnotationTapped \(arr)")
+        if arr.count == 0  {
+            return
+        }
 
+        
         var coordinate1v = CLLocation(latitude: Double(arr[0]["lat"].stringValue.removingWhitespaces())!, longitude: Double(arr[0]["lon"].stringValue.removingWhitespaces())!)
         
         print("coordinate1v \(coordinate1v)")
@@ -275,7 +279,7 @@ extension MapBottomBarVC: MKMapViewDelegate {
         mapView.removeAnnotations(mapView.annotations)
         var arrAllAnn:[MKPointAnnotation] =  []
         var coordinates:[CLLocationCoordinate2D] =  []
-      
+        var allLocations:[CLLocationCoordinate2D] = []
 
         var isCurrentId:Double! = 0.0
        
@@ -308,13 +312,14 @@ extension MapBottomBarVC: MKMapViewDelegate {
                 sourceAnnotation.coordinate = sourcePlacemark.coordinate
                 sourceAnnotation.imageName = "flag_red"
                 sourceAnnotation.title = dic["id"].stringValue
-            
+                allLocations.append(pickupCoordinat)
             } else if pdiLat != "" &&  pdiLot != "" && dic["answer_status"].numberValue == 1  {
                 pickupCoordinat = CLLocationCoordinate2DMake(Double(pdiLat)!, Double(pdiLot)!)
                 let sourcePlacemark = MKPlacemark(coordinate: pickupCoordinat!, addressDictionary: nil)
                 sourceAnnotation.coordinate = sourcePlacemark.coordinate
                 sourceAnnotation.imageName = "flag_green"
                 sourceAnnotation.title = dic["id"].stringValue
+                allLocations.append(pickupCoordinat)
 
             }
             print("No Routesfs \(isCurrentId)")
@@ -381,8 +386,16 @@ extension MapBottomBarVC: MKMapViewDelegate {
 
         self.mapView.showAnnotations(arrAllAnn, animated: true )
 
+        if kappDelegate.strIsFrom != "Yes"  {
+            
+            var poly:MKPolygon = MKPolygon(coordinates: &allLocations, count: allLocations.count)
+
+            self.mapView.setVisibleMapRect(poly.boundingMapRect, edgePadding: UIEdgeInsets(top: 20.0, left: 20.0, bottom: 20.0, right: 20.0), animated: false)
+
+        }
+
     }
-    
+
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
 
         guard !(annotation is MKUserLocation) else {
@@ -406,7 +419,7 @@ extension MapBottomBarVC: MKMapViewDelegate {
         
         let cpa = annotation as! CustomPointAnnotation
         
-        anView?.image = UIImage.init(named: cpa.imageName)
+        anView?.image = UIImage.init(named: cpa.imageName ?? "")
       //  anView?.ti = cpa
         
         return anView
