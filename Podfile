@@ -11,6 +11,7 @@ pod 'SwiftyJSON'
 pod 'DropDown'
 pod 'SDWebImage/WebP'
 pod 'SVProgressHUD'
+pod 'Instabug'
 
   # Pods for SecretMissionSociety
 

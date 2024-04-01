@@ -1,6 +1,7 @@
 PODS:
   - Alamofire (4.8.2)
   - DropDown (2.3.13)
+  - Instabug (11.6.0)
   - IQKeyboardManagerSwift (6.5.10)
   - libwebp (1.2.3):
     - libwebp/demux (= 1.2.3)
@@ -21,6 +22,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 4.8.0)
   - DropDown
+  - Instabug
   - IQKeyboardManagerSwift
   - SDWebImage/WebP
   - SVProgressHUD
@@ -30,6 +32,7 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - DropDown
+    - Instabug
     - IQKeyboardManagerSwift
     - libwebp
     - SDWebImage
@@ -39,12 +42,13 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
+  Instabug: bddae5b34c359e97e4aee5ce4d9a71fdba4df652
   IQKeyboardManagerSwift: 52962c76ab33532f15ad9f3ff4e5715eda5335bb
   libwebp: 60305b2e989864154bd9be3d772730f08fc6a59c
   SDWebImage: 783af2c3fa36291a250030c4752ee370a9a51d13
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
 
-PODFILE CHECKSUM: 81ade56ca4b55b14ed04679610ae8fdb77cdc6ac
+PODFILE CHECKSUM: adc2f24c5b77ee5908f1a96659a93cc1ff427cb2
 
 COCOAPODS: 1.11.3

@@ -19,6 +19,7 @@ class MapBottomBarVC: UIViewController {
     
     var totalSecond = Int()
     var timer:Timer?
+    var puzzueDImage:UIImage!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,7 +85,7 @@ class MapBottomBarVC: UIViewController {
         
 //        if kappDelegate.dicCurrentEvent["id"].stringValue != "34" {
             
-        
+        //http://appsmsjuegos.com/Quiz/api/get_event_instructions_game?user_id=745&event_id=24&level=1&event_code=755254&lang=sp
             if sender.tag == 0 {
               
                 let nVC = self.storyboard?.instantiateViewController(withIdentifier: "InventorylistVC") as! InventorylistVC
@@ -92,7 +93,11 @@ class MapBottomBarVC: UIViewController {
 
             } else if sender.tag == 1 {
                
-                if kappDelegate.dicCurrentEvent["id"].stringValue == "8" || kappDelegate.dicCurrentEvent["id"].stringValue == "15" || kappDelegate.dicCurrentEvent["id"].stringValue == "18" {
+                if kappDelegate.dicCurrentEvent["id"].stringValue == "8" || kappDelegate.dicCurrentEvent["id"].stringValue == "15" || kappDelegate.dicCurrentEvent["id"].stringValue == "18" ||
+                    kappDelegate.dicCurrentEvent["id"].stringValue == "19" ||
+                    kappDelegate.dicCurrentEvent["id"].stringValue == "24" ||
+                    kappDelegate.dicCurrentEvent["id"].stringValue == "31" ||
+                    kappDelegate.dicCurrentEvent["id"].stringValue == "22" {
                     
                     let nVC = self.storyboard?.instantiateViewController(withIdentifier: "FinalPuzzleCodigoVc") as! FinalPuzzleCodigoVc
                     self.navigationController?.pushViewController(nVC, animated: true)
@@ -201,6 +206,7 @@ class MapBottomBarVC: UIViewController {
             GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: (error.localizedDescription), on: self)
         })
     }
+    
 
 }
 
@@ -232,33 +238,83 @@ extension MapBottomBarVC: MKMapViewDelegate {
             if arr[0]["geolocation"].stringValue == "on" {
                 
                 if d < 100 {
+//
+                    if arr[0]["Jigsaw_puzzle_status"].stringValue == "enable" {
+                        
+                        
+
+                        let nVC = self.storyboard?.instantiateViewController(withIdentifier: "PuzzleCollectionViewController") as! PuzzleCollectionViewController
+                        nVC.dicCurrentQuestion = arr[0]
+                        kappDelegate.strIsFrom = "No"
+                        nVC.puzzueDImage = puzzueDImage
+                        self.navigationController?.pushViewController(nVC, animated: true)
+
+                        
+                    } else {
+                        
+                        
+                        let nVC = self.storyboard?.instantiateViewController(withIdentifier: "AnswerVC") as! AnswerVC
+                        nVC.dicCurrentQuestion = arr[0]
+                        kappDelegate.strIsFrom = "No"
+                        self.navigationController?.pushViewController(nVC, animated: true)
+
+
+                    }
+
+                } else {
+
+                    GlobalConstant.showAlertMessageClose(withOkButtonAndTitle: "UBICACION LEJANA", andMessage: "Distance :- \(d) Meter's\n\nIParece que no estás dentro del radio cercano a las marcas del juego.Debes estar al menos 100 metros próximos a la ubicación marcada.", on: self)
+
+                }
+
+            } else {
+                
+                if arr[0]["Jigsaw_puzzle_status"].stringValue == "enable" {
+                    
+                    
+
+                    let nVC = self.storyboard?.instantiateViewController(withIdentifier: "PuzzleCollectionViewController") as! PuzzleCollectionViewController
+                    nVC.dicCurrentQuestion = arr[0]
+                    kappDelegate.strIsFrom = "No"
+                    nVC.puzzueDImage = puzzueDImage
+                    self.navigationController?.pushViewController(nVC, animated: true)
+
+                    
+                } else {
+                    
                     
                     let nVC = self.storyboard?.instantiateViewController(withIdentifier: "AnswerVC") as! AnswerVC
                     nVC.dicCurrentQuestion = arr[0]
                     kappDelegate.strIsFrom = "No"
                     self.navigationController?.pushViewController(nVC, animated: true)
 
-                } else {
-                    
-                    GlobalConstant.showAlertMessageClose(withOkButtonAndTitle: "UBICACION LEJANA", andMessage: "Distance :- \(d) Meter's\n\nIParece que no estás dentro del radio cercano a las marcas del juego.Debes estar al menos 100 metros próximos a la ubicación marcada.", on: self)
-                    
-                }
 
+                }
+            }
+            
+        } else {
+            
+            
+            if arr[0]["Jigsaw_puzzle_status"].stringValue == "enable" {
+
+                let nVC = self.storyboard?.instantiateViewController(withIdentifier: "PuzzleCollectionViewController") as! PuzzleCollectionViewController
+                nVC.dicCurrentQuestion = arr[0]
+                kappDelegate.strIsFrom = "No"
+                nVC.puzzueDImage = puzzueDImage
+                self.navigationController?.pushViewController(nVC, animated: true)
+
+                
             } else {
+                
                 
                 let nVC = self.storyboard?.instantiateViewController(withIdentifier: "AnswerVC") as! AnswerVC
                 nVC.dicCurrentQuestion = arr[0]
                 kappDelegate.strIsFrom = "No"
                 self.navigationController?.pushViewController(nVC, animated: true)
 
+
             }
-            
-        } else {
-            
-            let nVC = self.storyboard?.instantiateViewController(withIdentifier: "AnswerVC") as! AnswerVC
-            nVC.dicCurrentQuestion = arr[0]
-            kappDelegate.strIsFrom = "No"
-            self.navigationController?.pushViewController(nVC, animated: true)
+
 
         }
        
@@ -322,6 +378,8 @@ extension MapBottomBarVC: MKMapViewDelegate {
                 allLocations.append(pickupCoordinat)
 
             }
+            
+            
             print("No Routesfs \(isCurrentId)")
             print("No Routefssf \(Double(idISCurent)!)")
 
@@ -388,7 +446,7 @@ extension MapBottomBarVC: MKMapViewDelegate {
 
         if kappDelegate.strIsFrom != "Yes"  {
             
-            var poly:MKPolygon = MKPolygon(coordinates: &allLocations, count: allLocations.count)
+            let poly:MKPolygon = MKPolygon(coordinates: &allLocations, count: allLocations.count)
 
             self.mapView.setVisibleMapRect(poly.boundingMapRect, edgePadding: UIEdgeInsets(top: 20.0, left: 20.0, bottom: 20.0, right: 20.0), animated: false)
 

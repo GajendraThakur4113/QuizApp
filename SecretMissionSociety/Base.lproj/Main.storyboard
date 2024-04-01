@@ -6975,6 +6975,57 @@ REACHED</string>
             </objects>
             <point key="canvasLocation" x="9786.9565217391319" y="-796.20535714285711"/>
         </scene>
+        <!--Puzzle-->
+        <scene sceneID="4Kh-aj-2Wa">
+            <objects>
+                <collectionViewController storyboardIdentifier="PuzzleCollectionViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="csd-GF-Uz4" customClass="PuzzleCollectionViewController" customModule="SecretMissionSociety" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="gDf-Yr-NgL">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="64q-LO-bv3">
+                            <size key="itemSize" width="181" height="181"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="7" minY="50" maxX="6" maxY="50"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" reuseIdentifier="cell" id="Xhz-9v-1mb" customClass="ImageCollectionViewCell" customModule="SecretMissionSociety" customModuleProvider="target">
+                                <rect key="frame" x="7" y="50" width="181" height="181"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="181" height="181"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9YV-vv-czc">
+                                            <rect key="frame" x="0.0" y="0.0" width="181" height="181"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </imageView>
+                                    </subviews>
+                                </view>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="9YV-vv-czc" firstAttribute="leading" secondItem="Xhz-9v-1mb" secondAttribute="leading" id="3Wb-RV-Rcy"/>
+                                    <constraint firstItem="9YV-vv-czc" firstAttribute="top" secondItem="Xhz-9v-1mb" secondAttribute="top" id="UWo-Hr-AC3"/>
+                                    <constraint firstAttribute="bottom" secondItem="9YV-vv-czc" secondAttribute="bottom" id="dcV-fH-xbA"/>
+                                    <constraint firstAttribute="trailing" secondItem="9YV-vv-czc" secondAttribute="trailing" id="yCt-mf-DTB"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="puzzleImage" destination="9YV-vv-czc" id="6T7-5N-Kfc"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="csd-GF-Uz4" id="4cW-Ab-C4q"/>
+                            <outlet property="delegate" destination="csd-GF-Uz4" id="tCN-Og-TH4"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Puzzle" id="XtC-H0-cei"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XT6-ZJ-0oL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2722" y="-375"/>
+        </scene>
     </scenes>
     <resources>
         <image name="3" width="322.5" height="266"/>
@@ -6994,7 +7045,7 @@ REACHED</string>
         <image name="ic_loca" width="24" height="34"/>
         <image name="info.circle.fill" catalog="system" width="128" height="123"/>
         <image name="inst_popup" width="590" height="567"/>
-        <image name="last_acc_img" width="414" height="314"/>
+        <image name="last_acc_img" width="300" height="228"/>
         <image name="locationCen" width="60" height="60"/>
         <image name="magnifyingglass.circle.fill" catalog="system" width="128" height="123"/>
         <image name="map.fill" catalog="system" width="128" height="110"/>

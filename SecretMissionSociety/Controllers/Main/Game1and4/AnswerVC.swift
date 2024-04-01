@@ -143,7 +143,12 @@ class AnswerVC: UIViewController,UIWebViewDelegate,WKNavigationDelegate {
 
         if totalSecond <= 0 {
             timer?.invalidate()
-            isAnswer = dicCurrentQuestion["option_Ans"].stringValue
+            
+            if strCustom == "custom" {
+                isAnswer = dicCurrentQuestion["custom_ans"].stringValue
+            } else  {
+                isAnswer = dicCurrentQuestion["option_Ans"].stringValue
+            }
             WebAddPenality(strepn: "10")
             WebAddAnswer()
             lbl_Count.text = "Time's Up"

@@ -158,7 +158,7 @@ class HomeVC: UIViewController {
 extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == bannerCollecView{
-            return self.bannerResult.count
+            return self.bannerResult.count 
         } else {
             return nearMeEvents.count
         }

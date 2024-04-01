@@ -158,6 +158,7 @@ extension FlgMaViewVC: MKMapViewDelegate {
     }
 
     func showAnnotaionOnMap(arrAll:[JSON]) {
+        
         mapView.removeAnnotations(mapView.annotations)
         var arrAllAnn:[MKPointAnnotation] =  []
         var coordinates:[CLLocationCoordinate2D] =  []

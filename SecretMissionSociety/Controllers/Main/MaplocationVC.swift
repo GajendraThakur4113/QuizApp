@@ -56,11 +56,14 @@ class MaplocationVC: UIViewController {
             let objVC = self.storyboard?.instantiateViewController(withIdentifier: "CreateTeamVC") as! CreateTeamVC
             objVC.completion = {
                 
-                if  kappDelegate.dicCurrentEvent["id"].stringValue == "18" || kappDelegate.dicCurrentEvent["id"].stringValue == "1" || kappDelegate.dicCurrentEvent["id"].stringValue == "5" || kappDelegate.dicCurrentEvent["id"].stringValue == "8"  || kappDelegate.dicCurrentEvent["id"].stringValue == "19" || kappDelegate.dicCurrentEvent["id"].stringValue == "22" || kappDelegate.dicCurrentEvent["id"].stringValue == "24" {
+                if  kappDelegate.dicCurrentEvent["id"].stringValue == "18" || kappDelegate.dicCurrentEvent["id"].stringValue == "1" || kappDelegate.dicCurrentEvent["id"].stringValue == "5" || kappDelegate.dicCurrentEvent["id"].stringValue == "8"  || kappDelegate.dicCurrentEvent["id"].stringValue == "19" || kappDelegate.dicCurrentEvent["id"].stringValue == "22" || kappDelegate.dicCurrentEvent["id"].stringValue == "24" ||
+                    kappDelegate.dicCurrentEvent["id"].stringValue == "20" {
+                    
                     let nVC = self.storyboard?.instantiateViewController(withIdentifier: "LevelVC") as! LevelVC
                     self.navigationController?.pushViewController(nVC, animated: true)
 
                 } else {
+                    
                     let nVC = self.storyboard?.instantiateViewController(withIdentifier: "InstructionVC") as! InstructionVC
                     nVC.strDetail = kappDelegate.dicCurrentEvent["disclaimer"].stringValue
                     self.navigationController?.pushViewController(nVC, animated: true)

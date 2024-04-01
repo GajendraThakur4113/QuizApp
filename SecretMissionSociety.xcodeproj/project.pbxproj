@@ -20,13 +20,17 @@
 		047A347829D41FED00DA43E3 /* InstructionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047A347729D41FED00DA43E3 /* InstructionVC.swift */; };
 		047A347A29D4201C00DA43E3 /* VideoPlayerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047A347929D4201C00DA43E3 /* VideoPlayerVC.swift */; };
 		047A347C29D4298800DA43E3 /* MainInstructionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047A347B29D4298800DA43E3 /* MainInstructionVC.swift */; };
+		0483F6972BADA2CE00B0B7FA /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0483F6942BADA2CB00B0B7FA /* ImageCollectionViewCell.swift */; };
+		0483F6982BADA2CE00B0B7FA /* Puzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0483F6952BADA2CC00B0B7FA /* Puzzle.swift */; };
+		0483F6992BADA2CE00B0B7FA /* PuzzleCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0483F6962BADA2CD00B0B7FA /* PuzzleCollectionViewController.swift */; };
+		0483F69B2BADA2D400B0B7FA /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0483F69A2BADA2D400B0B7FA /* Alert.swift */; };
 		0484CF0129D71C9C00BDF003 /* InventorylistVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0484CF0029D71C9C00BDF003 /* InventorylistVC.swift */; };
 		0484CF0329D71D0E00BDF003 /* FinalPuzzleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0484CF0229D71D0E00BDF003 /* FinalPuzzleVC.swift */; };
 		04910E542A8F482700D25B61 /* CabanaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04910E532A8F482700D25B61 /* CabanaVC.swift */; };
-		0493E7022A121D8F0023CE4C /* bacj.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0493E7012A121D8E0023CE4C /* bacj.gif */; };
 		04952A6129DC314F00065956 /* ShowAllTeamAndTimeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04952A6029DC314F00065956 /* ShowAllTeamAndTimeVC.swift */; };
 		049F602829CF12CA00E0D073 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049F602729CF12CA00E0D073 /* HomeVC.swift */; };
 		04A27D8429D5CF6800B190A5 /* HIntAnswerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A27D8329D5CF6800B190A5 /* HIntAnswerVC.swift */; };
+		04A34FFA2BBAF3950045CCA0 /* bacj.gif in Resources */ = {isa = PBXBuildFile; fileRef = 04A34FF92BBAF3940045CCA0 /* bacj.gif */; };
 		04A490AE29D2BEEC002E8D58 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A490AD29D2BEEC002E8D58 /* ProfileVC.swift */; };
 		04A490B029D2BF03002E8D58 /* ChangePassVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A490AF29D2BF03002E8D58 /* ChangePassVC.swift */; };
 		04A490B229D2BF1A002E8D58 /* ContactVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A490B129D2BF1A002E8D58 /* ContactVC.swift */; };
@@ -128,13 +132,17 @@
 		047A347729D41FED00DA43E3 /* InstructionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionVC.swift; sourceTree = "<group>"; };
 		047A347929D4201C00DA43E3 /* VideoPlayerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerVC.swift; sourceTree = "<group>"; };
 		047A347B29D4298800DA43E3 /* MainInstructionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInstructionVC.swift; sourceTree = "<group>"; };
+		0483F6942BADA2CB00B0B7FA /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		0483F6952BADA2CC00B0B7FA /* Puzzle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Puzzle.swift; sourceTree = "<group>"; };
+		0483F6962BADA2CD00B0B7FA /* PuzzleCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PuzzleCollectionViewController.swift; sourceTree = "<group>"; };
+		0483F69A2BADA2D400B0B7FA /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		0484CF0029D71C9C00BDF003 /* InventorylistVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventorylistVC.swift; sourceTree = "<group>"; };
 		0484CF0229D71D0E00BDF003 /* FinalPuzzleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalPuzzleVC.swift; sourceTree = "<group>"; };
 		04910E532A8F482700D25B61 /* CabanaVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CabanaVC.swift; sourceTree = "<group>"; };
-		0493E7012A121D8E0023CE4C /* bacj.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = bacj.gif; sourceTree = "<group>"; };
 		04952A6029DC314F00065956 /* ShowAllTeamAndTimeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAllTeamAndTimeVC.swift; sourceTree = "<group>"; };
 		049F602729CF12CA00E0D073 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		04A27D8329D5CF6800B190A5 /* HIntAnswerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HIntAnswerVC.swift; sourceTree = "<group>"; };
+		04A34FF92BBAF3940045CCA0 /* bacj.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = bacj.gif; sourceTree = "<group>"; };
 		04A490AD29D2BEEC002E8D58 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		04A490AF29D2BF03002E8D58 /* ChangePassVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePassVC.swift; sourceTree = "<group>"; };
 		04A490B129D2BF1A002E8D58 /* ContactVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactVC.swift; sourceTree = "<group>"; };
@@ -256,9 +264,21 @@
 			path = Game2and3;
 			sourceTree = "<group>";
 		};
+		0483F6932BADA2B200B0B7FA /* JigSawPuzzle */ = {
+			isa = PBXGroup;
+			children = (
+				0483F69A2BADA2D400B0B7FA /* Alert.swift */,
+				0483F6942BADA2CB00B0B7FA /* ImageCollectionViewCell.swift */,
+				0483F6952BADA2CC00B0B7FA /* Puzzle.swift */,
+				0483F6962BADA2CD00B0B7FA /* PuzzleCollectionViewController.swift */,
+			);
+			path = JigSawPuzzle;
+			sourceTree = "<group>";
+		};
 		0484CF0429D71D1500BDF003 /* Game1and4 */ = {
 			isa = PBXGroup;
 			children = (
+				0483F6932BADA2B200B0B7FA /* JigSawPuzzle */,
 				04A490B329D2FBE9002E8D58 /* CreateTeamVC.swift */,
 				047A347729D41FED00DA43E3 /* InstructionVC.swift */,
 				04CC1AAE2A1E0DDE002C03C7 /* PuzzleInstructionVC.swift */,
@@ -333,8 +353,8 @@
 				04BF5F1F29CECBF800002970 /* Assets.xcassets */,
 				04BF5F2129CECBF800002970 /* LaunchScreen.storyboard */,
 				04BF5F2429CECBF800002970 /* Info.plist */,
+				04A34FF92BBAF3940045CCA0 /* bacj.gif */,
 				04BF5F2A29CEE4AF00002970 /* SecretMissionSociety-Bridging-Header.h */,
-				0493E7012A121D8E0023CE4C /* bacj.gif */,
 			);
 			path = SecretMissionSociety;
 			sourceTree = "<group>";
@@ -596,7 +616,7 @@
 				04BF5FEE29CEE4B000002970 /* Apache License.txt in Resources */,
 				04BF5FE629CEE4B000002970 /* Roboto-Medium.ttf in Resources */,
 				04BF5FF829CEE4B000002970 /* Roboto-Black.ttf in Resources */,
-				0493E7022A121D8F0023CE4C /* bacj.gif in Resources */,
+				04A34FFA2BBAF3950045CCA0 /* bacj.gif in Resources */,
 				04BF5FF129CEE4B000002970 /* RobotoCondensed-Regular.ttf in Resources */,
 				04BF5FEA29CEE4B000002970 /* Roboto-Regular.ttf in Resources */,
 				04BF5FEF29CEE4B000002970 /* RobotoCondensed-LightItalic.ttf in Resources */,
@@ -693,13 +713,16 @@
 				04A490B029D2BF03002E8D58 /* ChangePassVC.swift in Sources */,
 				04BF603029CEFCF900002970 /* Singleton.swift in Sources */,
 				047A347829D41FED00DA43E3 /* InstructionVC.swift in Sources */,
+				0483F6982BADA2CE00B0B7FA /* Puzzle.swift in Sources */,
 				04BF5FDB29CEE4B000002970 /* Messages.swift in Sources */,
 				04BF600929CEE4B000002970 /* InternetUtilClass.swift in Sources */,
 				04BF5FE029CEE4B000002970 /* TagView.swift in Sources */,
 				04952A6129DC314F00065956 /* ShowAllTeamAndTimeVC.swift in Sources */,
+				0483F6992BADA2CE00B0B7FA /* PuzzleCollectionViewController.swift in Sources */,
 				0484CF0129D71C9C00BDF003 /* InventorylistVC.swift in Sources */,
 				0469B9FC2A557C1B008EF672 /* CongratsCodigoVC.swift in Sources */,
 				04BF5FA729CEE4B000002970 /* View.swift in Sources */,
+				0483F69B2BADA2D400B0B7FA /* Alert.swift in Sources */,
 				04BF5FAB29CEE4B000002970 /* Reachability.m in Sources */,
 				04BF600729CEE4B000002970 /* CommunicationManager.swift in Sources */,
 				04BF5FE529CEE4B000002970 /* CountryCell.swift in Sources */,
@@ -712,6 +735,7 @@
 				04BF600F29CEE83E00002970 /* AppDelegate.swift in Sources */,
 				04BF5FA929CEE4B000002970 /* Extensions.swift in Sources */,
 				04BF602E29CEFCA900002970 /* Languages.swift in Sources */,
+				0483F6972BADA2CE00B0B7FA /* ImageCollectionViewCell.swift in Sources */,
 				047A347A29D4201C00DA43E3 /* VideoPlayerVC.swift in Sources */,
 				049F602829CF12CA00E0D073 /* HomeVC.swift in Sources */,
 				04E919CD2A4AC7170041E312 /* MapBottomBarVC.swift in Sources */,
@@ -927,7 +951,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.11;
+				MARKETING_VERSION = 1.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ios.secret;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = SecretDev;
@@ -970,7 +994,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.11;
+				MARKETING_VERSION = 1.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ios.secret;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = SecretProd;

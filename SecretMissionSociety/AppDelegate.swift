@@ -3,15 +3,7 @@ import UIKit
 import IQKeyboardManagerSwift
 import CoreLocation
 import SwiftyJSON
-
-//import GoogleMaps
-//import UserNotifications
-//import GooglePlacePicker
-//import Stripe
-//import Firebase
-//import FirebaseMessaging
-//import GoogleSignIn
-//import Instabug
+import Instabug
 
 //0527984448
 //Pharma01
@@ -45,8 +37,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         LocationManager.sharedInstance.delegate = APP_DELEGATE
         LocationManager.sharedInstance.startUpdatingLocation()
     
-//        GMSServices.provideAPIKey("AIzaSyB90Ml5dpDCKI5-WuAGnkT-EHyCJrUR7ao")
-//        GMSPlacesClient.provideAPIKey("AIzaSyB90Ml5dpDCKI5-WuAGnkT-EHyCJrUR7ao")
        
         USER_DEFAULT.set("IOS123", forKey: IOS_TOKEN)
         UIApplication.shared.applicationIconBadgeNumber = 0
@@ -54,28 +44,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
         Switcher.updateRootVC()
         
-//        FirebaseApp.configure()
-//        Messaging.messaging().delegate = self
-//        Messaging.messaging().isAutoInitEnabled = true
-//        UIApplication.shared.applicationIconBadgeNumber = 0
-//        UNUserNotificationCenter.current().delegate = self
-//        configureNotification()
-//        FBSDKCoreKit.ApplicationDelegate.shared.application(
-//                   application,
-//                   didFinishLaunchingWithOptions: launchOptions
-//               )
+//        if (self.isRunningLive()) {
+//            Instabug.start(withToken: "363d05776701b35c675d4b9279bead47", invocationEvents: [.floatingButton, .shake, .screenshot])
+//        } else {
+//            Instabug.start(withToken: "9e8c43305be9d5b6ba103305bac93738", invocationEvents: [.floatingButton, .shake, .screenshot])
+////get_event_instructions_game_images
+//
+//        }
+//        CrashReporting.enabled = true
+
+//        Instabug.willSendReportHandler = { report in
+//            report.appendTag("tag1")
+//            report.logVerbose("Verbose log.")
+//            report.append(toConsoleLogs: "Console log statement.")
+//            report.setUserAttribute("value", withKey: "key")
+//
+//            return report
+//        }
+
         return true
         
+        
+        
     }
-//    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-//
-//        if url.absoluteString.contains("693486887993189") {
-//            return ApplicationDelegate.shared.application(application, open: (url as URL?)!, sourceApplication: sourceApplication, annotation: annotation)
-//        }
-//        else {
-//            return ((GIDSignIn.sharedInstance?.handle(url)) != nil)
-//        }
-//    }
+    func isRunningLive() -> Bool {
+         #if targetEnvironment(simulator)
+        return false
+        #else
+        let isRunningTestFlightBeta  = (Bundle.main.appStoreReceiptURL?.lastPathComponent == "sandboxReceipt")
+        let hasEmbeddedMobileProvision = Bundle.main.path(forResource: "embedded", ofType: "mobileprovision") != nil
+        if (isRunningTestFlightBeta || hasEmbeddedMobileProvision) {
+            return false
+        } else {
+            return true
+        }
+        #endif
+    }
 
     func applicationWillResignActive(_ application: UIApplication) {
    

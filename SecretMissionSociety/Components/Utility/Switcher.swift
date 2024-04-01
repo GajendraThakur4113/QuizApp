@@ -21,7 +21,9 @@ class Switcher {
             APP_DELEGATE.window?.rootViewController = navigation
             APP_DELEGATE.window?.makeKeyAndVisible()
 
+
         } else {
+            
             let rightViewController1 = Mainboard.instantiateViewController(withIdentifier: "ChangeLangugeVC") as! ChangeLangugeVC
             let navigation = UINavigationController.init(rootViewController: rightViewController1)
             APP_DELEGATE.window?.rootViewController = navigation
