@@ -42,13 +42,21 @@ class CreateTeamVC: UIViewController {
     @IBAction func submit(_ sender: Any) {
         
         if text_name.text?.count != 0 && text_Code.text?.count != 0 {
-            WebApplyCode()
+            //WebApplyCode()
 
-//            if kappDelegate.dicCurrentEvent["id"].stringValue == "8" {
-//                WebApplyCodeForCodigoFrida()
-//            } else {
-//                WebApplyCode()
-//            }
+            if kappDelegate.strEventCode! == text_Code.text! {
+
+                if let completion = completion {
+                  completion()
+                    kappDelegate.strEventCode = text_Code.text!
+                    kappDelegate.strEventTeamNam = text_name.text!
+
+                }
+                self.dismiss(animated: false, completion: nil)
+
+            } else {
+                GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: "Please enter valid code", on: self)
+            }
             
         } else {
             GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: "Please enter Team name and code", on: self)
@@ -82,6 +90,8 @@ class CreateTeamVC: UIViewController {
                     if let completion = completion {
                       completion()
                         kappDelegate.strEventCode = text_Code.text!
+                        kappDelegate.strEventTeamNam = text_name.text!
+
                     }
                     self.dismiss(animated: false, completion: nil)
                 } else {

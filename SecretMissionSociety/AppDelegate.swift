@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var coordinate1 = CLLocation(latitude: 0.0, longitude: 0.0)
     var coordinate2 = CLLocation(latitude: 0.0, longitude: 0.0)
 
+    var strEventTeamNam:String! = ""
     var strEventCode:String! = ""
     var dicCurrentEvent:JSON!
     var dicCurrentVirus:JSON!

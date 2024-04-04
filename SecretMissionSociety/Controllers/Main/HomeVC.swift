@@ -67,7 +67,11 @@ class HomeVC: UIViewController {
                 self.nearMeEvents = allnearMeEvents.filter({$0["city_id"].stringValue == "2"})
             } else if item == "Monterrey"  {
                 self.nearMeEvents = allnearMeEvents.filter({$0["city_id"].stringValue == "3"})
-            } else  {
+            } else if item == "Puebla"  {
+                self.nearMeEvents = allnearMeEvents.filter({$0["city_id"].stringValue == "4"})
+            } else if item == "Queretaro"  {
+                self.nearMeEvents = allnearMeEvents.filter({$0["city_id"].stringValue == "5"})
+            }  else  {
                 self.nearMeEvents = allnearMeEvents.filter({$0["city_id"].stringValue == "2"})
             }
             self.nearestCollecView.reloadData()
@@ -194,10 +198,11 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollecti
             
             let eventid = nearMeEvents[indexPath.row]["id"].stringValue
             _ = nearMeEvents[indexPath.row]["city_id"].stringValue
-
-            if self.lbl_city.text == "CDMX / Metropotitian area" || self.lbl_city.text == "Guadalajara" || self.lbl_city.text == "Monterrey" {
+                
+            // || self.lbl_city.text == "Queretaro"
+            if self.lbl_city.text == "CDMX / Metropotitian area" || self.lbl_city.text == "Guadalajara" || self.lbl_city.text == "Monterrey"  || self.lbl_city.text == "Puebla"  {
         
-                if eventid == "1" || eventid == "5" || eventid == "8" || eventid == "15" || eventid == "18" || eventid == "19" || eventid == "20" || eventid == "22" || eventid == "34" || eventid == "24" || eventid == "35" || eventid == "36" || eventid == "31"  || eventid == "28" || eventid == "25"  {
+                if eventid == "1" || eventid == "5" || eventid == "8" || eventid == "15" || eventid == "18" || eventid == "19" || eventid == "20" || eventid == "22" || eventid == "34" || eventid == "24" || eventid == "35" || eventid == "36" || eventid == "31"  || eventid == "28" || eventid == "25" || eventid == "32" || eventid == "30" || eventid == "26" || eventid == "27" || eventid == "33" {
                    
                    self.tabBarController?.selectedIndex = 3
                     

@@ -44,15 +44,12 @@ class PuzzleCollectionViewController: UICollectionViewController {
         collectionView.dropDelegate = self
 
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = false
         setNavigationBarItem(LeftTitle: "", LeftImage: "back", CenterTitle: "Solve Puzzle", CenterImage: "", RightTitle: "", RightImage: "", BackgroundColor: NAAV_BG_COLOR, BackgroundImage: "", TextColor: WHITE_COLOR, TintColor: WHITE_COLOR, Menu: "")
-        
-        DispatchQueue.main.async() { [weak self] in
-               
 
-        }
     }
  
     override func viewWillDisappear(_ animated: Bool) {

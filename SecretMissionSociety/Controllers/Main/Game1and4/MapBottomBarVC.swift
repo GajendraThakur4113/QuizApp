@@ -82,10 +82,6 @@ class MapBottomBarVC: UIViewController {
     
     @IBAction func Archived(_ sender: UIButton) {
 
-        
-//        if kappDelegate.dicCurrentEvent["id"].stringValue != "34" {
-            
-        //http://appsmsjuegos.com/Quiz/api/get_event_instructions_game?user_id=745&event_id=24&level=1&event_code=755254&lang=sp
             if sender.tag == 0 {
               
                 let nVC = self.storyboard?.instantiateViewController(withIdentifier: "InventorylistVC") as! InventorylistVC
@@ -93,19 +89,25 @@ class MapBottomBarVC: UIViewController {
 
             } else if sender.tag == 1 {
                
-                if kappDelegate.dicCurrentEvent["id"].stringValue == "8" || kappDelegate.dicCurrentEvent["id"].stringValue == "15" || kappDelegate.dicCurrentEvent["id"].stringValue == "18" ||
-                    kappDelegate.dicCurrentEvent["id"].stringValue == "19" ||
-                    kappDelegate.dicCurrentEvent["id"].stringValue == "24" ||
-                    kappDelegate.dicCurrentEvent["id"].stringValue == "31" ||
-                    kappDelegate.dicCurrentEvent["id"].stringValue == "22" {
+//                if kappDelegate.dicCurrentEvent["id"].stringValue == "8" || kappDelegate.dicCurrentEvent["id"].stringValue == "15" || kappDelegate.dicCurrentEvent["id"].stringValue == "18" ||
+//                    kappDelegate.dicCurrentEvent["id"].stringValue == "19" ||
+//                    kappDelegate.dicCurrentEvent["id"].stringValue == "24" ||
+//                    kappDelegate.dicCurrentEvent["id"].stringValue == "31" ||
+//                    kappDelegate.dicCurrentEvent["id"].stringValue == "22" {
+
+              
+                let strEId = kappDelegate.dicCurrentEvent["id"].stringValue
+               
+                if strEId == "1" || strEId == "5" || strEId == "20" || strEId == "25" || strEId == "26" || strEId == "27" || strEId == "37" {
                     
-                    let nVC = self.storyboard?.instantiateViewController(withIdentifier: "FinalPuzzleCodigoVc") as! FinalPuzzleCodigoVc
+                    let nVC = self.storyboard?.instantiateViewController(withIdentifier: "FinalPuzzleVC") as! FinalPuzzleVC
                     self.navigationController?.pushViewController(nVC, animated: true)
 
                 } else {
                     
-                    let nVC = self.storyboard?.instantiateViewController(withIdentifier: "FinalPuzzleVC") as! FinalPuzzleVC
+                    let nVC = self.storyboard?.instantiateViewController(withIdentifier: "FinalPuzzleCodigoVc") as! FinalPuzzleCodigoVc
                     self.navigationController?.pushViewController(nVC, animated: true)
+
 
                 }
 
@@ -271,8 +273,6 @@ extension MapBottomBarVC: MKMapViewDelegate {
                 
                 if arr[0]["Jigsaw_puzzle_status"].stringValue == "enable" {
                     
-                    
-
                     let nVC = self.storyboard?.instantiateViewController(withIdentifier: "PuzzleCollectionViewController") as! PuzzleCollectionViewController
                     nVC.dicCurrentQuestion = arr[0]
                     kappDelegate.strIsFrom = "No"

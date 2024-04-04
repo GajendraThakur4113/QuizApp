@@ -26,6 +26,9 @@ class LevelVC: UIViewController {
     var isIndex:Int! = -1
     var isIndexN:Int! = -1
 
+    var strCode:String! = ""
+    var strTeamName:String! = ""
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -82,10 +85,10 @@ class LevelVC: UIViewController {
 
             } else {
                 
-                let nVC = self.storyboard?.instantiateViewController(withIdentifier: "InstructionVC") as! InstructionVC
-                nVC.strDetail = kappDelegate.dicCurrentEvent["disclaimer"].stringValue
-                self.navigationController?.pushViewController(nVC, animated: true)
-
+//                let nVC = self.storyboard?.instantiateViewController(withIdentifier: "InstructionVC") as! InstructionVC
+//                nVC.strDetail = kappDelegate.dicCurrentEvent["disclaimer"].stringValue
+//                self.navigationController?.pushViewController(nVC, animated: true)
+                WebApplyCode()
             }
 
         } else {
@@ -94,7 +97,41 @@ class LevelVC: UIViewController {
 
         }
     }
-    
+    func WebApplyCode() {
+        
+        showProgressBar()
+        var paramsDict:[String:AnyObject] = [:]
+        paramsDict["user_id"]     =   USER_DEFAULT.value(forKey: USERID) as AnyObject
+        paramsDict["event_id"]     =   kappDelegate.dicCurrentEvent["id"].stringValue as AnyObject
+        paramsDict["event_code"]     =   kappDelegate.strEventCode! as AnyObject
+        paramsDict["team_name"]     =   kappDelegate.strEventTeamNam! as AnyObject
+        paramsDict["lat"]     =   kappDelegate.CURRENT_LAT as AnyObject
+        paramsDict["lon"]     =   kappDelegate.CURRENT_LON as AnyObject
+        paramsDict["level"]     =   kappDelegate.strLevelId as AnyObject
+
+        print(paramsDict)
+        CommunicationManeger.callPostService(apiUrl: Router.event_start_time.url(), parameters: paramsDict, parentViewController: self, successBlock: { (responseData, message) in
+            
+            DispatchQueue.main.async { [self] in
+                let swiftyJsonVar = JSON(responseData)
+                print(swiftyJsonVar)
+                if(swiftyJsonVar["status"].stringValue == "1") {
+                    let nVC = self.storyboard?.instantiateViewController(withIdentifier: "InstructionVC") as! InstructionVC
+                    nVC.strDetail = kappDelegate.dicCurrentEvent["disclaimer"].stringValue
+                    self.navigationController?.pushViewController(nVC, animated: true)
+                    
+                } else {
+                    self.dismiss(animated: false, completion: nil)
+                }
+                self.hideProgressBar()
+            }
+
+        },failureBlock: { (error : Error) in
+            self.hideProgressBar()
+            GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: (error.localizedDescription), on: self)
+        })
+    }
+
 
 }
 extension LevelVC: UITableViewDelegate,UITableViewDataSource {
