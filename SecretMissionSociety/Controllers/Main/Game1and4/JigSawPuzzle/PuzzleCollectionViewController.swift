@@ -28,7 +28,14 @@ class PuzzleCollectionViewController: UICollectionViewController {
         let url = URL(string: dicCurrentQuestion["Jigsaw_puzzle_image"].stringValue)!
         downloadImage(from: url)
 
-        
+        if dicCurrentQuestion["custom_ans"].stringValue != "" {
+            strCustom = "custom"
+            isAnswer = dicCurrentQuestion["custom_ans"].stringValue
+        } else {
+            isAnswer = dicCurrentQuestion["option_Ans"].stringValue
+        }
+
+
     }
     func calWhn()  {
         

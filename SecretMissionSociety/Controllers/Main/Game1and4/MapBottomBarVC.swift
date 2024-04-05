@@ -214,27 +214,30 @@ class MapBottomBarVC: UIViewController {
 
 extension MapBottomBarVC: MKMapViewDelegate {
     
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView){
-
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        
         
         let strId = view.annotation?.title ?? ""
         print("didSelectAnnotationTapped \(view.annotation?.title ?? "")")
         let arr = arrlist.filter({$0["id"].stringValue == strId})
         print("didSelectAnnotationTapped \(arr)")
-        if arr.count == 0  {
+       
+        if arr.count == 0  || kappDelegate.dicCurrentEvent["id"].stringValue == "39"  {
             return
         }
-
+        
         
         var coordinate1v = CLLocation(latitude: Double(arr[0]["lat"].stringValue.removingWhitespaces())!, longitude: Double(arr[0]["lon"].stringValue.removingWhitespaces())!)
         
         print("coordinate1v \(coordinate1v)")
         print("coordinate1vc \(kappDelegate.coordinate2)")
-
+        
         let d = kappDelegate.coordinate2.distance(from: coordinate1v)
         
         print("distacne \(kappDelegate.coordinate2)")
-
+        
+        
+    
         if kappDelegate.dicCurrentEvent["id"].stringValue == "1" || kappDelegate.dicCurrentEvent["id"].stringValue == "5" || kappDelegate.dicCurrentEvent["id"].stringValue == "20"  || kappDelegate.dicCurrentEvent["id"].stringValue == "8" || kappDelegate.dicCurrentEvent["id"].stringValue == "18" || kappDelegate.dicCurrentEvent["id"].stringValue == "19" {
             
             if arr[0]["geolocation"].stringValue == "on" {
@@ -242,8 +245,6 @@ extension MapBottomBarVC: MKMapViewDelegate {
                 if d < 100 {
 //
                     if arr[0]["Jigsaw_puzzle_status"].stringValue == "enable" {
-                        
-                        
 
                         let nVC = self.storyboard?.instantiateViewController(withIdentifier: "PuzzleCollectionViewController") as! PuzzleCollectionViewController
                         nVC.dicCurrentQuestion = arr[0]
@@ -315,11 +316,12 @@ extension MapBottomBarVC: MKMapViewDelegate {
 
             }
 
-
         }
        
     }
+    
     func usernameTest(testStr:String) -> Bool {
+         
          let letters = CharacterSet.punctuationCharacters
          let range = testStr.rangeOfCharacter(from: letters)
          // range will be nil if no letters is found
@@ -329,9 +331,11 @@ extension MapBottomBarVC: MKMapViewDelegate {
          else {
             return false
          }
+        
     }
 
     func showAnnotaionOnMap(arrAll:[JSON]) {
+        
         mapView.removeAnnotations(mapView.annotations)
         var arrAllAnn:[MKPointAnnotation] =  []
         var coordinates:[CLLocationCoordinate2D] =  []
@@ -481,8 +485,11 @@ extension MapBottomBarVC: MKMapViewDelegate {
       //  anView?.ti = cpa
         
         return anView
+        
     }
+    
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        
         //        if let overlay = overlay as? MKPolyline {
         /// define a list of colors you want in your gradient
         if let routePolyline = overlay as? MKPolyline {
@@ -503,6 +510,7 @@ extension MapBottomBarVC: MKMapViewDelegate {
         //        polylineRenderer.lineWidth = 7
         //        return polylineRenderer
         //        }
+        
     }
 
 }

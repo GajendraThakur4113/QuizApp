@@ -155,7 +155,22 @@ class FinalPuzzleCodigoVc: UIViewController {
 extension FinalPuzzleCodigoVc: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
        
+        if kappDelegate.dicCurrentEvent["id"].stringValue == "39" {
+            
+            if arrayList.count > 4 {
+               
+                return 4
+            } else {
+                
+                return arrayList.count
+                
+            }
+
+        } else {
+            
             return arrayList.count
+
+        }
 
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -165,11 +180,15 @@ extension FinalPuzzleCodigoVc: UICollectionViewDelegate,UICollectionViewDataSour
         let data = arrayList[indexPath.row]
         
         if data["answer_status"].numberValue == 1 {
+            
             cell.imgView.sd_setShowActivityIndicatorView(true)
             cell.imgView.sd_setImage(with: URL(string: data["final_puzzle_image"].stringValue), placeholderImage: UIImage(named: "NoImageAvailable"), options: .refreshCached, completed: nil)
+            
         } else {
+            
             cell.imgView.image = UIImage.init(named: "")
             cell.imgView.backgroundColor = hexStringToUIColor(hex: "#D7CCC8")
+            
         }
         
         return cell
@@ -184,7 +203,15 @@ extension FinalPuzzleCodigoVc: UICollectionViewDelegate,UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
       
-        return CGSize(width: self.collection_place.frame.width/4, height: 120)
+        if kappDelegate.dicCurrentEvent["id"].stringValue == "39" {
+            
+            return CGSize(width: self.collection_place.frame.width/2, height: self.collection_place.frame.height/2)
+
+        } else {
+            
+            return CGSize(width: self.collection_place.frame.width/4, height: 120)
+
+        }
     }
     
 }

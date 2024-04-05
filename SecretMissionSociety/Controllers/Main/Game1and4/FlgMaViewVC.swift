@@ -113,10 +113,15 @@ extension FlgMaViewVC: MKMapViewDelegate {
 
         print("coordinate1v \(arr[0]["lat"].string) \(arr[0]["lon"].string)")
 
+        if arr.count == 0  || kappDelegate.dicCurrentEvent["id"].stringValue == "39"  {
+            return
+        }
+
         var coordinate1v = CLLocation(latitude: Double(arr[0]["lat"].stringValue.removingWhitespaces())!, longitude: Double(arr[0]["lon"].stringValue.removingWhitespaces())!)
         print("coordinate1v \(coordinate1v)")
         print("coordinate1vc \(kappDelegate.coordinate2)")
 
+        
         let d = kappDelegate.coordinate2.distance(from: coordinate1v)
         
         print("distacne \(kappDelegate.coordinate2)")
