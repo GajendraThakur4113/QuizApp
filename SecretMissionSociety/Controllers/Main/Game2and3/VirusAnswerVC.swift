@@ -163,7 +163,7 @@ class VirusAnswerVC: UIViewController {
                 if(swiftyJsonVar["status"].stringValue == "1") {
                     text_Answer.text = dicCurrentQuestion["option_Ans"].stringValue
                 } else if(swiftyJsonVar["status"].stringValue == "2") {
-                    GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: swiftyJsonVar["result"].stringValue, on: self)
+                    text_Answer.text = dicCurrentQuestion["option_Ans"].stringValue
                 } else {
                     GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: swiftyJsonVar["result"].stringValue, on: self)
                 }
@@ -227,6 +227,12 @@ class VirusAnswerVC: UIViewController {
                 print(swiftyJsonVar)
                 if(swiftyJsonVar["status"].stringValue == "1") {
                     changeQuestion()
+               
+                } else if(swiftyJsonVar["status"].stringValue == "2") {
+                  
+                    changeQuestion()
+                    GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: swiftyJsonVar["message"].stringValue, on: self)
+
                 } else  {
                     GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: swiftyJsonVar["result"].stringValue, on: self)
                 }

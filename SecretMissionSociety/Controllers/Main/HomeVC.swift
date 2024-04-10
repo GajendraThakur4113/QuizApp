@@ -206,7 +206,8 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollecti
                    
                    self.tabBarController?.selectedIndex = 3
                     
-                } else if eventid == "4" || eventid == "7" || eventid == "14" || eventid == "17" {
+                } else if eventid == "4" || eventid == "7" || eventid == "14" || eventid == "17" || eventid == "40" {
+                 
                     kappDelegate.dicCurrentVirus = nearMeEvents[indexPath.row]
                     kappDelegate.strGameName = kappDelegate.dicCurrentVirus["event_name"].stringValue
 

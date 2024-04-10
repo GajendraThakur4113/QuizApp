@@ -222,7 +222,7 @@ extension MapBottomBarVC: MKMapViewDelegate {
         let arr = arrlist.filter({$0["id"].stringValue == strId})
         print("didSelectAnnotationTapped \(arr)")
        
-        if arr.count == 0  || kappDelegate.dicCurrentEvent["id"].stringValue == "39"  {
+        if arr.count == 0  {
             return
         }
         

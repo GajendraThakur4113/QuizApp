@@ -33,7 +33,6 @@ class VirsuHomeVC: UIViewController {
         self.tabBarController?.tabBar.isHidden = true
         setNavigationBarItem(LeftTitle: "", LeftImage: "back", CenterTitle: "Welcome to \(kappDelegate.strGameName!)", CenterImage: "", RightTitle: "", RightImage: "", BackgroundColor: NAAV_BG_COLOR, BackgroundImage: "", TextColor: WHITE_COLOR, TintColor: WHITE_COLOR, Menu: "")
 
-
     }
 
     @IBAction func crosss(_ sender: Any) {
@@ -51,9 +50,12 @@ class VirsuHomeVC: UIViewController {
             if dicEvent["event_status"].stringValue != "END" {
                 
                 
-                let nVC = self.storyboard?.instantiateViewController(withIdentifier: "LevelVC") as! LevelVC
-                nVC.isIndexN = isINdex
+                let nVC = self.storyboard?.instantiateViewController(withIdentifier: "WelcomeVC") as! WelcomeVC
                 self.navigationController?.pushViewController(nVC, animated: true)
+
+//                let nVC = self.storyboard?.instantiateViewController(withIdentifier: "LevelVC") as! LevelVC
+//                nVC.isIndexN = isINdex
+//                self.navigationController?.pushViewController(nVC, animated: true)
 
             } else {
                 trans_View.isHidden = false
@@ -90,6 +92,40 @@ class VirsuHomeVC: UIViewController {
         })
     }
     
+    func WebApplyCodeS() {
+        
+        showProgressBar()
+        var paramsDict:[String:AnyObject] = [:]
+        paramsDict["user_id"]     =   USER_DEFAULT.value(forKey: USERID) as AnyObject
+        paramsDict["event_id"]     =   kappDelegate.dicCurrentVirus["id"].stringValue as AnyObject
+        paramsDict["event_code"]     =   text_Code.text! as AnyObject
+        paramsDict["team_name"]     =   "" as AnyObject
+        paramsDict["lat"]     =   kappDelegate.CURRENT_LAT as AnyObject
+        paramsDict["lon"]     =   kappDelegate.CURRENT_LON as AnyObject
+        paramsDict["level"]     =   kappDelegate.strLevelId as AnyObject
+
+        print(paramsDict)
+        CommunicationManeger.callPostService(apiUrl: Router.event_start_time.url(), parameters: paramsDict, parentViewController: self, successBlock: { (responseData, message) in
+            
+            DispatchQueue.main.async { [self] in
+                let swiftyJsonVar = JSON(responseData)
+                print(swiftyJsonVar)
+                if(swiftyJsonVar["status"].stringValue == "1") {
+                    let nVC = self.storyboard?.instantiateViewController(withIdentifier: "WelcomeVC") as! WelcomeVC
+                    self.navigationController?.pushViewController(nVC, animated: true)
+
+                } else {
+                    self.dismiss(animated: false, completion: nil)
+                }
+                self.hideProgressBar()
+            }
+
+        },failureBlock: { (error : Error) in
+            self.hideProgressBar()
+            GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: (error.localizedDescription), on: self)
+        })
+    }
+
     func WebApplyCode() {
     
         showProgressBar()
@@ -107,6 +143,7 @@ class VirsuHomeVC: UIViewController {
                 print(swiftyJsonVar)
                 if(swiftyJsonVar["status"].stringValue == "1") {
                     WebGetEvent()
+                  //  WebApplyCodeS()
                     kappDelegate.strEventCode = text_Code.text!
                     let nVC = self.storyboard?.instantiateViewController(withIdentifier: "WelcomeVC") as! WelcomeVC
                     self.navigationController?.pushViewController(nVC, animated: true)

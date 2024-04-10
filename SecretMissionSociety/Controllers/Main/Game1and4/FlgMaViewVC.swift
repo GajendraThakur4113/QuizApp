@@ -113,7 +113,7 @@ extension FlgMaViewVC: MKMapViewDelegate {
 
         print("coordinate1v \(arr[0]["lat"].string) \(arr[0]["lon"].string)")
 
-        if arr.count == 0  || kappDelegate.dicCurrentEvent["id"].stringValue == "39"  {
+        if arr.count == 0   {
             return
         }
 
