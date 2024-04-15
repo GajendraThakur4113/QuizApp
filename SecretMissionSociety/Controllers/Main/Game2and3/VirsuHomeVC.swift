@@ -150,7 +150,7 @@ class VirsuHomeVC: UIViewController {
 
                 } else {
                     WebGetEvent()
-                    GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: swiftyJsonVar["result"].stringValue, on: self)
+                    GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: "Code Not Valid", on: self)
 
                 }
                 self.hideProgressBar()

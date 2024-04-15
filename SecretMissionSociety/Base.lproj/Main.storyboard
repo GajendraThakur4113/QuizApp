@@ -5237,8 +5237,9 @@ REACHED</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" maximumZoomScale="100" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Thu-aR-tvg">
+                            <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" maximumZoomScale="100" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Thu-aR-tvg">
                                 <rect key="frame" x="10" y="313" width="394" height="376"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <attributedString key="attributedText"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -5247,6 +5248,14 @@ REACHED</string>
                                     <outlet property="delegate" destination="K1G-6c-z6m" id="qsC-c6-5Sb"/>
                                 </connections>
                             </textView>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kf4-Ok-o7E">
+                                <rect key="frame" x="10" y="313" width="394" height="376"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Tq4-Yc-NAP">
                                 <rect key="frame" x="0.0" y="118" width="414" height="180"/>
                                 <constraints>
@@ -5259,16 +5268,16 @@ REACHED</string>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1dG-81-hM4">
-                                <rect key="frame" x="294" y="792" width="100" height="50"/>
+                                <rect key="frame" x="274" y="792" width="120" height="50"/>
                                 <color key="backgroundColor" red="0.20392156862745098" green="0.71340132732780615" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="FAE-5g-QMW"/>
+                                    <constraint firstAttribute="width" constant="120" id="FAE-5g-QMW"/>
                                     <constraint firstAttribute="height" constant="50" id="a2v-LF-Hb4"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="18"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="SUBMIT">
+                                <state key="normal" title="RESPUESTA">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -5281,10 +5290,10 @@ REACHED</string>
                                 </connections>
                             </button>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gpQ-hJ-v07">
-                                <rect key="frame" x="15" y="787" width="264" height="60"/>
+                                <rect key="frame" x="15" y="787" width="244" height="60"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter answer...." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NhF-h9-NAN">
-                                        <rect key="frame" x="10" y="0.0" width="244" height="60"/>
+                                        <rect key="frame" x="10" y="0.0" width="224" height="60"/>
                                         <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="19"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -5335,7 +5344,7 @@ REACHED</string>
                                         <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="21"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="Hint">
+                                        <state key="normal" title="PISTA">
                                             <color key="titleColor" red="0.0" green="0.1237386068" blue="0.099477754969999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -5353,7 +5362,7 @@ REACHED</string>
                                         <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="21"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="Give Up">
+                                        <state key="normal" title="ME RINDO">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -5434,7 +5443,7 @@ REACHED</string>
                                                     <action selector="yes:" destination="K1G-6c-z6m" eventType="touchUpInside" id="KPW-ph-tnb"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If you give up, you will receive the answer to this clue but 5 minutes will be added to your time" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Zo-0X-kCY">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Si te das por vencido, se te dará la respuesta pero se te añadirán 5 minutos a tu tiempo" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Zo-0X-kCY">
                                                 <rect key="frame" x="10" y="90" width="354" height="72"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                 <nil key="textColor"/>
@@ -5481,27 +5490,27 @@ REACHED</string>
                         <viewLayoutGuide key="safeArea" id="1yv-mV-aFf"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="1yv-mV-aFf" firstAttribute="trailing" secondItem="kf4-Ok-o7E" secondAttribute="trailing" constant="10" id="1N2-rz-h1c"/>
                             <constraint firstItem="1yv-mV-aFf" firstAttribute="bottom" secondItem="1dG-81-hM4" secondAttribute="bottom" constant="20" id="1ZW-CU-kJi"/>
+                            <constraint firstItem="kf4-Ok-o7E" firstAttribute="top" secondItem="Tq4-Yc-NAP" secondAttribute="bottom" constant="15" id="6uI-uE-KE6"/>
                             <constraint firstItem="W1S-8e-nzF" firstAttribute="top" secondItem="mQb-Y1-2xP" secondAttribute="top" id="9yD-Rj-hSN"/>
                             <constraint firstItem="1yv-mV-aFf" firstAttribute="trailing" secondItem="1dG-81-hM4" secondAttribute="trailing" constant="20" id="CJS-3z-0wF"/>
                             <constraint firstItem="W1S-8e-nzF" firstAttribute="leading" secondItem="1yv-mV-aFf" secondAttribute="leading" id="DTA-ib-mGr"/>
                             <constraint firstAttribute="bottom" secondItem="W1S-8e-nzF" secondAttribute="bottom" id="Ec6-Z9-HtA"/>
-                            <constraint firstItem="1yv-mV-aFf" firstAttribute="trailing" secondItem="Thu-aR-tvg" secondAttribute="trailing" constant="10" id="F4N-S5-Wlq"/>
-                            <constraint firstItem="Thu-aR-tvg" firstAttribute="top" secondItem="Tq4-Yc-NAP" secondAttribute="bottom" constant="15" id="Ffp-HM-8uQ"/>
                             <constraint firstItem="1yv-mV-aFf" firstAttribute="trailing" secondItem="Tq4-Yc-NAP" secondAttribute="trailing" id="HcR-7w-BUg"/>
-                            <constraint firstItem="Thu-aR-tvg" firstAttribute="leading" secondItem="1yv-mV-aFf" secondAttribute="leading" constant="10" id="Iws-Zg-tzf"/>
                             <constraint firstItem="xMs-tD-Wsy" firstAttribute="centerX" secondItem="mQb-Y1-2xP" secondAttribute="centerX" id="JOs-X7-Uf8"/>
                             <constraint firstItem="gpQ-hJ-v07" firstAttribute="centerY" secondItem="1dG-81-hM4" secondAttribute="centerY" id="K34-5b-ELc"/>
                             <constraint firstItem="W1S-8e-nzF" firstAttribute="trailing" secondItem="1yv-mV-aFf" secondAttribute="trailing" id="MBr-9h-L2s"/>
                             <constraint firstItem="PMQ-6M-GRi" firstAttribute="leading" secondItem="1yv-mV-aFf" secondAttribute="leading" constant="10" id="MIY-z9-ud9"/>
+                            <constraint firstItem="PMQ-6M-GRi" firstAttribute="top" secondItem="kf4-Ok-o7E" secondAttribute="bottom" constant="10" id="OMN-aq-Ce2"/>
                             <constraint firstItem="P6e-xl-At2" firstAttribute="leading" secondItem="1yv-mV-aFf" secondAttribute="leading" constant="20" id="U4s-MY-X3a"/>
                             <constraint firstItem="P6e-xl-At2" firstAttribute="top" secondItem="PMQ-6M-GRi" secondAttribute="bottom" constant="20" id="UP3-1N-Y1I"/>
-                            <constraint firstItem="PMQ-6M-GRi" firstAttribute="top" secondItem="Thu-aR-tvg" secondAttribute="bottom" constant="10" id="YJ4-o5-vqM"/>
                             <constraint firstItem="Tq4-Yc-NAP" firstAttribute="top" secondItem="xMs-tD-Wsy" secondAttribute="bottom" constant="15" id="YQ6-nT-yot"/>
                             <constraint firstItem="1yv-mV-aFf" firstAttribute="trailing" secondItem="PMQ-6M-GRi" secondAttribute="trailing" constant="10" id="fyX-Xi-b0k"/>
                             <constraint firstItem="1dG-81-hM4" firstAttribute="leading" secondItem="gpQ-hJ-v07" secondAttribute="trailing" constant="15" id="gou-hM-Vne"/>
                             <constraint firstItem="xMs-tD-Wsy" firstAttribute="top" secondItem="1yv-mV-aFf" secondAttribute="top" constant="15" id="kVa-Ky-W4F"/>
                             <constraint firstItem="gpQ-hJ-v07" firstAttribute="top" secondItem="P6e-xl-At2" secondAttribute="bottom" constant="8" id="mKj-z0-8qt"/>
+                            <constraint firstItem="kf4-Ok-o7E" firstAttribute="leading" secondItem="1yv-mV-aFf" secondAttribute="leading" constant="10" id="tdS-fw-bVi"/>
                             <constraint firstItem="Tq4-Yc-NAP" firstAttribute="leading" secondItem="1yv-mV-aFf" secondAttribute="leading" id="y2B-u1-fBo"/>
                             <constraint firstItem="gpQ-hJ-v07" firstAttribute="leading" secondItem="1yv-mV-aFf" secondAttribute="leading" constant="15" id="yfs-OO-bDX"/>
                         </constraints>
@@ -5510,6 +5519,7 @@ REACHED</string>
                         <outlet property="btnGIve" destination="wy7-es-9kU" id="EwX-U9-CCl"/>
                         <outlet property="btnHint" destination="rJj-yl-arV" id="m7J-kF-nxI"/>
                         <outlet property="btn_Submit" destination="1dG-81-hM4" id="tuq-qr-uAj"/>
+                        <outlet property="hieghtImage" destination="FqG-F8-sgn" id="UJZ-bc-LSn"/>
                         <outlet property="img_user" destination="Tq4-Yc-NAP" id="eiB-C6-G3C"/>
                         <outlet property="lbl_Answe" destination="P6e-xl-At2" id="R7T-AE-rtD"/>
                         <outlet property="lbl_Timer" destination="xMs-tD-Wsy" id="HLz-Pf-8kX"/>
@@ -5517,6 +5527,7 @@ REACHED</string>
                         <outlet property="text_Detail" destination="Thu-aR-tvg" id="hp2-GO-z49"/>
                         <outlet property="transView" destination="W1S-8e-nzF" id="aK8-AQ-U6Y"/>
                         <outlet property="view_Text" destination="gpQ-hJ-v07" id="Enk-iT-ORz"/>
+                        <outlet property="webView" destination="kf4-Ok-o7E" id="k1a-xP-F5c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FUR-Iu-NDu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -6536,7 +6547,7 @@ REACHED</string>
                                                     <action selector="yes:" destination="Lra-NI-hkh" eventType="touchUpInside" id="Fac-LY-YBJ"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If you give up, you will receive the answer to this clue but 5 minutes will be added to your time" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P1q-Sn-SBb">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Si te das por vencido, se te dará la respuesta pero se te añadirán 5 minutos a tu tiempo" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P1q-Sn-SBb">
                                                 <rect key="frame" x="10" y="90" width="354" height="72"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                 <nil key="textColor"/>
@@ -7045,7 +7056,7 @@ REACHED</string>
         <image name="ic_loca" width="24" height="34"/>
         <image name="info.circle.fill" catalog="system" width="128" height="123"/>
         <image name="inst_popup" width="590" height="567"/>
-        <image name="last_acc_img" width="300" height="228"/>
+        <image name="last_acc_img" width="414" height="314"/>
         <image name="locationCen" width="60" height="60"/>
         <image name="magnifyingglass.circle.fill" catalog="system" width="128" height="123"/>
         <image name="map.fill" catalog="system" width="128" height="110"/>

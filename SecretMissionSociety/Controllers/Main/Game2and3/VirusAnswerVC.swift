@@ -8,9 +8,11 @@
 import UIKit
 import SwiftyJSON
 import SDWebImage
+import WebKit
 
-class VirusAnswerVC: UIViewController {
+class VirusAnswerVC: UIViewController,WKNavigationDelegate {
     
+    @IBOutlet weak var hieghtImage: NSLayoutConstraint!
     @IBOutlet weak var lbl_Answe: UILabel!
     @IBOutlet weak var btnGIve: UIButton!
     @IBOutlet weak var btnHint: UIButton!
@@ -21,7 +23,8 @@ class VirusAnswerVC: UIViewController {
     @IBOutlet weak var lbl_Timer: UILabel!
     @IBOutlet weak var img_user: UIImageView!
     @IBOutlet weak var text_Detail: UITextView!
-    
+    @IBOutlet weak var webView: WKWebView!
+
     var arrAllQuestion:[JSON]! = []
     var isCurrentQuestion:Int! = 0
     var dicCurrentQuestion:JSON!
@@ -32,6 +35,11 @@ class VirusAnswerVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         startTimer()
+        
+        webView.scrollView.isScrollEnabled = true
+        webView.scrollView.bounces = false
+        webView.allowsBackForwardNavigationGestures = false
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -129,9 +137,26 @@ class VirusAnswerVC: UIViewController {
 
             }
             
+            if dicCurrentQuestion["instructions"].stringValue.contains("http") {
+                hieghtImage.constant = 0
+                img_user.isHidden = true
+
+            } else {
+                hieghtImage.constant = 160
+                img_user.isHidden = false
+
+            }
+//If you give up, you will receive the answer to this clue but 5 minutes will be added to your time
             img_user.sd_setImage(with: URL(string: dicCurrentQuestion["image"].stringValue), placeholderImage: UIImage(named: "NoImageAvailable"), options: .refreshCached, completed: nil)
             text_Detail.attributedText = dicCurrentQuestion["instructions"].stringValue.htmlToAttributedString
+            
+            webView.loadHTMLString(Singleton.shared.header + "\(dicCurrentQuestion["instructions"].stringValue)" + "</body>", baseURL: nil)
+            webView.evaluateJavaScript(Singleton.shared.javascript, completionHandler: nil)
+            webView.isHidden = false
+
+
             text_Answer.text = ""
+            
 
         } else {
             
@@ -143,6 +168,12 @@ class VirusAnswerVC: UIViewController {
         
 
     }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        webView.evaluateJavaScript(Singleton.shared.javascript, completionHandler: nil)
+        print("sdsdsd")
+    }
+
     func WebAddPenality() {
         showProgressBar()
         var paramsDict:[String:AnyObject] = [:]
@@ -194,10 +225,31 @@ class VirusAnswerVC: UIViewController {
                 print(swiftyJsonVar)
                 if(swiftyJsonVar["status"].stringValue == "1") {
                     
+                    
                     arrAllQuestion = swiftyJsonVar["result"].arrayValue
                     dicCurrentQuestion = arrAllQuestion[isCurrentQuestion]
+                    webView.contentMode = .scaleToFill
+
+                    if dicCurrentQuestion["instructions"].stringValue.contains("http") {
+                        hieghtImage.constant = 0
+                        img_user.isHidden = true
+
+                    } else {
+                        hieghtImage.constant = 160
+                        img_user.isHidden = false
+
+                    }
+                   
+
                     img_user.sd_setImage(with: URL(string: dicCurrentQuestion["image"].stringValue), placeholderImage: UIImage(named: "NoImageAvailable"), options: .refreshCached, completed: nil)
                     text_Detail.attributedText = dicCurrentQuestion["instructions\(Singleton.shared.languagePar!)"].stringValue.htmlToAttributedString
+                    
+                    webView.navigationDelegate = self
+                    webView.loadHTMLString(Singleton.shared.header + "\(dicCurrentQuestion["instructions"].stringValue)" + "</body>", baseURL: nil)
+                    webView.evaluateJavaScript(Singleton.shared.javascript, completionHandler: nil)
+                    webView.isHidden = false
+
+                    
 
                 }
                 self.hideProgressBar()
@@ -212,7 +264,9 @@ class VirusAnswerVC: UIViewController {
     func WebFinalAnswerGame() {
     
         showProgressBar()
+    
         var paramsDict:[String:AnyObject] = [:]
+  
         paramsDict["user_id"]     =   USER_DEFAULT.value(forKey: USERID) as AnyObject
         paramsDict["event_code"]     =   kappDelegate.strEventCode as AnyObject
         paramsDict["event_id"]     =   kappDelegate.dicCurrentVirus["id"].stringValue as AnyObject
@@ -220,6 +274,7 @@ class VirusAnswerVC: UIViewController {
         paramsDict["ans"]     =   text_Answer.text! as AnyObject
 
         print(paramsDict)
+        
         CommunicationManeger.callPostService(apiUrl: Router.add_virus_event_ans.url(), parameters: paramsDict, parentViewController: self, successBlock: { (responseData, message) in
 
             DispatchQueue.main.async { [self] in
