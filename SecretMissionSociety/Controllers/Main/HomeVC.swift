@@ -54,14 +54,17 @@ class HomeVC: UIViewController {
     //Mark:- Button Actions
     @IBAction func cityy(_ sender: UIButton) {
         
+//        ["CDMX / Area Metropolitana","Guadalajara","Monterrey","León","Mérida","Metepec","Puebla","Querétaro","Tijuana","Toluca","Veracruz","Zacatecas"]
+        
+//        ["Monterrey","Queretaro","CDMX / Metropotitian area","Guadalajara","Puebla"]
         drop.anchorView = sender
-        drop.dataSource = ["Monterrey","Queretaro","CDMX / Metropotitian area","Guadalajara","Puebla"]
+        drop.dataSource = ["CDMX / Area Metropolitana","Guadalajara","Monterrey","León","Mérida","Metepec","Puebla","Querétaro","Tijuana","Toluca","Veracruz","Zacatecas"]
         drop.bottomOffset = CGPoint(x: 0, y: 50)
         self.drop.show()
         drop.selectionAction = { [unowned self] (index: Int, item: String) in
             self.lbl_city.text = item
             
-            if item == "CDMX / Metropotitian area" {
+            if item == "CDMX / Area Metropolitana" {
                 self.nearMeEvents = allnearMeEvents.filter({$0["city_id"].stringValue == "1"})
             } else if item == "Guadalajara"  {
                 self.nearMeEvents = allnearMeEvents.filter({$0["city_id"].stringValue == "2"})
@@ -71,7 +74,11 @@ class HomeVC: UIViewController {
                 self.nearMeEvents = allnearMeEvents.filter({$0["city_id"].stringValue == "4"})
             } else if item == "Queretaro"  {
                 self.nearMeEvents = allnearMeEvents.filter({$0["city_id"].stringValue == "5"})
-            }  else  {
+            } else if item == "Metepec"  {
+                self.nearMeEvents = allnearMeEvents.filter({$0["city_id"].stringValue == "8"})
+            } else if item == "Toluca"  {
+                self.nearMeEvents = allnearMeEvents.filter({$0["city_id"].stringValue == "11"})
+            } else  {
                 self.nearMeEvents = allnearMeEvents.filter({$0["city_id"].stringValue == "2"})
             }
             self.nearestCollecView.reloadData()
@@ -142,7 +149,7 @@ class HomeVC: UIViewController {
                 if(swiftyJsonVar["status"].stringValue == "1") {
                     self.allnearMeEvents = swiftyJsonVar["result"].arrayValue
                     self.nearMeEvents = allnearMeEvents.filter({$0["city_id"].stringValue == "1"})
-                    self.lbl_city.text = "CDMX / Metropotitian area"
+                    self.lbl_city.text = "CDMX / Area Metropolitana"
                     self.nearestCollecView.reloadData()
                 }
                 self.hideProgressBar()
@@ -221,10 +228,8 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollecti
 
                 
             } else {
-                GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: "Available soon", on: self)
+                GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: "Coming soon", on: self)
             }
-            
-            
             
         } else {
 

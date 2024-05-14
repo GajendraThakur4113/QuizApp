@@ -11,7 +11,7 @@ struct Alert {
     }
     
     static func showSolvedPuzzleAlert(on vc:UIViewController) {
-        showAlert(on: vc, with: "", message: "Congrats!!!\n You have Solved this Puzzle ")
+        showAlert(on: vc, with: "", message: "Bien Hecho!!!")
     }
     
 }

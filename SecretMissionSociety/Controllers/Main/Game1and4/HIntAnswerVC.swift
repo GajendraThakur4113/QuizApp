@@ -87,6 +87,14 @@ class HIntAnswerVC: UIViewController {
         })
     }
 
+    func isValidHtmlString(_ value: String) -> Bool {
+        if value.isEmpty {
+            return false
+        }
+        return (value.range(of: "<(\"[^\"]*\"|'[^']*'|[^'\">])*>", options: .regularExpression) != nil)
+    }
+
+
 }
 extension HIntAnswerVC: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -96,9 +104,15 @@ extension HIntAnswerVC: UITableViewDelegate,UITableViewDataSource{
         let cell = table_list.dequeueReusableCell(withIdentifier: "TransactionTableCell", for: indexPath) as! TransactionTableCell
        
         cell.lbl_lang.text = arroption[indexPath.row]
-        cell.lbl_Detail.attributedText = arrHint[indexPath.row].htmlToAttributedString
-
-       
+      //  cell.lbl_Detail.attributedText = arrHint[indexPath.row].htmlToAttributedString
+    //    cell.lbl_Detail.text = arrHint[indexPath.row]
+        
+        if isValidHtmlString(arrHint[indexPath.row]) {
+            cell.lbl_Detail.setHTMLFromString(htmlText: arrHint[indexPath.row])
+        } else {
+            cell.lbl_Detail.text = arrHint[indexPath.row]
+        }
+        
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

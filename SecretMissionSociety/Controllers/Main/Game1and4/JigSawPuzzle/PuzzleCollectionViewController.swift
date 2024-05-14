@@ -115,7 +115,7 @@ class PuzzleCollectionViewController: UICollectionViewController {
                     self?.calWhn()
                     self!.hideProgressBar()
 
-                    GlobalConstant.showAlertMessage(withOkButtonAndTitle: "Instruction", andMessage: "Please keep long press on box and slide to any direction for solve puzzle.", on: self!)
+                    GlobalConstant.showAlertMessage(withOkButtonAndTitle: "INSTRUCTIONS", andMessage: "Mantén pulsado con fuerza una pieza del rompecabezas y desliza para mover las piezas.", on: self!)
 
                 } else {
                     GlobalConstant.showAlertMessage(withOkButtonAndTitle: APPNAME, andMessage: "Image wrong format", on: self!)

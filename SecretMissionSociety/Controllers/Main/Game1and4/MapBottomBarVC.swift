@@ -88,13 +88,7 @@ class MapBottomBarVC: UIViewController {
                  self.navigationController?.pushViewController(nVC, animated: true)
 
             } else if sender.tag == 1 {
-               
-//                if kappDelegate.dicCurrentEvent["id"].stringValue == "8" || kappDelegate.dicCurrentEvent["id"].stringValue == "15" || kappDelegate.dicCurrentEvent["id"].stringValue == "18" ||
-//                    kappDelegate.dicCurrentEvent["id"].stringValue == "19" ||
-//                    kappDelegate.dicCurrentEvent["id"].stringValue == "24" ||
-//                    kappDelegate.dicCurrentEvent["id"].stringValue == "31" ||
-//                    kappDelegate.dicCurrentEvent["id"].stringValue == "22" {
-
+                
               
                 let strEId = kappDelegate.dicCurrentEvent["id"].stringValue
                
@@ -236,9 +230,29 @@ extension MapBottomBarVC: MKMapViewDelegate {
         
         print("distacne \(kappDelegate.coordinate2)")
         
-        
-    
-        if kappDelegate.dicCurrentEvent["id"].stringValue == "1" || kappDelegate.dicCurrentEvent["id"].stringValue == "5" || kappDelegate.dicCurrentEvent["id"].stringValue == "20"  || kappDelegate.dicCurrentEvent["id"].stringValue == "8" || kappDelegate.dicCurrentEvent["id"].stringValue == "18" || kappDelegate.dicCurrentEvent["id"].stringValue == "19" {
+        let strGameId = kappDelegate.dicCurrentEvent["id"].stringValue
+            //puzzle (Mexico)
+        if strGameId == "1" ||
+           
+            //crime (Mexico,Gudaljar)
+            strGameId == "5" ||
+            strGameId == "20" ||
+            
+            //zoombi (Mexico,Gudaljar)
+            strGameId == "15"  ||
+            
+            //Codigo (Mexico)
+            strGameId == "8" ||
+            
+            //mision_magica (Mexico,Gudaljar,Montery,Puebla)
+            strGameId == "24" || strGameId == "22" || strGameId == "31" || strGameId == "32" ||
+            
+            //riddle (Mexico)
+            strGameId == "40" ||
+
+            //rescate (Mexico,Gudaljar,Montery)
+            strGameId == "18" || strGameId == "19" ||
+            strGameId == "28"  {
             
             if arr[0]["geolocation"].stringValue == "on" {
                 

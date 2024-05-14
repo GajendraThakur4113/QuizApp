@@ -125,8 +125,30 @@ extension FlgMaViewVC: MKMapViewDelegate {
         let d = kappDelegate.coordinate2.distance(from: coordinate1v)
         
         print("distacne \(kappDelegate.coordinate2)")
-        if kappDelegate.dicCurrentEvent["id"].stringValue == "1" || kappDelegate.dicCurrentEvent["id"].stringValue == "5" || kappDelegate.dicCurrentEvent["id"].stringValue == "20" || kappDelegate.dicCurrentEvent["id"].stringValue == "8" || kappDelegate.dicCurrentEvent["id"].stringValue == "18" || kappDelegate.dicCurrentEvent["id"].stringValue == "4" || kappDelegate.dicCurrentEvent["id"].stringValue == "7" || kappDelegate.dicCurrentEvent["id"].stringValue == "17" {
+        let strGameId = kappDelegate.dicCurrentEvent["id"].stringValue
+            //puzzle (Mexico)
+        if strGameId == "1" ||
+           
+            //crime (Mexico,Gudaljar)
+            strGameId == "5" ||
+            strGameId == "20" ||
             
+            //zoombi (Mexico,Gudaljar)
+            strGameId == "15"  ||
+            
+            //Codigo (Mexico)
+            strGameId == "8" ||
+            
+            //mision_magica (Mexico,Gudaljar,Montery,Puebla)
+            strGameId == "24" || strGameId == "22" || strGameId == "31" || strGameId == "32" ||
+            
+            //riddle (Mexico)
+            strGameId == "40" ||
+
+            //rescate (Mexico,Gudaljar,Montery)
+            strGameId == "18" || strGameId == "19" ||
+            strGameId == "28"  {
+
             if arr[0]["geolocation"].stringValue == "on" {
                 
                 if d < 100 {
