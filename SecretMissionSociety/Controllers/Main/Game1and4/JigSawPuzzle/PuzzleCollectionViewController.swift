@@ -55,10 +55,18 @@ class PuzzleCollectionViewController: UICollectionViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = false
-        setNavigationBarItem(LeftTitle: "", LeftImage: "back", CenterTitle: "Solve Puzzle", CenterImage: "", RightTitle: "", RightImage: "", BackgroundColor: NAAV_BG_COLOR, BackgroundImage: "", TextColor: WHITE_COLOR, TintColor: WHITE_COLOR, Menu: "")
+        setNavigationBarItem(LeftTitle: "", LeftImage: "back", CenterTitle: "Puzzle", CenterImage: "", RightTitle: "Preview", RightImage: "", BackgroundColor: NAAV_BG_COLOR, BackgroundImage: "", TextColor: WHITE_COLOR, TintColor: WHITE_COLOR, Menu: "")
 
     }
  
+    override func rightClick() {
+        
+
+        let objVC = self.storyboard?.instantiateViewController(withIdentifier: "ShowFinalIPreviewVC") as! ShowFinalIPreviewVC
+            objVC.strImage = dicCurrentQuestion["Jigsaw_puzzle_image"].stringValue
+        self.navigationController?.pushViewController(objVC, animated: false)
+
+    }
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
 
@@ -258,7 +266,7 @@ extension PuzzleCollectionViewController : UICollectionViewDelegateFlowLayout {
 //        if puzzle[index].title == "Soldier" {
 //            customCollectionWidth = collectionViewWidth/4 - 8
 //        } else if puzzle[index].title == "Charuzard" {
-            customCollectionWidth = collectionViewWidth/3
+            customCollectionWidth = collectionViewWidth/3 - 1
 //        } else {
 //            customCollectionWidth = collectionViewWidth/2 - 10
 //        }
@@ -266,11 +274,11 @@ extension PuzzleCollectionViewController : UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        return 1
     }
 }
 

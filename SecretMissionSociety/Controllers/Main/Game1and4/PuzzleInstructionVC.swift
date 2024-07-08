@@ -32,6 +32,7 @@ class PuzzleInstructionVC: UIViewController,UIWebViewDelegate,WKNavigationDelega
 
         img_user.sd_setImage(with: URL(string: kappDelegate.dicCurrentEvent["image"].stringValue), placeholderImage: UIImage(named: "NoImageAvailable"), options: .refreshCached, completed: nil)
 
+        
         webView.scrollView.isScrollEnabled = true
         webView.scrollView.bounces = false
         webView.allowsBackForwardNavigationGestures = false
@@ -40,7 +41,14 @@ class PuzzleInstructionVC: UIViewController,UIWebViewDelegate,WKNavigationDelega
         webView.loadHTMLString(Singleton.shared.header + "\(kappDelegate.dicCurrentEvent["intro_sp"].stringValue)" + "</body>", baseURL: nil)
         webView.evaluateJavaScript(Singleton.shared.javascript, completionHandler: nil)
         webView.isHidden = false
+
     }
+
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        webView.evaluateJavaScript(Singleton.shared.javascript, completionHandler: nil)
+        print("sdsdsd")
+    
+}
 
     @IBAction func cross(_ sender: Any) {
 

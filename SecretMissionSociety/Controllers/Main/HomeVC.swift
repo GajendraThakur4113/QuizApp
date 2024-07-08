@@ -206,8 +206,7 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollecti
             let eventid = nearMeEvents[indexPath.row]["id"].stringValue
             _ = nearMeEvents[indexPath.row]["city_id"].stringValue
                 
-            // || self.lbl_city.text == "Queretaro"
-            if self.lbl_city.text == "CDMX / Metropotitian area" || self.lbl_city.text == "Guadalajara" || self.lbl_city.text == "Monterrey"  || self.lbl_city.text == "Puebla"  {
+            if self.lbl_city.text == "CDMX / Area Metropolitana" || self.lbl_city.text == "Guadalajara" || self.lbl_city.text == "Monterrey"  || self.lbl_city.text == "Puebla"  {
         
                 if eventid == "1" || eventid == "5" || eventid == "8" || eventid == "15" || eventid == "18" || eventid == "19" || eventid == "20" || eventid == "22" || eventid == "34" || eventid == "24" || eventid == "35" || eventid == "36" || eventid == "31"  || eventid == "28" || eventid == "25" || eventid == "32" || eventid == "30" || eventid == "26" || eventid == "27" || eventid == "33" || eventid == "39"  {
                    

@@ -256,7 +256,7 @@ extension MapBottomBarVC: MKMapViewDelegate {
             
             if arr[0]["geolocation"].stringValue == "on" {
                 
-                if d < 100 {
+//                if d < 100 {
 //
                     if arr[0]["Jigsaw_puzzle_status"].stringValue == "enable" {
 
@@ -278,11 +278,11 @@ extension MapBottomBarVC: MKMapViewDelegate {
 
                     }
 
-                } else {
-
-                    GlobalConstant.showAlertMessageClose(withOkButtonAndTitle: "UBICACION LEJANA", andMessage: "Distance :- \(d) Meter's\n\nIParece que no estás dentro del radio cercano a las marcas del juego.Debes estar al menos 100 metros próximos a la ubicación marcada.", on: self)
-
-                }
+//                } else {
+//
+//                    GlobalConstant.showAlertMessageClose(withOkButtonAndTitle: "UBICACION LEJANA", andMessage: "Distance :- \(d) Meter's\n\nIParece que no estás dentro del radio cercano a las marcas del juego.Debes estar al menos 100 metros próximos a la ubicación marcada.", on: self)
+//
+//                }
 
             } else {
                 

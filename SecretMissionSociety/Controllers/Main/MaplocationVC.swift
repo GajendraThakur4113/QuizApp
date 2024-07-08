@@ -29,9 +29,8 @@ class MaplocationVC: UIViewController {
       
         self.navigationController?.navigationBar.isHidden = true
 
-        kappDelegate.strEventCode! = kappDelegate.dicCurrentEvent["event_code"].stringValue
-
         if kappDelegate.dicCurrentEvent != nil {
+            kappDelegate.strEventCode! = kappDelegate.dicCurrentEvent["event_code"].stringValue
             WebGetCode()
         } else {
             view_Pop.isHidden = true
